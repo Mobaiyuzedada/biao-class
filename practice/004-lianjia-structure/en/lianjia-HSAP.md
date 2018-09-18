@@ -14,4 +14,4 @@ Row body
 Row footer
     Row campany message 
     Row cat
-    Row Meta Information
+    Row Meta Information 
