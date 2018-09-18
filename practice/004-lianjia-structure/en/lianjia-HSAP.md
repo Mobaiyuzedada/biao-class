@@ -12,6 +12,6 @@ Row body
     Row recommended-area apartment
     Row slogan
 Row footer
-    Row campany message
+    Row campany message 
     Row cat
     Row Meta Information
