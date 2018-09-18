@@ -24,7 +24,7 @@ Row body
             Row content
                 Row title
                 Row description
-    Row App
+    Row App promotion
         Row Title
             Row subtitle
             Row big-title
