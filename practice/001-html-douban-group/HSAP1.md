@@ -1,5 +1,5 @@
 <!-- 网页结构分析练习HSAP(Html Structural Analysis Practice) -->
-全局导航
+全局导航 
     链接组 左
         链接*11
     链接组 右
