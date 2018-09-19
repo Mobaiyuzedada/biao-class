@@ -2,7 +2,7 @@
  Exercise for the coming year
 
 biao-class结构：
-.
+```
 ├── practice
 │   ├── 000-yo
 │   │   └── yo.txt
