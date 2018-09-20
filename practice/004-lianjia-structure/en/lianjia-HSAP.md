@@ -7,20 +7,23 @@ Row header
             Row User
                 Col log in
                 Col sign up
-
+            Row link-group
+                col link*n
     Row Title
         Row big title
         Row sub title
     Row search
         Row cat
             Col label*n
-        Row search-bar        
+        Row search-bar   
+            col input
+            col button     
     Row Notices
         Col link*3
 Row body
     Row tools
         Col link*3
-            Row LOGO
+            Row icon
             Row content
                 Row title
                 Row description
