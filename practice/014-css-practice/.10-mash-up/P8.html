@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>:fitst-of-type</title>
+    <style>
+        /* a:first-of-type{
+            color:red;
+        } */
+        body :not(a){
+            color:palevioletred;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p>ddd</p>
+</div>
+<div>
+    <p>sss</p>
+    <a>老大</a>
+    <a>老二</a>
+    <a>ccc</a>
+</div>
+</body>
+</html>
+<!-- first-of-type会寻找每个块级元素中的第一个指定元素，比如body和div里的第一个a链接作用样式。
+而first-child如果第一个孩子的位置被占了，就不会作用样式。 -->

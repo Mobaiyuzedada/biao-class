@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>伪类选择器练习</title>
+    <style>
+       a:hover{
+            border:slateblue dotted;
+        }
+        a:active{
+            border:skyblue dashed;
+        }
+        a:focus{
+            border:rebeccapurple solid;
+        }
+        [type="checkbox"]:checked{  /*勾选状态下的样式*/
+            outline: 2px solid #000;
+        }
+        input:disabled{
+            outline:2px solid #000;
+        }
+        input:enabled{
+            outline:3px solid aquamarine;
+        }
+        p:empty{
+            outline:5px dashed darkcyan;
+        }
+        span:nth-child(1){
+            color:chartreuse;
+            outline:2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://baidu.com">断网测试</a><br>
+    <input type="checkbox" > 
+    <input type="text">
+    <input type="text" disabled>
+    <p>我有内容</p>
+    <p><!-- 我没内容 --></p>
+
+<div class="nothing"> <!-- 注：这里不包起来，要从第八个儿子开始才生效，即从body-p都算进去了   -->
+    <span>老大</span>
+    <span>老二</span>
+    <span>老三</span>
+    <span>老四</span>
+    <span>老五</span>
+    <span>老六</span>
+</div>
+</body>
+</html>

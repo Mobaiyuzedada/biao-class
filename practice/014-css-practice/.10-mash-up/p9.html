@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪元素 ── 不是元素，胜似元素</title>
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        td,th{
+            border:1px solid #000;
+            text-align: left;
+        }
+        td:last-child::after{
+            content:"元";
+        }
+        p::first-line{
+            color:palegreen;
+        }
+        p::first-letter{
+            font-size: 400%;
+        }
+        p::selection{ /*作用在元素上而非内 */
+            background:palegreen;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>菜谱</caption>
+        <thead>
+            <tr>
+                <th>菜名</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>回锅肉</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>酸菜鱼</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>扬州炒饭</td>
+                <td>18</td>
+            </tr>
+        </tbody>
+    </table>
+<div>
+    <p>东市买骏马，<span> 西市买鞍鞯，</span>南市买辔头，北市买长鞭。旦辞爷娘去，暮宿黄河边，不闻爷娘唤女声，但闻黄河流水鸣溅溅。旦辞黄河去，暮至黑山头，不闻爷娘唤女声，但闻燕山胡骑鸣啾啾。
+            万里赴戎机，关山度若飞。朔气传金柝，寒光照铁衣。将军百战死，壮士十年归。</p>
+</div>
+</body>
+</html>

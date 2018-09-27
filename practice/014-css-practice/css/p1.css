@@ -1,0 +1,13 @@
+div{
+    border:solid;
+}
+span{
+    color:green;
+}
+p{
+    background:firebrick;
+}
+a{
+    text-decoration:none;
+    font-size:200%;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相邻兄弟选择 ── 找弟弟</title>
+    <style>
+       span +span{           /* 此属性应该是从一开始每个都搜索一遍*/
+            border:solid;
+        }
+        #me ~ span{
+            color:red;
+        }
+        .parent > .elder{
+            color:gold;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <span class="elder">哥哥</span>
+    <span id="me">我</span>
+    <span>弟弟</span>
+    <span>弟弟</span>
+    <span>弟弟</span>
+    <p>ppp</p>
+    <span>弟弟</span>
+    <span>弟弟</span>
+    <span>弟弟</span>
+    <span>弟弟</span>
+</div>
+</body>
+</html>
