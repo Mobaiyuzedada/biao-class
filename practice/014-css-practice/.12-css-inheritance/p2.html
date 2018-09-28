@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #parent{
+            border:solid #666;
+            width:200px;
+        }
+        #a,#b{
+            width:50%;
+            height:100px;
+            /*由于block元素会占整宽所以我们将其设为inline-block，让其自由流动*/
+            display: inline-block;
+            box-sizing:border-box;
+        }
+        #a{
+            background:#bbb;
+            border:5px dashed black;
+        }
+        #b{
+            background:#777;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="a"></div><!--
+        此处的注释是为了清除两个元素间的断行，因为行内块元素会渲染它们之间的空白字符
+        --><div id="b"></div>
+    </div>
+</body>
+</html>

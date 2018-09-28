@@ -8,13 +8,30 @@
         div {
             background:lightgray;       
             border:solid;
-            padding:30px;
             height:3em;
             width: 3em;
-            margin:5px;
         }
-        #a{
-            border:solid black 1px;
+         /*上下*/
+        .a{
+            margin:10px;
+        }
+        /*上下，左右*/
+        .b{
+            margin:20px 30px;
+        }
+        /* 顺时针指定 */
+        .c{
+            margin:30px 40px 50px 60px;
+        }
+        /* 只有左边距 */
+        .d{
+            margin-left:10px;
+            margin-bottom:10px;
+        }
+        /* 所有都为10，除了左边距为50px */
+        .e{
+            margin:10px;
+            margin-left:50px;
         }
         #box{
             border:dashed;
@@ -24,15 +41,15 @@
 </head>
 
 <body>
-    <div>
+    <div class="e">
         <p> YO.</p>
         <p>Ha.</p>
         <p>Emmmm...</p>
     </div>
-    <div>B</div>
-    <div>C</div>
-    <div>D</div>
-    <div>E</div>
+    <div class="a">B</div>
+    <div class="b">C</div>
+    <div class="c">D</div>
+    <div class="d">E</div>
     <div>
         <span id="a">A</span>
         <span id="b">B</span>
