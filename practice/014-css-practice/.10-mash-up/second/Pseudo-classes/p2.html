@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>:nth-child</title>
+    <style>
+        table,td,th{
+            border-collapse:collapse;
+            border:solid;
+        }
+        th,td{
+            text-align: left;
+        }
+        th:first-of-type{
+            background:aqua;
+        }
+        /* 这里会覆盖上面的，因为thead里只有一个tr */
+        tr:last-child{
+            background: deepskyblue;
+        }
+        td:nth-child(2){
+            background: deeppink;
+        }
+        td:nth-child(odd){
+            background: darkorange;
+        }
+        td:last-of-type::after{
+            content:'岁';
+        }
+        td:first-of-type::before{
+            content:"帅帅的";
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>dry</td>
+                <td>222222222222</td>
+            </tr>
+            <tr>
+                <td>dry</td>
+                <td>1111111111111</td>
+            </tr>
+            <tr>
+                <td>dry</td>
+                <td>1111111111111</td>
+            </tr>
+            <tr>
+                <td>dry</td>
+                <td>1111111111111</td>
+            </tr>
+            <tr>
+                <td>dry</td>
+                <td>1111111111111</td>
+            </tr>
+            <tr>
+                <td>dry</td>
+                <td>1111111111111</td>
+            </tr>
+            <tr>
+                <td>dry</td>
+                <td>18</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>后代选择器</title>
+    <style>
+        footer span{
+            border:solid;
+        }
+        .dis{
+            margin-bottom: 10px;
+        }
+        .c{
+            color:tomato;
+        }
+        .bordered{
+            border:1px black solid;
+        }
+        .a .bordered.c{
+            border:tomato solid 1px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <span>A</span>
+        <span>B</span>
+    </p>
+    <footer class="dis">
+        <span>C</span>
+        <span>D</span>
+    </footer>
+    <div class="practice1">
+        更改.c的文字颜色为tomato
+        <div class="a">A
+            <div class="b">B
+                <div class="c">C</div>
+                <div class="c">C</div>
+                <div class="c">C</div>
+            </div>
+        </div>
+    </div>
+    <div class="practice2">
+        更改.c的文字颜色为tomato
+        有.bordered类的元素要加边框
+        凡是在.a中，且有.bordered和.c的元素要添加跟文字相同颜色的边框
+        <div class="a bordered">A
+            <div class="b">B
+                <div class="c bordered">C</div>
+                <div class="c">C</div>
+                <div class="c">C</div>
+                <div class="bordered">C</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

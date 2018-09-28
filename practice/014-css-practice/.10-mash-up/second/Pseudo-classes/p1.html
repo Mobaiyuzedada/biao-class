@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudo-classes</title>
+    <style>
+        /* 鼠标悬停时的状态 */
+        a:hover{
+            border:aqua solid;
+        }
+        /* 鼠标点击时的状态 */
+        a:active{
+            border:deeppink solid;
+        }
+        /* 鼠标按下或使用Tab时触发 */
+        input:focus{
+            border:deepskyblue solid;
+        }
+        /* 勾选时候的状态 */
+        [type="checkbox"]:checked{
+           outline:darkorange solid;
+        }
+        /* 禁用的元素 如<input disabled>,<textarea disabled>*/
+        input:disabled{
+            outline:darkmagenta solid;
+        }
+        /* 未被禁用的 这里伪元素选择器权重比上面的属性选择器低*/
+        input:enabled{
+            outline:rgb(184, 152, 25) solid;
+        }
+        p:empty{
+            outline:blue solid;
+        }
+    </style>
+</head>
+<body>
+    
+    <a href="#">Yo~</a>
+    <input type="text" placeholder="请输入">
+    <input type="checkbox">
+    <p></p>
+    <input type="text" disabled>
+</body>
+</html>

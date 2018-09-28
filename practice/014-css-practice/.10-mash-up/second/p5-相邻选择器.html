@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相邻选择器</title>
+    <style>
+      p ~.me{
+            border:solid;
+        }
+        p{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <span>哥哥</span>
+    <span class="me">我</span>
+    <p class="me">我</p>
+    <span>弟弟</span>
+    <span>弟弟</span>
+    <span class="me">我</span>
+</body>
+</html>

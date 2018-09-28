@@ -1,0 +1,54 @@
+<title>子选择器</title>
+<meta charset="utf-8">
+<style>
+    div{
+        padding:10px;
+    }
+    .grand>div{
+        border:solid;
+    }
+    .dis{
+        margin-bottom: 15px;
+    }
+    ul > *{
+        color:royalblue;
+    }
+    ol > *{
+        color:hotpink;
+    }
+</style>
+
+
+
+<div class="grand dis">
+    我是爷爷
+    <div>我是爸爸
+        <div>
+            我是儿子
+        </div>
+    </div>
+    <div>我是爸爸
+        <div>
+            我是儿子
+        </div>
+    </div>
+</div>
+
+<ul>
+    <li>A</li>
+    <li>B</li>
+    <ol>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+    </ol>
+</ul>
+<ol>
+    <li>A</li>
+    <li>B</li>
+    <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+    </ul>
+</ol>
