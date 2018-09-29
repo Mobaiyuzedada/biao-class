@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Specifity practice</title>
+    <style>
+                p>span{
+            color:blue;
+        }
+        p span{
+            color:aqua;
+        }
+
+    </style>
+</head>
+<body>
+    <table border="1" style="border-collapse: collapse " >
+        <thead>
+            <tr>
+                <th>Selector</th>
+                <th>Specifity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>a</td>
+                <td>0,0,0,1</td>
+            </tr>
+            <tr>
+                <td>.active</td>
+                <td>0,0,1,0</td>
+            </tr>
+            <tr>
+                <td>#yo</td>
+                <td>0,1,0,0</td>
+            </tr>
+            <tr>
+                <td>a.active</td>
+                <td>0,0,1,1</td>
+            </tr>
+            <tr>
+                <td>.box .active</td>
+                <td>0,0,2,0</td>
+            </tr>
+            <tr>
+                <td>body a.active</td>
+                <td>0,0,1,2</td>
+            </tr>
+            <tr>
+                <td>.box a.red span</td>
+                <td>0,0,2,2</td>
+            </tr>
+            <tr>
+                <td>.box a.red .item</td>
+                <td>0,0,3,1</td>
+            </tr>
+            <tr>
+                <td>#yo .box a.hide</td>
+                <td>0,1,2,1</td>
+            </tr>
+            <tr>
+                <td>#yo > a.active:hover</td>
+                <td>0,1,2,1</td>
+            </tr>
+            <tr>
+                <td>:root .box:hover</td>
+                <td>0,0,3,0</td>
+            </tr>
+            <tr>
+                <td>style="...""</td>
+                <td>1,0,0,0</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <p>我是
+        <span>testing</span>
+    </p>
+</body>
+</html>

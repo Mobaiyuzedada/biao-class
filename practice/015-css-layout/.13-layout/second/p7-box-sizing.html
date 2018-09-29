@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.css" rel="stylesheet"> -->
+    <meta charset="UTF-8">
+    <title>box-sizing</title>
+    <style>
+        .box{
+            width:100px;
+            border:1px solid;
+        }
+        .a,.b{
+            display: inline-block;
+            width:50%;
+            height: 100px;
+            box-sizing: border-box;
+        }
+        .a{
+            background:lightcoral;
+            border:dashed 5px bisque;
+        }
+        .b{
+            background:aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="a"></div><!--
+        --><div class="b"></div>
+    </div>
+</body>
+</html>
