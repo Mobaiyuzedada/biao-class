@@ -1,0 +1,7 @@
+@import url(./normalize.css);
+@import url(./global.css);
+
+
+.row{
+    margin-bottom: 5px;
+}
