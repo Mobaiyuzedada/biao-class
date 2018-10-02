@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-2</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .row::after,
+        .row::before{
+            clear:both;
+            content: '';
+            display:block;
+        }
+        .col{
+            width:50%;
+            border:aqua solid;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+   <div class="row">
+       <div class="col">A</div>
+       <div class="col">B</div>
+   </div>
+</body>
+</html>

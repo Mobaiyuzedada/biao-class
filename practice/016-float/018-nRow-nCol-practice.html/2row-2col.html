@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2row-2col</title>
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        .row{
+            border:aqua solid;
+            margin-bottom: 10px;
+        }
+        .col{
+            float:left;
+            border:red solid;
+            width:50%;
+        }
+        .clear::after,
+        .clear::before{
+            content:'';
+            display:block;
+            clear:both;
+        }
+    </style>
+</head>
+<body>
+    <div class="row clear">
+        <div class="col">A</div>
+        <div class="col">B</div>
+    </div>
+    <div class="row clear">
+        <div class="col">A</div>
+        <div class="col">B</div>
+    </div>
+</body>
+</html>
+

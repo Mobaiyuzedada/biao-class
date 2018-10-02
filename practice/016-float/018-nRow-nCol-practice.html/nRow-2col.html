@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>n-row 2-col</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .row{
+            border:aqua solid;
+        }
+        .col{
+            float:left;
+            border:solid;
+            width:50%;
+        }
+        .clear::after,
+        .clear::before{
+            content: '';
+            clear:both;
+            display:block;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="row clear">
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+        <div class="col">n</div>
+
+    </div>
+</body>
+</html>

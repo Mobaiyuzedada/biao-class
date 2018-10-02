@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>25.4 浮动布局基础</title>
+    <style>
+        body{
+            margin:0;
+        }
+        .parent{
+            border:2px solid #aaa;
+        }
+        .left,.right,.middle{
+            border:2px solid #000;
+            min-height:50px;
+            box-sizing:border-box;
+        }
+        .left{
+            width:30%;
+        }
+        .right{
+            width:70%;
+        }
+        .fl{
+            float:left;
+        }
+        .clear{
+            clear:both;
+        }
+
+        .parent2 .left{
+            width:30%;
+        }
+        .parent2 .middle{
+            width:40%;
+        }
+        .parent2 .right{
+            width:30%;  
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="left fl">YO1</div>
+        <div class="right fl">Yo2</div>
+        <div class="clear"></div>
+    </div>
+    <div class="parent2">
+        <div class="left fl">YO1</div>
+        <div class="middle fl">Yooo</div>
+        <div class="right fl">Yo2</div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>
+

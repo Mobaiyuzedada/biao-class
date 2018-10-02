@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nested</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .row{
+            border:aqua solid;
+        }
+        .row::after,
+        .row::before{
+            content:'';
+            display:block;
+            clear:both;
+        }
+        .col{
+            width:50%;
+            background:rgba(255,0,0,.4);
+            float:left;
+            padding:10px;
+            border:aqua solid;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col">
+        <div class="col">
+            <div class="col">
+                <div class="col">
+                    <div class="col">AA</div>
+                    <div class="col">EE</div>
+                </div>
+                <div class="col">DD</div>
+            </div>
+            <div class="col">CC</div>
+        </div>
+        <div class="col">BB</div>
+    </div>
+    <div class="col">
+        <div class="col">AA</div>
+        <div class="col">BB</div>
+    </div>
+</div>
+</body>
+</html>

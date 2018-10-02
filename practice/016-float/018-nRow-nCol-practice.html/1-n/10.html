@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-3</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .clear::after,
+        .clear::before{
+            content:'';
+            display:block;
+            clear:both;
+        }
+        .fr{
+            float:right;
+        }
+        .row{
+            border:deeppink dashed;
+        }
+        .col{
+            width:50%;
+            border:lightgreen solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="row clear">
+        <div class="col fr">A</div>
+        <div class="col fr">B</div>
+    </div>
+</body>
+</html>

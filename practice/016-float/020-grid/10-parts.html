@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-parts</title>
+    <style>
+        .col-1{width:10%;}
+        .col-2{width:20%;}
+        .col-3{width:30%;}
+        .col-4{width:40%;}
+        .col-5{width:50%;}
+        .col-6{width:60%;}
+        .col-7{width:70%;}
+        .col-8{width:80%;}
+        .col-9{width:90%;}
+        .col-10{width:100%;}
+        *{
+            box-sizing: border-box;
+        }
+        .row::after,
+        .row::before{
+            content: '';
+            clear:both;
+            display: block;
+
+        }
+        .row{
+            /* border:red dotted; */
+            margin-bottom: 5px;
+        }
+        .col{
+            float:left;
+            border: solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col col-10">Yo</div>
+    </div>
+    <div class="row">
+        <div class="col col-5">Yo</div>
+        <div class="col col-5">Yo</div>
+    </div>
+    <div class="row">
+        <div class="col col-2">Yo</div>
+        <div class="col col-2">Yo</div>
+        <div class="col col-2">Yo</div>
+        <div class="col col-2">Yo</div>
+        <div class="col col-2">Yo</div>
+    </div>
+    <div class="row">
+        <div class="col col-1">Yo</div>
+        <div class="col col-1">Yo</div>
+        <div class="col col-1">Yo</div>
+        <div class="col col-1">Yo</div>
+        <div class="col col-1">Yo</div>
+        <div class="col col-1">Yo</div>
+        <div class="col col-1">Yo</div>
+        <div class="col col-1">Yo</div>
+        <div class="col col-1">Yo</div>
+        <div class="col col-1">Yo</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>25.5 浮动栅格系统</title>
+    <link rel="stylesheet" href="../grid.css">
+    <style>
+        .row,.parent{
+            border:2px solid #aaa;
+            margin-bottom: 10px;
+        }
+        .col{
+            display: block;
+            float:left;
+            /* ========= */
+            min-height:30px;
+            border:1px solid #000;
+            box-sizing: border-box;
+        }
+        .clear::after,
+        .clear::before,
+        .row::before,
+        .row::after{
+            content:'';
+            clear:both;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col col-30"></div>
+        <div class="col col-70"></div>
+
+    </div>
+    <div class="row">
+        <div class="col col-10"></div>
+        <div class="col col-30"></div>
+        <div class="col col-60"></div>
+    </div>
+    <div class="row">
+        <div class="col col-33"></div>
+        <div class="col col-33"></div>
+        <div class="col col-34"></div>
+    </div>
+    <div class="parent clear">
+        <div class="col col-20"></div>
+        <div class="col col-20"></div>
+        <div class="col col-20"></div>
+        <div class="col col-20"></div>
+        <div class="col col-20"></div>
+    </div>
+</body>
+</html>

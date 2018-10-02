@@ -1,0 +1,64 @@
+/* 全局样式开始 */
+@import url(../grid.css);
+*{
+    box-sizing:border-box;
+}
+body{
+    margin:0;
+    font-family:sans-serif;
+    color:#fff;
+    background:#eee;
+}
+.col{
+    display: block;
+    /* ========= */
+    min-height:30px;
+    box-sizing: border-box;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float:right;
+}
+.row::after,
+.row::before,
+.clear::after,
+.clear::before{
+    content:'';
+    clear:both;
+    display:block;
+}
+.wrapper{
+    max-width:700px;
+    margin-right:auto;
+    margin-left:auto;
+}
+/* 全局样式结束 */
+
+/*页面样式开始*/
+a{
+    text-decoration:none;
+    display:inline-block;
+
+}
+nav,footer{
+    background:#46cbf5;
+}
+nav a{
+    padding:10px;
+    color:rgba(255,255,255,0.7);
+}
+main{
+    background:#999;
+    padding:30px;
+}
+footer{
+    padding:20px;
+    margin-top:40px;
+}
+
+
+
+
+/*页面样式结束*/
