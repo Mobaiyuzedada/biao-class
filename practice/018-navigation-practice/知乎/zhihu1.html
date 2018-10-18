@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>知乎导航</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin:0;
+        }
+        a{
+            text-decoration: none;
+        }
+        nav{
+            background:#fff;
+            margin:10px;
+        }
+        nav a{
+            padding:1em;
+            display: inline-block;
+        }
+        nav form{
+            position:relative;
+            top:.2em;
+        }
+        nav input,
+        nav button{
+            vertical-align: top;
+            padding:1em;
+        }
+        nav input{
+            width:65%;
+        }
+        nav button{
+            width:29%;
+            margin-left: 4%;
+        }
+        input,
+        button{
+            border:1px solid #ccc;
+            outline:0;
+            border-radius: 3px;
+        }
+        button.primary{
+            background:#0084ff;
+            color:#fff;
+            border-color:#0084ff
+        }
+        input:focus{
+            border:#0084ffbe 1px solid;
+        }
+        .row::before,
+        .row::after,
+        .clear::before,
+        .clear::after{
+            content:'';
+            display: block;
+            clear: both;
+        }
+        .tr{
+            text-align: right;
+        }
+        .col-1{width:4.166666666666667%;}
+        .col-2{width:8.333333333333334%;}
+        .col-3{width:12.5%;}
+        .col-4{width:16.666666666666668%;}
+        .col-5{width:20.833333333333336%;}
+        .col-6{width:25%;}
+        .col-7{width:29.166666666666668%;}
+        .col-8{width:33.333333333333336%;}
+        .col-9{width:37.5%;}
+        .col-10{width:41.66666666666667%;}
+        .col-11{width:45.833333333333336%;}
+        .col-12{width:50%;}
+        .col-13{width:54.16666666666667%;}
+        .col-14{width:58.333333333333336%;}
+        .col-15{width:62.50000000000001%;}
+        .col-16{width:66.66666666666667%;}
+        .col-17{width:70.83333333333334%;}
+        .col-18{width:75%;}
+        .col-19{width:79.16666666666667%;}
+        .col-20{width:83.33333333333334%;}
+        .col-21{width:87.5%;}
+        .col-22{width:91.66666666666667%;}
+        .col-23{width:95.83333333333334%;}
+        .col-24{width:100%;}
+
+        .col-1, 
+        .col-2, 
+        .col-3, 
+        .col-4, 
+        .col-5, 
+        .col-6, 
+        .col-7, 
+        .col-8, 
+        .col-9, 
+        .col-10,
+        .col-11,
+        .col-12,
+        .col-13,
+        .col-14,
+        .col-15,
+        .col-16,
+        .col-17,
+        .col-18,
+        .col-19,
+        .col-20,
+        .col-21,
+        .col-22,
+        .col-23,
+        .col-24{
+            float:left;
+        }
+        .container{
+            max-width:1080px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="row">
+        <div class="container">
+            <div class="col-8">
+                <a href="#">Item</a>
+                <a href="#">Item</a>
+                <a href="#">Item</a>
+            </div>
+            <form action="" class="col-8">
+                <input type="text">
+                <button class="primary">提问</button>
+            </form>
+            <div class="col-8 tr">
+                <a href="#">Item</a>
+                <a href="#">Item</a>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

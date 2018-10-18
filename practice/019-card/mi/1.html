@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小米卡片</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin:0;
+            font-family: "Microsoft YaHei",微软雅黑,sans-serif;
+        }
+        img{
+            max-width: 100%;
+        }
+        .row::after,
+        .row::before,
+        .clear::after,
+        .clear::before{
+            content:'';
+            display: block;
+            clear:both;
+        }
+        
+        .col-6{
+            width:16.66666666666667%;
+        }
+        .col-6{
+            float:left;
+        }
+        .col{
+            padding:0 5px;
+        }
+        .card{
+            background:#fff;
+            box-shadow: 0 2px 3px rgba(0,0,0,.2);
+        }
+        .card .text{
+            padding:10px;
+            text-align: center;
+        }
+        .card .text >*{
+            margin:8px 0;
+        }
+        .card .title{
+            font-weight: bold;
+        }
+        .card .thumbnail{
+            position:relative;
+        }
+        .card .thumbnail .flag{
+            background:#b10;
+            color:#fff;
+            text-align: center;
+            font-size: 12px;
+            width:64px;
+            position:absolute;
+            top:0;
+            left:50%;
+            margin-left: -32px;
+
+        }
+        .card .price .hot{
+            color:#f60;
+            font-weight: bold;
+        }
+        .muted{
+            opacity: .5;
+        }
+        .del{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col col-6">
+            <div class="card">
+                <div class="thumbnail">
+                    <img src="https://dummyimage.com/500x500">
+                    <span class="flag">减200元</span>
+                </div>
+                <div class="text">
+                    <div class="title">小米8 青春版 4GB+64GB</div>
+                    <div class="muted">潮流镜面渐变色，2400万自拍旗舰机</div>
+                    <div class="price">
+                        <span class="hot">1399元</span>
+                        <span class="del muted">1599元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
