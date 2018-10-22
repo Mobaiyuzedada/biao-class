@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>豆瓣整页</title>
+    <link rel="stylesheet" href="./grid.css">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            font-family:"Microsoft YaHei",微软雅黑,sans-serif;
+            margin:0;
+            color:#444;
+            line-height:1.6;
+            font-size:12px;
+        }
+        a{
+            text-decoration:none;
+            color:#259;
+        }
+        img{
+            max-width:100%;
+        }
+        h1{
+            font-size: 25px;
+            margin:20 0;
+            font-weight: 400;
+        }
+        input,
+        button{
+            padding:3px 12px;
+            border:1px solid rgba(0,0,0,.14);
+            outline:0;
+            color:#444;
+        }
+        button:focus,
+        input:focus{
+            /* outline:1px solid skyblue; */
+            border-color:skyblue;
+        }
+        .row::after,
+        .row::before,
+        .clear::after,
+        .clear::before{
+            content:'';
+            display: block;
+            clear:both;
+        }
+        .row{
+            margin-left:-10px;
+            margin-right: -10px;
+        }
+        /* text-align:right */
+        .tr{
+            text-align:right;
+        }
+        .container{
+            max-width:1080px;
+            margin:0 auto;
+        }
+        .nav.global{
+            background:#444;
+            color:#ccc;
+        }
+        .nav.page{
+            background:#f0f6f3;
+        }
+        .nav.global a{
+            color:inherit;
+            padding:5px;
+            display:inline-block;
+            transition: color 200ms;
+        }
+        .nav.page a{
+            color:#037b82;
+            padding:20px 12px;
+            display: inline-block;
+            font-size: 14px;
+        }
+        .nav.global a:hover{
+            color:#fff;
+        }
+        .nav.page .link-group a:hover{
+            color:#055358;
+        }
+        .nav.page .logo{
+            padding:13px 5px;;
+        }
+        .nav.page .search{
+            position:relative;
+            padding-top:20px;
+            padding-bottom: 20px;
+            margin-left: 75px;
+        }
+        .nav.page .search input{
+            width:70%;
+        }
+        .nav.page .search input::placeholder{
+            color:#bbb;
+        }
+        .nav.page .search button{
+            background: url(./bn_srh_1.png) no-repeat 50% 50%;
+            border:none;
+            position:absolute;
+            right:3px;
+            top:17px;
+            width:30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .activity{
+            padding-right: 40px;
+            margin-bottom: 20px;
+        }
+        .activity .like{
+            font-size:13px;
+            display:inline-block;
+            padding:5px 10px;
+            text-align:center;
+            background:#fae9da;
+            color:#ca6445;
+        }
+        .activity .desc{
+            color:#aaa;
+            background:#f8f8f8;
+            padding:8px;
+            max-width:90%;
+        }
+        .activity .info{
+            color:#666;
+        }
+        .activity .preview,
+        .rec .group,
+        .rec .title{
+            border-bottom: 1px solid #ddd;
+        }
+
+        .activity .preview>*{
+            margin:5px 0;
+        }
+        .rec .group,
+        .rec .title{
+            padding:5px 0;
+        }
+        .rec a:hover,
+        .activity a:hover{
+            color:rgb(5, 5, 90);
+        }
+        #nav-logo{
+            margin:0 -60px 0 -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row nav global">
+        <div class="row container">
+            <div class="col-16">
+                <a href="#">豆瓣</a>
+                <a href="#">读书</a>
+                <a href="#">电影</a>
+                <a href="#">音乐</a>
+                <a href="#">同城</a>
+                <a href="#">小组</a>
+                <a href="#">阅读</a>
+                <a href="#">FM</a>
+                <a href="#">时间</a>
+                <a href="#">豆品</a>
+                <a href="#">更多</a>
+            </div>
+            <div class="col-8 tr">
+                <a href="#">下载豆瓣客户端</a>
+                <a href="#">登陆</a>
+                <a href="#">注册</a>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="row nav page">
+            <div class="container clear">
+                <div id="nav-logo" class="clear col-5">
+                    <a href="https://www.douban.com/group/explore" class="logo">
+                        <img style="padding:3px 20px;" src="./douban.png" alt="豆瓣logo">
+                    </a>
+                </div>
+                <div class="col-10 link-group">  
+                    <a href="#">精选</a>
+                    <a href="#">文化</a>   
+                    <a href="#">行摄</a>
+                    <a href="#">娱乐</a>
+                    <a href="#">时尚</a>
+                    <a href="#">生活</a>
+                    <a href="#">科技</a>
+                </div>
+                <form class="col-9 search tr">
+                    <input type="text" placeholder="小组、话题">
+                    <button type="submit">
+                        <!-- <span class="czs-search-l"></span> -->
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container">
+                <h1 class="title">讨论精选</h1>
+                <div class="row">
+                    <div class="col-16">
+                        <div class="row activity">
+                            <div class="col-3">
+                                <div class="like">
+                                    <div>10</div>
+                                    <div>喜欢</div>
+                                </div>
+                            </div>
+                            <div class="col-21 preview">
+                                <a href="#" class="title">我电脑好像被我老公黑了。。。。</a>
+                                <div class="desc">我老公程序员， 我最近有点沉迷游戏， 前天晚上正在游戏玩的开心，忽然跳出来无数个对话框，内容是“是否要关闭游戏”， 我如果点取消，至少要取消几百次那种，如果点确定，一下子就关闭了。 我就只能关了再进，这种情... </div>
+                                <div class="info">
+                                    <span> 来自生活组小组  </span>
+                                    <span>10-09</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row activity">
+                            <div class="col-3">
+                                <div class="like">
+                                    <div>10</div>
+                                    <div>喜欢</div>
+                                </div>
+                            </div>
+                            <div class="col-21 preview">
+                                <a href="#" class="title">我电脑好像被我老公黑了。。。。</a>
+                                <div class="desc">我老公程序员， 我最近有点沉迷游戏， 前天晚上正在游戏玩的开心，忽然跳出来无数个对话框，内容是“是否要关闭游戏”， 我如果点取消，至少要取消几百次那种，如果点确定，一下子就关闭了。 我就只能关了再进，这种情... </div>
+                                <div class="info">
+                                    <span> 来自生活组小组  </span>
+                                    <span>10-09</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row activity">
+                            <div class="col-3">
+                                <div class="like">
+                                    <div>10</div>
+                                    <div>喜欢</div>
+                                </div>
+                            </div>
+                            <div class="col-21 preview">
+                                <a href="#" class="title">我电脑好像被我老公黑了。。。。</a>
+                                <div class="desc">我老公程序员， 我最近有点沉迷游戏， 前天晚上正在游戏玩的开心，忽然跳出来无数个对话框，内容是“是否要关闭游戏”， 我如果点取消，至少要取消几百次那种，如果点确定，一下子就关闭了。 我就只能关了再进，这种情... </div>
+                                <div class="info">
+                                    <span> 来自生活组小组  </span>
+                                    <span>10-09</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row activity">
+                            <div class="col-3">
+                                <div class="like">
+                                    <div>10</div>
+                                    <div>喜欢</div>
+                                </div>
+                            </div>
+                            <div class="col-21 preview">
+                                <a href="#" class="title">我电脑好像被我老公黑了。。。。</a>
+                                <div class="desc">我老公程序员， 我最近有点沉迷游戏， 前天晚上正在游戏玩的开心，忽然跳出来无数个对话框，内容是“是否要关闭游戏”， 我如果点取消，至少要取消几百次那种，如果点确定，一下子就关闭了。 我就只能关了再进，这种情... </div>
+                                <div class="info">
+                                    <span> 来自生活组小组  </span>
+                                    <span>10-09</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 rec">
+                        <div class="title">值得加入的小组</div>
+                        <div>
+                            <div class="row group">
+                                <div class="col-6">
+                                    <img src="https://dummyimage.com/300x300" alt="小组图标">
+                                </div>
+                                <div class="col-18">
+                                    <a href="#">吃喝玩乐在大连</a>
+                                    <div>
+                                        <span>48911个家人</span>
+                                        <a href="#">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row group">
+                                <div class="col-6">
+                                    <img src="https://dummyimage.com/300x300" alt="小组图标">
+                                </div>
+                                <div class="col-18">
+                                    <a href="#">吃喝玩乐在大连</a>
+                                    <div>
+                                        <span>48911个家人</span>
+                                        <a href="#">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row group">
+                                <div class="col-6">
+                                    <img src="https://dummyimage.com/300x300" alt="小组图标">
+                                </div>
+                                <div class="col-18">
+                                    <a href="#">吃喝玩乐在大连</a>
+                                    <div>
+                                        <span>48911个家人</span>
+                                        <a href="#">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row group">
+                                <div class="col-6">
+                                    <img src="https://dummyimage.com/300x300" alt="小组图标">
+                                </div>
+                                <div class="col-18">
+                                    <a href="#">吃喝玩乐在大连</a>
+                                    <div>
+                                        <span>48911个家人</span>
+                                        <a href="#">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row group">
+                                <div class="col-6">
+                                    <img src="https://dummyimage.com/300x300" alt="小组图标">
+                                </div>
+                                <div class="col-18">
+                                    <a href="#">吃喝玩乐在大连</a>
+                                    <div>
+                                        <span>48911个家人</span>
+                                        <a href="#">+加入小组</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="container">
+            <div class="col-12"></div>
+            <div class="col-12"></div>
+        </div>
+    </div>
+</body>
+</html>        
