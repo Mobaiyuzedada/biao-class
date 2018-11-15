@@ -1,0 +1,110 @@
+<meta charset="utf-8">
+<script>
+    //取到并打印下列变量中的666
+    let arr = [1, 2, 666,];
+    console.log(arr[2]);
+    console.log('========================');
+
+    let arr1 = [1, 2, [666],];
+    console.log(arr1[2][0]);
+    console.log('========================');
+
+    let arr2 = [[[1, 5], ['whh', 666]]];
+    console.log(arr2[0][1][1]);
+    console.log('========================');
+
+    let arr3 = [[[100, 'emmm'], [2, 'yo', [666]]]];
+    console.log(arr3[0][1][2][0]);
+    console.log('========================');
+
+    let obj = {
+        a: 1,
+        b: 2,
+        c: 666,
+    };
+    console.log(obj.c);
+    console.log('========================');
+
+    let obj1 = {
+        a: 1,
+        b: {
+            yo: {
+                em: '6',
+                ha: 666,
+            },
+        },
+    };
+    console.log(obj1.b.yo.ha);
+    console.log('=========================');
+
+
+    let obj2 = {
+        a: 1,
+        b: {
+            yo: [
+                2,
+                'La',
+                {
+                    muhaha: '~',
+                    a: 666,
+                }
+            ],
+        },
+    };
+    console.log(obj2.b.yo[2].a);
+    console.log('=========================');
+
+
+    let obj3 = {
+        a: 1,
+        b: {
+            x: [
+                2, { ya: [666] },
+            ],
+        },
+    };
+    console.log(obj3.b.x[1].ya[0]);
+    console.log('=========================');
+
+
+    //找到下方数据中所有的数组，并分别打印出每个数组的长度
+    let len = {
+        a: [3, 5],
+        b: ['Yo', 1],
+    };
+    console.log('a.len:' + len.a.length + '\n' + 'b.len:' + len.b.length);
+    console.log('=========================');
+
+
+    let len1 = {
+        a: { foo: 2 },
+        yo: [3, 5],
+        b: {
+            la: {
+                name: 'Wood',
+                x: [5, 'a', 'c'],
+                muhaha: ['Bob', 'Huahua'],
+                length: 100,
+            },
+        },
+    };
+    console.log('yo.len:' + len1.yo.length + '\n' + 'x.len:' + len1.b.la.x.length+ '\n' + 'muhaha.len:' + len1.b.la.muhaha.length);
+    console.log('=========================');
+
+
+    //找到下方数据中所有的对象，并分别打印出每个对象中的值为字符串的属性
+    let len2 = {
+        la: 'Ha',
+        v: 2,
+        p: [2, 5],
+        b: {
+            a: {
+                name: 'White',
+                yo: [5, 'a', 'c'],
+                length: 100,
+                map: true,
+            },
+        },
+    };
+    console.log(len2.la+'\n'+len2.b.a.name+'\n'+len2.b.a.yo[1]+','+len2.b.a.yo[2]);
+</script>

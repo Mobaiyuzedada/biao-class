@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin:0;
+}
+.row::after,
+.row::before,
+.clear::after,
+.clear::before{
+    content:'';
+    display: block;
+    clear:both;
+}
+/* text-align */
+.tr{
+    text-align: right;
+}
+.tl{
+    text-align: left;
+}
+/* float */
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}

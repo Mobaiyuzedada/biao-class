@@ -1,0 +1,73 @@
+<meta charset="UTF-8">
+<script>
+//     let userList=['王花花','刘贝贝','李栓蛋','找可爽'];   
+//     function loop(list,name){
+//        for(let i=0;i<list.length;i++){
+//            if(list[i]===name){
+//                break;
+//            }
+//            console.log( list[i]);
+//        }
+//    }
+//    loop(userList,'李栓蛋');
+
+
+
+
+//    function filter(list,str){
+//        let str1='';
+//        for(let i=0;i<list.length;i++){
+//            if(typeof list[i]!=="string"){
+//                str=filter(list[i],str);
+//            }else{
+//                str1+=list[i]+' ';
+//            }
+//        }
+//        return str1+'\n'+str;
+//    }
+//    let list=['a1', 'a2', ['b1', 'b2', ['c1',['d1','d2','d3'], 'c2', 'c3'], 'b3'], 'a3'];
+//    let str='';
+//    str=filter(list,str);
+//    console.log(str );
+
+
+    function filter(list,level,filtered={}){
+        // let reLevel=level;
+        for(let i=0;i<list.length;i++){
+            if(typeof list[i]==='string'){
+                if(typeof filtered[level]!=="object"){
+                    filtered[level]=[];
+                }
+                filtered[level].push(list[i]);
+            }else{
+                let inner={};
+                filter(list[i],level+1,inner);
+            }
+        }
+        return filtered;
+    }
+
+    function print(obj){
+        var arr=Object.keys(obj);//获取对象keys数组
+        console.log(arr.length );
+        for(let i=1;i<arr.length+1;i++){
+            let str='';
+            for(let j=0;j<obj[i].length;j++){
+                str+=obj[i][j]+' ';
+            }
+            console.log(str);
+        }
+    }
+    let level=1;
+    // let list=['a1', 'a2', ['b1', 'b2', ['c1',['d1','d2','d3'], 'c2', 'c3'], 'b3'], 'a3'];
+    // let list=['a1', 'a2', ['b1', 'b2', ['c1',['d1','d2','d3'], 'c2',['e1',['f1','f2','f3','f4'],'e2','e3'], 'c3'], 'b3'], 'a3'];
+    let list= ['c1',['d1','d2','d3'], 'c2',['e1','e2','e3'], 'c3']
+    let filtered={};
+    filter(list,level,filtered);
+    print(filtered);
+    // console.log(filtered );
+
+
+
+
+</script>

@@ -1,0 +1,130 @@
+<meta charset="UTF-8">
+<script>
+    //分别打印下列数组中的每一项，只打印"李拴蛋"以前的同学
+    let userList = [
+        '王花花',
+        '刘备备',
+        '李拴蛋',
+        '赵可爽',
+    ];
+
+    // let i=0;
+    // do{
+    //     console.log(userList[i++]);
+    // }while(userList[i]!=='李拴蛋');
+
+
+
+    // for(let i=0;i<userList.length;i++){
+    //     if(userList[i]==='李拴蛋')
+    //         break;
+    //     console.log(userList[i] );
+
+    // }
+
+    // console.log("%c分别打印下列数组中的每一项并跳过'李拴蛋'同学（不打印李拴蛋同学）","color:red;font-weight:bold;");
+    // for(let i=0;i<userList.length;i++){
+    //     if(userList[i]==='李拴蛋')continue;
+    //     console.log(userList[i] ); 
+    // }
+    // console.log(`%c将以下数组中的字符串连接起来，打印出王花花李拴蛋赵可爽`,"color:red;font-weight:bold;");
+    // let str='';
+    // for(let i=0;i<userList.length;i++){
+    //     str+=userList[i];
+    // }
+    // console.log(str );
+    // console.log(`%c将以下数组中的字符串用,连接起来，打印出王花花, 李拴蛋, 赵可爽`,"color:red;font-weight:bold;");
+    // str='';
+    // for(let i=0;i<userList.length;i++){
+    //     str+=userList[i]+',';
+    // }
+    // console.log(str );
+
+    console.log('%c求出[1, 4, 6, 9, 10]中所有元素的和', 'color:blue;font-weight:bold;');
+    let arr1 = [1, 4, 6, 9, 10];
+    let sum = 0;
+    for (let i = 0; i < arr1.length; i++) {
+        sum += arr1[i];
+    }
+    console.log(sum);
+    console.log(`%c有这样一个数组['Yo', 'Em', 1, 'La', 4, 8, 'Ha', 11, 5],找出数字求和，找出字符串拼接`, 'color:red;font-weight:bold;');
+    let arr2 = ['Yo', 'Em', 1, 'La', 4, 8, 'Ha', 11, 5];
+    let numSum = 0;
+    let strSp = '';
+    for (let i = 0; i < arr2.length; i++) {
+        if (typeof (arr2[i]) === "number") {
+            numSum += arr2[i];
+        } else {
+            strSp += arr2[i];
+        }
+    }
+    console.log('numSum:' + numSum + '\n' + 'strSp:' + strSp);
+    console.log('%c有这样一个数组：[1, 3, 2, 7, 6]求偶数和，并将奇数放入新数组', 'color:red;font-weight:bold;');
+    let arr3 = [1, 3, 2, 7, 6];
+    let evenSum = 0;
+    let oddArr = [];
+    for (let i = 0; i < arr3.length; i++) {
+        if (arr3[i] % 2 === 0) {
+            evenSum += arr3[i];
+        } else {
+            oddArr.push(arr3[i]);
+        }
+    }
+    console.log('evenSum:' + evenSum + '\n' + 'oddArr:' + oddArr);
+    console.log(`%c有这样一个数组：['a1', 'a2', ['b1', 'b2', ['c1', 'c2', 'c3'], 'b3'], 'a3'],打印为\n第1级：a1 a2 a3\n第2级：b1 b2 b3\n第3级：c1 c2 c3   `, 'color:red;font-weight:bold;');
+    let arr4 = ['a1', 'a2', ['b1', 'b2', ['c1', 'c2', 'c3'], 'b3'], 'a3'];
+    let str1, str2, str3;
+    str1 = '';
+    str2 = '';
+    str3 = '';
+    for (let i = 0; i < arr4.length; i++) {
+        if (typeof arr4[i] !== "string") {
+            for (let j = 0; j < arr4[i].length; j++) {
+                if (typeof arr4[i][j] !== "string") {
+                    for (let k = 0; k < arr4[i][j].length; k++) {
+                        str3 += arr4[i][j][k] + ' ';
+                    }
+                } else {
+                    str2 += arr4[i][j] + ' ';
+                }
+            }
+        } else {
+            str1 += arr4[i] + ' ';
+        }
+    }
+    console.log('str1:' + str1 + '\n' + 'str2:' + str2 + '\n' + 'str3:' + str3);
+    console.log('%c找出工资大于100的人，将找到的人放到一个数组里。', 'color:red;font-weight:bold;');
+    let arr5 = [
+        {
+            name: '王花花',
+            salary: 100,
+        },
+        {
+            name: '李拴蛋',
+            salary: 200,
+        },
+        {
+            name: '牛备备',
+            salary: 300,
+        },
+    ];
+    let higherSalary = [];
+    for (let i = 0; i < arr5.length; i++) {
+        if (arr5[i].salary > 100)
+            higherSalary.push(arr5[i].name);
+    }
+    console.log('工资大于100的人:' + higherSalary);
+    console.log('%c遍历下方数组,并找出所有姓王的人，将找到的人放到一个数组里。', 'color:red;font-weight:bold;');
+    let arr6 = [
+        { name: '王花花' },
+        { name: '王拴蛋' },
+        { name: '牛备备' },
+    ];
+    let includeW = [];
+    for (let i = 0; i < arr6.length; i++) {
+        console.log(arr6[i]);
+        if (arr6[i].name.startsWith('王'))
+            includeW.push(arr6[i].name);
+    }
+    console.log("所有姓王的人:"+includeW );
+</script>

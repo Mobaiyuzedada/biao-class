@@ -1,0 +1,28 @@
+<meta charset="utf-8">
+<!-- <script>
+    let userList=[
+        'whh',
+        'lsd',
+        'dry',
+    ]
+    // userList.forEach(item=>console.log(item));
+    for(let i=0;i<userList.length;i++){
+      userList[i]=`你好${userList[i]}`;
+        
+    }
+    console.log(userList);
+</script> -->
+
+<script>
+    let userList=[
+        'whh',
+        'lsd',
+        'dry',
+    ]
+    let str=''
+    for(let i=0;i<userList.length-1;i++){
+        str+=`${userList[i]},`;
+    }
+    str+=userList[userList.length-1];
+    console.log(str);
+</script>
