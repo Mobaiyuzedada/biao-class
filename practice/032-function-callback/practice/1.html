@@ -1,0 +1,88 @@
+<meta charset="utf-8">
+
+
+<script>
+    function eachNumber(arr,fn){
+        arr.forEach(it=>fn(it));
+    }
+
+
+
+    //1.evenNumber()
+    console.log('%c1.evenNumber()','color:seagreen;font-weight:bold;');
+    function evenNumber(arr){
+        let result=[];
+
+        eachNumber(arr,function(it){
+            if(it%2===0)
+            result.push(it);
+        });
+        return result;
+    }
+    console.log(`   evenNumber([1,2,3,4]):[${evenNumber([1,2,3,4])}]`);
+
+
+    //2.oddNumber()
+    console.log('%c2.oddNumber()','color:seagreen;font-weight:bold;');
+    function oddNumber(arr){
+        let result=[];
+
+        eachNumber(arr,function(it){
+            if(it%2===0)return;
+            result.push(it);
+        });
+        return result;
+    }
+    console.log(`   oddNumber([1,2,3,4]):[${oddNumber([1,2,3,4])}]`);
+
+
+
+    //3.sum()
+    console.log('%c3.sum()','color:seagreen;font-weight:bold;');
+    function sum(arr){
+        let result=0;
+
+        eachNumber(arr,function(it){
+            result+=it;
+        });
+        return result;
+    }
+    console.log(`   sum([1,2,3,4]):${sum([1,2,3,4])}`);
+
+
+
+    //4.max()
+    console.log('%c4.max()','color:seagreen;font-weight:bold;');
+    function max(arr){
+        let result=arr[0];
+
+        eachNumber(arr,function(it){
+            if(it>result)
+            result=it;
+        });
+        return result;
+    }
+    console.log(`   max([1,2,3,4]):${max([1,2,3,4])}`);
+
+
+
+
+        //5.min()
+        console.log('%c5.min()','color:seagreen;font-weight:bold;');
+    function min(arr){
+        let result;
+
+        eachNumber(arr,it=>{
+            if(result===undefined){
+                result=it;
+                return;
+            }
+            if(it<result)
+            result=it;
+        });
+        return result;
+    }
+    console.log(`   min([1,2,3,4]):${min([1,2,3,4])}`);
+
+
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <style>
+        img{
+            max-width: 100%;
+            display: block;
+        }
+        .container{
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .slider {
+            position: relative;
+        }
+
+        .slider .item {
+            position: absolute;
+            display: block;
+            opacity: 0;
+            transition:all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slider">
+            <a href="#" class="item">
+                <img src="https://dummyimage.com/700x400?text=A" alt="">
+            </a>
+            <a href="#" class="item">
+                <img src="https://dummyimage.com/700x400?text=B" alt="">
+            </a>
+            <a href="#" class="item">
+                <img src="https://dummyimage.com/700x400?text=C" alt="">
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src='./js/main.js'></script>

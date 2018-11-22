@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>dom</title>
+    <style>
+        #a {
+            display: inline-block;
+            width: 10em;
+            height: 10em;
+            background: gray;
+            opacity: 1;
+        }
+
+        [hidden]{
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="toggle">显示/隐藏</button>
+    <div id="a"></div>
+    <input type="text" class="test">
+</body>
+
+</html>
+
+
+
+<script>
+    // const a = document.querySelector('#a');
+    // const toggle=document.querySelector('#toggle');
+
+    // toggle.addEventListener('click', () => {
+    //     a.hidden=!a.hidden;
+    // });
+
+    let test=document.getElementsByClassName('test');
+
+    test.addEventListener('keyup',(event)=>{
+        console.log( event.key);
+    })
+
+    a.addEventListener('mouseenter',()=>{
+        console.log('inside!' )
+    })
+    a.addEventListener('mouseleave',()=>{
+        console.log( 'out!');
+    })
+
+    window.addEventListener('keyup',(event)=>{
+        console.log(event.key);
+    })
+</script>

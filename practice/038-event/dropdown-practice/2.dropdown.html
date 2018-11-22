@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        .dropdown {
+            padding: 20px;
+            display: inline-block;
+            background: #999;
+            color: #fff;
+            /* position:absolute; */
+        }
+
+        .dropdown a {
+            color: inherit;
+            display: block;
+            text-decoration: none;
+            min-width: 100px;
+            padding: 5px 10px;
+        }
+
+        .dropdown a:hover {
+            background-color: #444;
+            transition: 200ms;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="trigger">更多</button>
+    <br>
+    <div class="dropdown" hidden>
+        <a href="#">A</a>
+        <a href="#">B</a>
+        <a href="#">C</a>
+        <a href="#">D</a>
+        <a href="#">E</a>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const trigger = document.getElementById('trigger');
+    const dd = document.querySelector('.dropdown');
+
+
+    document.body.addEventListener('click', (e) => {
+        if (e.target.id === 'trigger') {
+            dd.hidden = !dd.hidden;
+            return;
+        }
+
+        if (!e.target.closest('.dropdown'))
+            dd.hidden = true;
+    });
+
+
+
+</script>

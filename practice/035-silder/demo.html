@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #a{
+            border:10px solid;
+            padding:10px;
+            display: inline-block;
+            margin:10px;
+            width:50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="a">Yo</div> -->
+    <div id="a">Yo</div>
+</body>
+</html>
+
+<script>
+    // const a = document.querySelector('.a');
+    const a=document.getElementById('a');
+    let style=getComputedStyle(a);
+    console.log(parseFloat(style.padding)+parseFloat(style.width)*2+parseFloat(style.margin)*2);
+    console.log('a.clientWidth:'+a.clientWidth);
+    console.log('a.offsetWidth:'+a.offsetWidth);
+    console.log('a.offsetTop:'+a.offsetTop);
+</script>

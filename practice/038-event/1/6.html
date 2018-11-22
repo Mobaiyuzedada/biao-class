@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .trigger{
+            border:1px solid;
+            display: inline-block;
+            padding:0px 10px;
+            background: #fff;
+            box-shadow: 0 0 2px;
+        }
+        .dropdown{
+            background: 
+        }
+        [hidden]
+    </style>
+</head>
+<body>
+    <div class="trigger">更多</div>
+    <div class="dropdown">
+        <a href="#">A</a>
+        <a href="#">B</a>
+        <a href="#">C</a>
+        <a href="#">D</a>
+    </div>
+</body>
+</html>
+
+<script>
+    const dropdown=document.querySelector('.dropdown');
+    const trigger=document.querySelector('.trigger');
+
+    trigger.addEventListener('click',()=>{
+        dropdown.hidden=!dropdown.hidden;
+    })
+
+    document.body.addEventListener('click',(e)=>{
+        let classList=e.target.classList;
+        if(!e.target.closest('.dropdown')&&!classList.contains('trigger'))
+        dropdown.hidden=true;
+    })
+
+</script>

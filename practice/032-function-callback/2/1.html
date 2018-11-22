@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+
+
+<script>
+    function iterator(list, fn) {
+        list.forEach(it => fn(it));
+        return list;
+    }
+
+    let list = ['a', 'b', 'c']
+    list.forEach(function(it){
+        console.log(it);
+    });
+
+    iterator(list, function (it) {
+        console.log('我是' + it);
+    });
+    let strSum = '';
+    iterator(list, function (it) {
+        strSum += it;
+    });
+    console.log(strSum);
+</script>

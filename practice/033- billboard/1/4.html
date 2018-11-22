@@ -1,0 +1,74 @@
+<meta charset="utf-8">
+
+<style>
+    :root {
+        font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+        font-size: 15px;
+    }
+
+    .board {
+        display: inline-block;
+        font-size: 2em;
+        background: #000;
+        color: red;
+        padding: 10px;
+        line-height: 1;
+        border: 2px solid;
+        opacity: 1;
+    }
+
+    .count {
+        font-size: 24px;
+    }
+
+
+    [hidden] {
+        display: none !important;
+    }
+</style>
+
+<body>
+    <div class="board">
+        <span class='inner'></span>
+    </div>
+</body>
+
+<script>
+    const board = document.querySelector('.board');
+    const inner = board.querySelector('.inner');
+    const count = board.querySelector('.count');
+    let list = [];
+
+    function add(item) {
+        list.push(item);
+    }
+    add('蛋蛋带保健');
+    add('修脚');
+    add('上市申报');
+    let current = 0;
+    inner.innerText=list[current];
+
+    setInterval(function () {
+        let visible = getComputedStyle(inner).opacity == '1';
+
+        if (visible) {
+            inner.style.opacity = 0;
+            board.style.borderColor = "transparent";
+        } else {
+            inner.style.opacity = 1;
+            board.style.borderColor = "inherit";
+            // if(inner.innerText==='蛋蛋带保健'){
+            //     inner.innerText='修脚';
+            // }else{
+            //     inner.innerText='蛋蛋带保健';
+            // }
+            current++;
+            if(current>=list.length)
+            current=0;
+            inner.innerText=list[current];
+
+        }
+    }, 500);
+
+
+</script>

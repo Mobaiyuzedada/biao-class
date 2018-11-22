@@ -1,0 +1,94 @@
+<meta charset="UTF-8">
+
+
+
+<script>
+    function eachStr(arr, fn) {
+        for (let i = 0; i < arr.length; i++) {
+            fn(arr[i]);
+        }
+    };
+
+
+    //1.getYo()，getYo(['a', 'yo', 'yoo']) // ['yo', 'yoo']
+    console.log("%cgetYo()，getYo(['a', 'yo', 'yoo'])", 'color:seagreen;font-weight:bold;');
+    function getYo(arr) {
+        let result = [];
+
+        eachStr(arr, function (it) {
+            if (it.includes('yo')) {
+                result.push(it);
+            }
+        });
+        return result;
+    }
+
+    console.log(`getYo(['a', 'yo', 'yoo']):[${getYo(['a', 'yo', 'yoo'])}]`);
+
+
+
+    //2.shortStr()，shortStr(['a', 'foo', 'b', 'bar'] // ['a', 'b'])
+    console.log("%c2.shortStr()，shortStr(['a', 'foo', 'b', 'bar']", 'color:seagreen;font-weight:bold;');
+    function shortStr(arr) {
+        let result = [];
+
+        eachStr(arr, function (it) {
+            if (it.length === 1) {
+                result.push(it);
+            }
+        });
+        return result;
+    }
+
+    console.log(`shortStr(['a', 'foo', 'b', 'bar']):[${shortStr(['a', 'foo', 'b', 'bar'])}]`);
+
+
+
+
+    //3.join()，join(['Y', 'o', 'o']) // Yoo
+    console.log("%c3.join()，join(['Y', 'o', 'o'])", 'color:seagreen;font-weight:bold;');
+    function join(arr) {
+        let result = '';
+
+        eachStr(arr, function (it) {
+            result += it;
+        });
+        return result;
+    }
+
+    console.log(`join(['Y', 'o', 'o'])):[${join(['Y', 'o', 'o'])}]`);
+
+
+
+
+
+    //4.search()，search(['背背山', '六六坡', '背背路'], '背背') // ['背背山', '背背路']
+    console.log("%c4.search()，search(['背背山', '六六坡', '背背路'], '背背') // ['背背山', '背背路']", 'color:seagreen;font-weight:bold;');
+    function search(arr, str) {
+        let result = [];
+
+        eachStr(arr, function (it) {
+            if (it.includes(str))
+                result.push(it);
+        });
+        return result;
+    }
+
+    console.log(`search(['背背山', '六六坡', '背背路'], '背背'):[${search(['背背山', '六六坡', '背背路'], '背背')}]`);
+
+
+
+    //5.exclude()，exclude(['背背山', '六六坡', '背背路'], '背背') // ['六六坡']
+    console.log("%c5.exclude()，exclude(['背背山', '六六坡', '背背路'], '背背')", 'color:seagreen;font-weight:bold;');
+    function exclude(arr, str) {
+        let result = [];
+
+        eachStr(arr, function (it) {
+            if (it.includes(str))return;
+                result.push(it);
+        });
+        return result;
+    }
+
+    console.log(`exclude(['背背山', '六六坡', '背背路'], '背背'):[${exclude(['背背山', '六六坡', '背背路'], '背背')}]`);
+</script>

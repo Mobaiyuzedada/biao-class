@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        .dropdown{
+            padding:20px;
+            display: inline-block;
+            background:#999;
+            color:#fff;
+            /* position:absolute; */
+        }
+        .dropdown a{
+            color:inherit;
+            display: block;
+            text-decoration:none;
+            min-width: 100px;
+            padding:5px 10px;
+        }
+        .dropdown a:hover{
+            background-color:#444;
+            transition:200ms;
+        }
+
+        [hidden]{
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <button id="trigger">更多</button>
+    <br>
+    <div class="dropdown" hidden>
+        <a href="#">A</a>
+        <a href="#">B</a>
+        <a href="#">C</a>
+        <a href="#">D</a>
+        <a href="#">E</a>
+    </div>
+</body>
+</html>
+
+
+
+
+
+<script>
+    const trigger=document.getElementById('trigger');
+    const dd=document.querySelector('.dropdown');
+
+    // trigger.addEventListener('click',()=>{
+    //     dd.hidden=!dd.hidden;
+    // });
+
+    //类名可以用classList.contains('')来检查,返回布尔值
+    document.body.addEventListener('click',(e)=>{
+        // if(e.target.id!=='trigger'&&!e.target.classList.contains('dropdown'))
+
+
+        if(e.target.id==='trigger'){
+            // console.log("1.hidden:"+dd.hidden);
+
+
+            dd.hidden=!dd.hidden;
+
+            return;
+            // console.log("2.hidden:"+dd.hidden);
+            // return;
+            /*这里不加return返回，会继续执行下去，
+            即执行下面的if语句。而点击'trigger'元素附近并没有'dropdown'元素
+            所以下方if会一直满足，亦即dd.hidden会一直为true;
+            而加了return 如果只点击trigger按钮则会只执行本条语句*/
+        }
+
+        if(!e.target.closest('.dropdown'))
+        dd.hidden=true;
+        // console.log('最终hidden:'+ dd.hidden);
+    });
+
+    // trigger.addEventListener('mouseleave',()=>{
+    //     dd.hidden=true;
+    // })
+
+</script>

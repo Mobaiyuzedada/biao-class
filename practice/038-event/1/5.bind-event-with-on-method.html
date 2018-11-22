@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <style>
+        div{
+            background:rgba(255,0,0,.1);
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="a">A
+        <div id="b">B
+            <div id="c">C
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    c.addEventListener('click',function(e){
+        console.log( e.currentTarget);
+        console.log('C' );
+    });
+    a.addEventListener('click',function(e){
+        console.log( e.currentTarget);
+        console.log('A' );
+    },true);
+    b.addEventListener('click',function(e){
+        console.log( e.currentTarget);
+        console.log('B' );
+    },true);
+</script>
