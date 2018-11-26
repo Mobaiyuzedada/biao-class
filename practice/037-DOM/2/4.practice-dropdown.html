@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>
+    <style>
+        :root {
+            font-family: sans-serif;
+        }
+
+        #dropdown {
+            /* margin-top:5px; */
+            background: #888;
+            color: #fff;
+            /* display: inline-block; */
+            position: absolute;
+        }
+
+        #dropdown a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            padding: 10px 20px;
+        }
+        #dropdown a:hover{
+            background:#444;
+        }
+
+        [hidden]{
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='toggle'>查看更多</button>
+    <div id="dropdown" hidden>
+        <a href="#">扫一扫</a>
+        <a href="#">加好友</a>
+        <a href="#">搜索</a>
+        <a href="#">帮助</a>
+        <a href="#">关于我们</a>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    const toggle=document.querySelector('#toggle');
+    const dd=document.getElementById('dropdown');
+    console.log( dd);
+    
+
+    toggle.addEventListener('click',()=>{
+        dd.hidden=!dd.hidden;
+    })
+
+
+
+
+
+
+
+</script>
+
+</html>

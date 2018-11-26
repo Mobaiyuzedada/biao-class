@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>dom</title>
+</head>
+
+<body>
+    <div id='a' class="a">
+        <div class="a1 yo">
+            <div class="a11"></div>
+            <div class="a12"></div>
+        </div>
+        <div class="a2"></div>
+    </div>
+    <div class="b">
+        <div class="b1"></div>
+        <div class="b2"></div>
+    </div>
+    <div class="c"></div>
+</body>
+
+</html>
+
+
+
+<script>
+    let a1 = document.querySelector('.a1');
+    console.log('%ca1:','color:seagreen;font-weight:bold;');
+    console.dir(a1);
+    console.log('%c儿子a1.children','color:seagreen;font-weight:bold;');
+    console.log(a1.children);
+    console.log('%c第一个儿子a1.firstElementChild','color:seagreen;font-weight:bold;');
+    console.log(a1.firstElementChild );
+    console.log('%c有多少类a1.classList','color:seagreen;font-weight:bold;');
+    console.log(a1.classList);
+    console.log('%ca1.nextElementSibling','color:seagreen;font-weight:bold;');
+    console.log(a1.nextElementSibling);//下一个兄弟元素
+    console.log('%ca1.nextSibling.nextSibling','color:seagreen;font-weight:bold;');
+    console.log( a1.nextSibling.nextSibling);//a1.nextSibling为#text
+    console.log('%ca1.nextElementSibling.previousElementSibling','color:seagreen;font-weight:bold;');
+    console.log(a1.nextElementSibling.previousElementSibling===a1);
+    console.log('%ca11找类名有a的长辈','color:seagreen;font-weight:bold;');
+    console.log(a1.firstElementChild.closest('.yo') );
+
+
+ 
+
+
+
+/*
+注：
+firstChild,lastChild,nextSibling,previousSibling都会将空格或者换行当做节点处理，但是有代替属性
+所以为了准确地找到相应的元素，会用
+firstElementChild,
+lastElementChild,
+nextElementSibling,
+previousElementSibling
+兼容的写法，这是JavaScript自带的属性。
+但坏消息是IE6,7,8不兼容这些属性。IE9以上和火狐谷歌支持。
+*/
+</script>

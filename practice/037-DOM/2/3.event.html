@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>
+    <style>
+        #a {
+            display: inline-block;
+            width: 10em;
+            height: 10em;
+            background: gray;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="a"></div>
+    <button id="toggle">显示/隐藏</button>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    const a = document.getElementById('a');
+    const toggle = document.querySelector('#toggle');
+    console.log(toggle);
+
+    const body = document.body;
+    // $(a).on('click',()=>{
+    //     alert('yo');
+    // })
+    // toggle.addEventListener('click',function(){
+    //     a.hidden=!a.hidden;
+    // })
+    // a.addEventListener('mouseenter',()=>{
+    //     console.log( '进来了');
+    // })
+    // a.addEventListener('mouseleave',()=>{
+    //     console.log( '出去了');
+    // })
+    $(window).on('keyup',(e)=>{
+        console.log(e.key );
+    })
+    // window.addEventListener('keydown', (e) => {
+    //     console.log(e.keyCode);
+    // })
+
+   
+
+
+
+    
+
+</script>
+
+</html>

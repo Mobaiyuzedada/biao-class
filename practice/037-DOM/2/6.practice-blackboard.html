@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>
+    <style>
+        :root {
+            color: #fff;
+        }
+        .container{
+            background:#000;
+            max-width:600px;
+            margin-left: auto;
+            margin-right:auto;
+            padding:10px 10px 10px 10px;
+        }
+
+        #title {
+            color: inherit;
+            font-weight: bold;
+            font-size: 300%;
+            margin-top: 15px;
+        }
+
+        .content {
+            color: inherit;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id='title'>小黑板</h1>
+        <div class="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eum aliquid reiciendis aut
+            impedit suscipit tenetur placeat? Placeat, accusamus, nesciunt, quo nemo unde blanditiis dignissimos vel quas
+            eius nostrum tempore.</div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    const wrap=document.querySelector('.container');
+    console.log(wrap );
+
+    window.addEventListener('keyup',(e)=>{
+        if(e.ctrlKey&&e.key==='q')
+        wrap.hidden=!wrap.hidden;
+    })
+
+
+
+
+
+
+</script>
+
+</html>

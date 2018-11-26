@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>滑动轮播练习</title>
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .slider {
+            position: relative;
+        }
+
+        .slider .item {
+            position: absolute;
+            display: block;
+            opacity: 0;
+            transition: all 1s;
+            margin-left:0px;
+        }
+        .slider .item:first-child{
+            opacity: 1;
+            margin-left: 500px;
+            padding:10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slider">
+            <div class="item a">
+                <img src="./fff&text=C.png" alt="">
+            </div>
+            <!-- <div class="item">
+                <img src="https://dummyimage.com/600x400/536af2/fff&text=B" alt="">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/600x400/0ceb17/fff&text=C" alt="">
+            </div> -->
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const slides=document.querySelector('.a ');
+    // console.log(slides );
+    let style=getComputedStyle(slides);
+
+    setInterval(()=>{
+        style.marginLeft-=10;
+    },1000)
+    console.log(style.width);
+    // console.log(style.marginLeft );
+</script>
