@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        #trigger {}
+
+        .dropdown {
+            display: inline-block;
+            background: #999;
+            color: #fff;
+            padding: 7px;
+        }
+
+        .dropdown a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+            min-width: 100px;
+            padding: 10px 0px 10px 20px;
+            /* text-align: center; */
+        }
+
+        .dropdown a:hover {
+            background: #555;
+            transition: 300ms;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="trigger">更多</button>
+    <br>
+    <div class="dropdown" hidden>
+        <a href="#">A</a>
+        <a href="#">B</a>
+        <a href="#">C</a>
+        <a href="#">D</a>
+        <a href="#">E</a>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+<script>
+    const trigger = document.getElementById('trigger');
+    const dd = document.querySelector('.dropdown');
+    const html = document.documentElement;
+    console.log(trigger);
+    let hi = '';
+
+    html.addEventListener('click', (e) => {
+        if (e.target.id === 'trigger') {
+            dd.hidden = !dd.hidden;
+            if (dd.hidden){
+                hi = 'hidden';
+                console.log(`%cis trigger->%c${hi}`, 'color:seagreen;font-weight:bold;', 'color:blue;font-weight:bold;');
+            }
+            else{
+                hi = '!hidden';
+                console.log(`%cis trigger->%c${hi}`, 'color:seagreen;font-weight:bold;', 'color:red;font-weight:bold;');
+            }       
+            return;
+        } else if (!e.target.closest('.dropdown')) {
+            console.log('%cis not trigger&&is not dropdown->%chidden', 'color:seagreen;font-weight:bold;', 'color:blue;font-weight:bold;');
+            dd.hidden = true;
+        }
+        else {
+            console.log('%cis dropdown->%c!hidden', 'color:seagreen;font-weight:bold;', 'color:red;font-weight:bold;');
+        }
+    })
+
+</script>
