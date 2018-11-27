@@ -1,0 +1,73 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js的size</title>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            padding: 20px;
+            border: 10px solid;
+            display: inline-block;
+            /* line-height: 1; */
+            vertical-align: top;
+        }
+        /* #a{
+            position:relative;
+            top:30px;
+            left:50px;
+        } */
+
+
+        #b {
+            overflow: auto;
+        }
+        #c{
+            height: 50px;
+            width: 50px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <form style="border:4px solid red;position: relative;">
+        <div id="a">
+            A
+        </div>
+
+    </form>
+    <div id="b">
+        B
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere inventore officia nihil tenetur
+        nemo
+        ea doloremque tempore quidem modi error iusto, fuga repellat laborum accusantium? Autem iste architecto
+        impedit!
+        sad
+        asd
+        asd
+        <div id="c">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptate, autem maiores non debitis laudantium harum veritatis esse soluta tempora ipsam unde consectetur accusantium temporibus culpa tenetur? Minima, esse obcaecati.
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    // console.log(a.getBoundingClientRect());
+    // console.log(a.offsetTop );
+    // console.log(a.offsetLeft );
+
+    console.log('b.scrollTop:',b.scrollTop);
+    /*
+        b.scrollTo(x,y)
+        x横轴一般为0
+        返回顶部即让x=y=0
+    */
+
+
+</script>

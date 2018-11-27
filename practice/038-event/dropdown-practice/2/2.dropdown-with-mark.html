@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        .dropdown {
+            color: #fff;
+            background: #888;
+            padding: 8px;
+            /* position: absolute; */
+            display: inline-block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px 10px 10px 20px;
+            text-decoration: none;
+            color: inherit;
+            min-width: 80px;
+        }
+
+        .dropdown a:hover {
+            background: #555;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="trigger">更多</button>
+    <br>
+    <div class="dropdown" hidden>
+        <a href="#">A</a>
+        <a href="#">B</a>
+        <a href="#">C</a>
+        <a href="#">D</a>
+        <a href="#">E</a>
+    </div>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\github\web学习\js\jQuery.js"></script>
+<script>
+    const dd = $('.dropdown')[0];
+
+
+    $("body").on('click', (e) => {
+        if (e.target.id === 'trigger') {
+            dd.hidden = !dd.hidden;
+            return;
+        } else if (!e.target.closest('.dropdown')) {
+            dd.hidden = true;
+        }
+
+    })
+</script>

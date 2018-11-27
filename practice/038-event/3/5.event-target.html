@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+    <STYLe>
+        div{
+            background:rgba(255,0,0,.1);
+            padding:10px;
+        }
+    </STYLe>
+</head>
+<body>
+    <div class="a">A
+        <div class="b">B
+            <div class="c">C</div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="C:\Users\28933\Desktop\github\web学习\js\jQuery.js"></script>
+<script>
+    const a=$('.a')[0];
+    const b=$('.b')[0];
+    const c=$('.c')[0];
+    
+    $(a).on('click',(e)=>{
+        // console.log('%c===================a=============================','color:seagreen;font-weight:bold;');
+        // console.log(`%ce.target:`,'color:red');
+        console.log(e.target);
+        // console.log('%ce.currentTarget:','color:green');
+        console.log(e.currentTarget===a);
+    })
+    $(b).on('click',function(e){
+    // console.log('%c===================b=============================','color:seagreen;font-weight:bold;');
+    //     console.log(`%ce.target:`,'color:red');
+        console.log(e.target);
+        // console.log('%ce.currentTarget:','color:green');
+        console.log(e.currentTarget===b);
+    })
+    $(c).on('click',(e)=>{
+    // console.log('%c===================c=============================','color:seagreen;font-weight:bold;');
+    //     console.log(`%ce.target:`,'color:red');
+        console.log(e.target);
+        // console.log('%ce.currentTarget:','color:green');
+        console.log(e.currentTarget===c);
+    })
+
+</script>

@@ -1,0 +1,54 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js的size</title>
+    <style>
+        div{
+            height:50px;
+            width:50px;
+            padding:20px;
+            border:10px solid;
+            display: inline-block;
+            /* line-height: 1; */
+            vertical-align:top;
+        }
+        #b{
+            overflow:auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="a">
+        A
+    </div>
+    <div id="b">
+        B
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere inventore officia nihil tenetur nemo ea doloremque tempore quidem modi error iusto, fuga repellat laborum accusantium? Autem iste architecto impedit!
+        sad
+        asd
+        asd
+    </div>
+    
+</body>
+</html>
+
+<script>
+    console.log('%c#a的数据','color:seagreen;font-weight:bold;');
+    console.log(a.clientWidth); //到padding
+    console.log(a.clientHeight);
+    console.log(a.offsetWidth); //到border
+    console.log(a.offsetHeight); 
+    console.log(a.scrollHeight);
+    console.log(a.scrollWidth);
+
+
+    console.log('%c#b的数据','color:seagreen;font-weight:bold;');
+    console.log(b.clientWidth); //到pbdding
+    console.log(b.clientHeight);
+    console.log(b.offsetWidth); //到border
+    console.log(b.offsetHeight); 
+    console.log(b.scrollHeight);
+    console.log(b.scrollWidth);
+
+</script>

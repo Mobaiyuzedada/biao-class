@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用HTML的on属性绑定</title>
+</head>
+<body>
+    <p id="a">Yo</p>
+</body>
+</html>
+<script src="C:\Users\28933\Desktop\github\web学习\js\jQuery.js"></script>
+<script>
+    
+    // window.addEventListener('keyup',(event)=>{
+    //     console.log( event.key);
+    //     a.innerText+=event.key;
+    // });
+    jQuery(window).on('keyup',(e)=>{
+        a.innerText+=e.key;
+    })
+</script>

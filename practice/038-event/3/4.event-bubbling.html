@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+    <STYLe>
+        div{
+            background:rgba(255,0,0,.1);
+            padding:10px;
+        }
+    </STYLe>
+</head>
+<body>
+    <div class="a">A
+        <div class="b">B
+            <div class="c">C</div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const a=document.getElementsByClassName('a')[0];
+    const b=document.getElementsByClassName('b')[0];
+    const c=document.getElementsByClassName('c')[0];
+    // const c=document.querySelector('.c');
+
+    a.addEventListener('click',()=>{
+        alert('A');
+    });
+
+    b.addEventListener('click',()=>{
+        alert('B');
+    },true);
+
+    c.addEventListener('click',()=>{
+        alert( 'C');
+    });
+
+</script>
