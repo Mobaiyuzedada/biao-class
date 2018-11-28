@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>弹出层1</title>
+    <link rel="stylesheet" href="C:\Users\28933\Desktop\biao-class\practice\css\btn.css">
+    <style>
+        .wrap div {
+            margin-bottom: 14px;
+            font-size: 15px;
+        }
+
+        /* :root{
+            border:10px solid;
+        }
+        body{
+            border:10px solid coral;
+        } */
+    </style>
+    <style>
+        .my-popup {
+            border: 2px solid;
+            display: block;
+            background: #fff;
+            position: fixed;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, .3);
+            z-index: 1000;
+        }
+
+        .my-mask {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+            background: rgba(0, 0, 0, .6);
+            z-index: 999;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="trigger">收藏</button>
+    <div id="popup">确定要收藏吗
+        <!-- <img src="https://dummyimage.com/200x200" alt=""> -->
+    </div>
+    <div class="wrap">
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
+            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
+            enim debitis.</div>
+    </div>
+    <!-- <div class="my-mask"></div> -->
+</body>
+
+</html>
+
+<script>
+    let popup, mask, trigger;
+    boot('#popup', '#trigger');
+
+    function boot(popupS, triggerS) {
+        popup = document.querySelector(popupS);
+        trigger = document.querySelector(triggerS);
+
+        initPopup();
+        createMask();
+        bindOpen();
+        bindClose();
+
+    }
+
+    //添加popup
+    function initPopup() {
+        popup.classList.add('my-popup');
+        popup.hidden = true;
+    }
+
+    //创建遮罩
+    function createMask() {
+        //创建节点
+        mask = document.createElement('div');
+        //遮罩样式
+        mask.classList.add('my-mask')
+        //位置
+        document.body.appendChild(mask);
+        //初始隐藏
+        mask.hidden = true;
+    }
+
+
+    function bindOpen() {
+        trigger.addEventListener('click', () => {
+            setVisibility(true);
+            rePosition('cenater');
+        })
+    }
+
+    function bindClose() {
+        mask.addEventListener('click', () => {
+            setVisibility(false);
+        })
+    }
+    function setVisibility(visible = false) {
+        popup.hidden = mask.hidden = !visible;
+    }
+
+    //定位
+    function rePosition(position = 'center', y_Offset, x_Offset) {
+        let width = popup.offsetWidth;
+        let heigth = popup.offsetHeight;
+        switch (position) {
+            case 'center':
+                popup.style.left = window.innerWidth / 2 - width / 2 + 'px';
+                break;
+        }
+    }
+
+</script>
