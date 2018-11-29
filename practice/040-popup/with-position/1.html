@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>弹出层1</title>
+    <title>弹出层</title>
     <link rel="stylesheet" href="C:\Users\28933\Desktop\biao-class\practice\css\btn.css">
     <style>
         .wrap div {
@@ -20,11 +20,12 @@
     </style>
     <style>
         .my-popup {
-            border: 2px solid;
-            display: block;
+            /* display: none; */
             background: #fff;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+            padding: 10px;
             position: fixed;
-            box-shadow: 0px 0px 3px rgba(0, 0, 0, .3);
+            border: 3px solid;
             z-index: 1000;
         }
 
@@ -36,7 +37,6 @@
             left: 0;
             z-index: 999;
             background: rgba(0, 0, 0, .6);
-            z-index: 999;
         }
 
         [hidden] {
@@ -47,9 +47,20 @@
 
 <body>
     <button id="trigger">收藏</button>
-    
-    <div id="popup"><span>确定要收藏吗</span>
-        <!-- <img src="https://dummyimage.com/200x200" alt=""> -->
+    <div id="popup">确定要收藏吗
+        <form action="">
+            <div>
+                用户名:
+                <input type="text">
+            </div>
+            <div>
+                密码:
+                <input type="text" name="" id="">
+            </div>
+            <div>
+                <button>提交</button>
+            </div>
+        </form>
     </div>
     <div class="wrap">
         <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
@@ -88,150 +99,161 @@
         <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
             pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
             enim debitis.</div>
-        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
-            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
-            enim debitis.</div>
-        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
-            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
-            enim debitis.</div>
-        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit odit accusamus qui voluptatum at
-            pariatur laborum placeat consequatur, consectetur commodi sunt quis vero eum? Aliquid quos ipsum expedita
-            enim debitis.</div>
     </div>
-    <!-- <div class="my-mask"></div> -->
 </body>
 
 </html>
 
 <script>
-    let popup, mask, trigger;
-    let width,height;
-    
+    //全局变量
+    let trigger, popup, mask,config;
+    const html=document.documentElement;
+    const defaultConfig={//默认配置
+        position:'default', 
+        x_offset:0,
+        y_offset:0,
+        on:'click',
+        keyCode:27,//Escape
+    }
 
 
+    boot('#trigger', '#popup',custom={
+        position:'left-top',
+        // x_offset:10,
+        // y_offset:20,
+        // on:'dblclick',
+        // keyCode:9,
+    });
 
-    boot('#popup', '#trigger');
-
-    function boot(popupS, triggerS) {
-        popup = document.querySelector(popupS);
+    function boot(triggerS, popupS,custom) {
         trigger = document.querySelector(triggerS);
+        popup = document.querySelector(popupS)
 
+        //传入配置
+        loadConfig(custom);
+
+        //popup初始隐藏，并为用户传入的选择器添加类my-popup以添加弹窗样式
         initPopup();
-        createMask();
+
+        //添加遮罩
+        creatMask();
+
+        //点击trigger弹出popup
         bindOpen();
-        bindClose();
+
+        //点击弹窗周围(遮罩mask)关闭
+        bindclose();
 
     }
 
-    //添加popup
+    function loadConfig(custom){
+        // console.log(custom );
+        config=Object.assign({},defaultConfig,custom);
+        console.log(config );
+    }
+
+
+    //初始化popup
     function initPopup() {
-        popup.classList.add('my-popup');
         popup.hidden = true;
+        popup.classList.add('my-popup');
     }
 
-    //创建遮罩
-    function createMask() {
-        //创建节点
-        mask = document.createElement('div');
-        //遮罩样式
-        mask.classList.add('my-mask')
-        //位置
+
+    //创建对应遮罩
+    function creatMask() {
+        //创建遮罩
+        mask = document.createElement('div');//创建div节点
+        mask.classList.add('my-mask');   //添加遮罩样式
+        //指定放置位置
         document.body.appendChild(mask);
-        //初始隐藏
+        //初始隐藏，如果直接放到trigger里面再次点击会再次添加一个div.my-mask.改为点击触发hidden属性
         mask.hidden = true;
     }
 
-
+    //监听打开
     function bindOpen() {
-        let arr = ['top-left', 'top-center', 'top-right', 'center-left', 'center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right','a'];
-        let i = 0;
-        trigger.addEventListener('click', () => {
+        trigger.addEventListener(config.on, () => {
+            let arr = ['a', 'left', 'right',];
             setVisibility(true);
-            // console.log(arr[i]);
-            
-            // i++;
-        rePosition(arr[2]);
-        // rePosition('top-right');
+            repositionPopup(config.position,config.y_offset,config.x_offset);
         })
     }
 
-    function bindClose() {
+    function repositionPopup(position, y_offset = 0, x_offset = 0) {
+        let width = popup.offsetWidth;
+        let height = popup.offsetHeight;
+        const style=popup.style;
+
+        if (!position.includes('-')) {
+            if (position === 'left' || position === 'right') {
+                position += '-centerY';
+                console.log('position:', position);
+            } else if (position === 'top' || position === 'bottom') {
+                position += '-centerX';
+                console.log(position);
+            } else {//默认popup横纵都居中
+                position = 'centerX-centerY';
+                console.log(position);
+            }
+        }
+
+        if (position.includes('centerX'))
+            style.left = html.offsetWidth / 2 - width / 2 + x_offset + 'px';
+        if (position.includes('centerY'))
+            style.top =html.offsetHeight / 2 - height / 2 + y_offset + 'px';
+        if (position.includes('top'))
+            style.top = x_offset + 'px';
+        if (position.includes('left'))
+            style.left = y_offset + 'px';
+        if (position.includes('bottom'))
+            style.bottom = y_offset + 'px';
+        if (position.includes('right'))
+            style.right = x_offset + 'px';
+
+
+
+
+        //     switch (position) {
+        //         case 'top-left':
+        //             popup.style.left = 0 + x_offset + 'px';
+        //             popup.style.top = 0 + y_offset + 'px';
+        //             break;
+        //         case 'bottom-left':
+        //             popup.style.left = 0 + x_offset + 'px';
+        //             popup.style.bottom = 0 + y_offset + 'px';
+        //             break;
+        //         case 'center':
+        //             popup.style.left = window.innerWidth / 2 - width / 2 + x_offset + 'px';
+        //             popup.style.top = window.innerHeight / 2 - height / 2 + y_offset + 'px';
+        //             break;
+        //     }
+    }
+
+
+    //监听关闭
+    function bindclose() {
         mask.addEventListener('click', () => {
             setVisibility(false);
         })
+        window.addEventListener('keyup', (e) => {
+            if (e.keyCode === config.keyCode)
+                setVisibility(false);
+        })
     }
+
+    //设置是否显示
     function setVisibility(visible = false) {
-        popup.hidden = mask.hidden = !visible;
+        //初始隐藏
+        mask.hidden = popup.hidden = !visible;
     }
 
-    //定位
-    function rePosition(position = 'center', y_Offset, x_Offset) {
-        width = popup.offsetWidth;
-        height = popup.offsetHeight;
 
-        switch (position) {
-            case 'top-left':
-                setLeft(0, 0);
-                setTop(0, 0);
-                
-                break;
-            case 'top-center':
-            console.log(width,height);
-                setLeft(window.innerWidth, width);
-                setTop(0, 0);
-                break;
-            case 'top-right':
-                popup.style.left='auto';
-            console.log(document.documentElement.offsetWidth );
-            // console.log( window.innerWidth);
-            console.log( height,'width:',width);
-            //     popup.style.right='auto';
-            //     popup.style.left='auto';
-                setLeft(2 * window.innerWidth, 2 * width);
 
-                // setLeft(2 * document.documentElement.offsetWidth, 2 * width);
-                setTop(0, 0);
-                break;
-            case 'center-left':
-                setLeft(0, 0);
-                setTop(window.innerHeight, height);
-                break;
-            case 'center':
-                // popup.style.left = window.innerWidth / 2 - width / 2 + 'px';
-                setLeft(window.innerWidth, width);
-                setTop(window.innerHeight, height);
-                break;
-            case 'center-right':
-            console.log( height,width);
-                setLeft(2 * window.innerWidth, 2 * width);
-                setTop(window.innerHeight, height);
-                break;
-            case 'bottom-left':
-                setLeft(0, 0);
-                setTop(2 * window.innerHeight, 2 * height);
-                break;
-            case 'bottom-center':
-                setLeft(window.innerWidth, width);
-                console.log( height);
-                setTop(2 * window.innerHeight, 2 * height);
-                break;
-            case 'bottom-right':
-                setLeft(2 * window.innerWidth, 2 * width);
-                console.log( height);
-                setTop( 2*window.innerHeight,2*height);
-                break;
-            default:
-            console.log(height,width);
-                break;
-        }
-    }
 
-    function setLeft(winWidth, width) {
-        console.log('winWidth:',winWidth,'width:',width );
-        popup.style.left = (winWidth - width) / 2 + 'px';
-    }
-    function setTop(winHeight, height) {
-        popup.style.top = (winHeight - height) / 2 + 'px';
-    }
-
+    //test keyCode
+    
+    // window.addEventListener('keyup',function(e){
+    //     console.log(e.keyCode);
+    // })
 </script>
