@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>贴士插件</title>
+    <link rel="stylesheet" href="C:\Users\28933\Desktop\biao-class\practice\css\btn.css">
+    <style>
+        .popout {
+            border: 1px solid;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+            background: #fff;
+            display: inline-block;
+            border-radius: 3px;
+            position: fixed;
+            padding: 10px;
+        }
+
+        [hidden] {
+            display: none;
+        }
+    </style>
+    <style>
+        button {
+            display: block;
+            margin-left: 80px;
+            margin-bottom: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <button data-popout="Yo yo yo....">Yo</button>
+    <button data-popout="dry">dry</button>
+    <button data-popout="xdd....">1</button>
+    <button data-popout="aaa.">2</button>
+    <button data-popout="ha ha ha....">hahaha</button>
+    <!-- <div class='popout'>Yo yo yo....</div> -->
+
+
+
+</body>
+
+</html>
+
+
+
+
+<script>
+    let triggers = new Set();
+    let lastIndex,config;
+    let defaultConfig={
+        position:'bottom',
+        on:'click',
+    }
+
+    boot(custom={
+        // on:'mouseleave',
+    });
+
+    function boot(custom) {
+        loadConfig(custom);
+
+        bindEvent();
+    }
+    //传入配置
+    function loadConfig(custom){
+        config=Object.assign({},defaultConfig,custom);
+    }
+
+    function bindEvent() {
+        document.body.addEventListener(config.on, (e) => {
+
+            let et = e.target;
+            let content = et.dataset.popout;
+            console.log(content);
+            // hideAll();//直接在此处调用hideAll().下方else亦可省略
+
+            if (content) {
+                lastIndex && hide(lastIndex);
+                lastIndex = et;
+                show(et, content);//有内容弹出内容框
+                rePosition(et, config.position);
+            } else
+                hideAll();//没内容全部隐藏
+        })
+    }
+
+    //显示
+    function show(et, content) {
+        if (!et.$ppo) {
+            let ppo = document.createElement('div');
+            ppo.classList.add('popout');
+            ppo.innerText = content;
+            et.$ppo = ppo;
+            triggers.add(et);
+            document.body.appendChild(ppo);
+        } else {
+            et.$ppo.hidden = false;
+        }
+    }
+
+    function hideAll() {
+        triggers.forEach(el => el.$ppo.hidden = true);
+    }
+
+    function hide(button) {
+        button.$ppo.hidden = true;
+    }
+
+    function rePosition(button, position) {
+        let ppt = button.$ppo;
+        let btnPosition = button.getBoundingClientRect();
+        let x = btnPosition.x;//or btnPosition.left获取按钮横坐标
+        let y = btnPosition.top;//or btnPosition.top获取按钮纵坐标
+        let btnWidth = button.offsetWidth; //获取按钮本身宽度
+        let btnHeight = button.offsetHeight; //获取按钮本身高度
+        let pptHeight = ppt.offsetHeight;
+        let pptWidth = ppt.offsetWidth;
+
+        switch (position) {
+            case 'bottom':
+                ppt.style.left = x + 5 + 'px';
+                ppt.style.top = y + 3 + btnHeight + 'px';
+                break;
+            case 'top':
+                ppt.style.left = x + 5 + 'px';
+                ppt.style.top = y - 3 - pptHeight + 'px';
+                break;
+            case 'left':
+                ppt.style.left = x + 3 + btnWidth + 'px';
+                ppt.style.top = y + 5 + 'px';
+                break;
+            case 'right':
+                ppt.style.left = x - 3 - pptWidth + 'px';
+                ppt.style.top = y + 'px';
+                break;
+            default:
+
+                break;
+        }
+
+    }
+
+
+//当鼠标进入时候显示怎么做
+</script>
+
+
+

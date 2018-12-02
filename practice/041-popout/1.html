@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>贴士插件</title>
+    <link rel="stylesheet" href="C:\Users\28933\Desktop\biao-class\practice\css\btn.css">
+    <style>
+        .popout {
+            padding: 10px;
+            display: inline-block;
+            position: fixed;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+            border-radius: 3px;
+            /* margin: 5px; */
+            /* top: 30px;
+            left: 5px; */
+            background: #fff;
+        }
+    </style>
+    <style>
+        button {
+            /* display: inline-block; */
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <button style="margin-top:10em;margin-right:4em;" " data-popout="Yo yo yo...">Yo</button>
+    <button style="margin-top:10em;margin-right:4em;" data-popout="Ha ha ha...">Ha</button>
+    <button style="margin-top:10em;margin-right:4em;" data-popout="1.dry">Yo</button>
+    <button style="margin-top:10em;margin-right:4em;" data-popout="2.xdd">Ha</button>
+    <button style="margin-top:10em;margin-right:4em;" data-popout="3.ppppp">Yo</button>
+    <button style="margin-top:10em;margin-right:4em;" data-popout="4.aaaaa">Ha</button>
+
+    <!-- <div class="popout">Yo yo yo...</div> -->
+
+</body>
+
+</html>
+
+<script>
+    // let ppouts = document.querySelectorAll('[data-popout');
+    // let ppo=document.createElement('div');
+
+    // boot();
+
+    // function boot() {
+    //     document.addEventListener('click', e => {
+
+    //         let et = e.target;
+    //         let content = et.dataset.popout;
+    //         // et.$a = 1;
+    //         // console.dir(et);
+
+
+    //         if (content) {
+    //             console.log(ppo.textContent );
+    //             console.log(content);
+    //             if (ppo.textContent!=content) {
+    //                 // let ppo = document.createElement('div');
+    //                 ppo = document.createElement('div');
+    //                 ppo.classList.add('popout');
+    //                 ppo.innerText = content;
+    //                 console.log(ppo.textContent );                   
+    //                 et.$ppo = ppo;
+    //                 document.body.appendChild(ppo);
+    //             }else{
+    //                 et.$ppo.hidden=true;
+    //                 // ppo.hidden=true;
+
+    //             }
+
+    //         }
+
+    //     })
+    // }
+</script>
+
+
+
+
+<script>
+    // let datapp=document.querySelectorAll('[data-popout]')
+    let triggers = new Set();
+    let lastIndex;
+
+    boot();
+
+    function boot() {
+        bindEvents();
+    }
+
+    /**
+    * 绑定事件
+    */
+    function bindEvents() {
+        document.addEventListener('click', e => {
+
+            let et = e.target;
+            let content = et.dataset.popout;
+            console.log(content);
+
+            if (content) {
+                lastIndex && hide(lastIndex);
+                lastIndex = et;
+                show(et, content);
+                triggers.add(et);
+            } else
+                hideAll();
+        });
+    }
+
+    /**
+    * 显示事件
+    */
+    function show(button, content) {
+        // hideAll();
+        if (!button.$ppo) {
+            let ppo = document.createElement('div');
+            ppo.classList.add('popout');
+            ppo.innerText = content;
+            button.$ppo = ppo;
+            // button.$ppo.innerText=content;
+            document.body.appendChild(ppo);
+        } else {
+            button.$ppo.hidden = false;
+        }
+        rePosition(button);//调整位置
+    }
+    /**
+    * 隐藏事件
+    */
+    function hideAll() {
+        console.log('触发了：', triggers);
+        triggers.forEach(button => {
+            // console.log('a');
+
+            button.$ppo.hidden = true;
+        })
+    }
+
+
+    //调整popout到合适的位置
+    function rePosition(button) {
+        let ppt = button.$ppo;
+        let btn_Pst = button.getBoundingClientRect();//获取按钮坐标信息
+
+        // console.log(btn_Pst );
+
+
+        ppt.style.left = btn_Pst.left + 5 + 'px';
+        // ppt.style.left = btn_Pst.left+ button.offsetWidth+ 5 + 'px';
+
+        // ppt.style.top = btn_Pst.top +button.offsetHeight + 5 + 'px';
+        // ppt.style.top = btn_Pst.top + 5 + 'px';
+        ppt.style.top = btn_Pst.top - 2*button.offsetHeight + 5 + 'px';
+    }
+
+    /**
+    * 隐藏事件
+    */
+    function hide(button) {
+        button.$ppo.hidden = true;
+    }
+
+
+</script>
+
+
+<!-- <script>
+    // let datapp=document.querySelectorAll('[data-popout]')
+    let triggers = new Set();
+
+    boot();
+
+    function boot() {
+        bindEvents();
+    }
+
+    /**
+    * 绑定事件
+    */
+    function bindEvents() {
+        document.addEventListener('click', e => {
+
+            let et = e.target;
+            let content = et.dataset.popout;
+            console.log(content );
+            hideAll();
+
+            if (content) {
+                show(et, content);
+                triggers.add(et);
+            } //else
+                // hideAll();
+        });
+    }
+
+    /**
+    * 显示事件
+    */
+    function show(button, content) {
+        // hideAll();
+        if (!button.$ppo) {
+            let ppo = document.createElement('div');
+            ppo.classList.add('popout');
+            ppo.innerText = content;
+            button.$ppo = ppo;
+            // button.$ppo.innerText=content;
+            document.body.appendChild(ppo);
+        } else {
+            button.$ppo.hidden = false;
+        }
+        rePosition(button);//调整位置
+    }
+    /**
+    * 隐藏事件
+    */
+    function hideAll() {
+        console.log('触发了：', triggers);
+        triggers.forEach(button => {
+            // console.log('a');
+
+            button.$ppo.hidden = true;
+        })
+    }
+
+
+    //调整popout到合适的位置
+    function rePosition(button){
+        let ppt=button.$ppo;
+        let btn_Pst=button.getBoundingClientRect();//获取按钮坐标信息
+
+        // console.log(btn_Pst );
+        
+
+        ppt.style.left=btn_Pst.left+5+'px';
+        ppt.style.top=btn_Pst.top+button.offsetHeight+5+'px';
+    }
+
+    /**
+    * 隐藏事件
+    */
+    // function hide(button) {
+    //     button.$ppo.hidden = true;
+    // }
+
+
+</script> -->
