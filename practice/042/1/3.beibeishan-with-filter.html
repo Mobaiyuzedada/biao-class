@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动态内容的dropdown</title>
+    <link rel="stylesheet" href="C:\Users\28933\Desktop\biao-class\practice\css\btn.css">
+    <style>
+        :root {
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-size: 25px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid;
+            text-align: left;
+            padding: .5em;
+        }
+
+        #toolbar {
+            margin: .5em 0;
+        }
+        .add{
+            margin-left: 5em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>背背山中学花名册</h1>
+    <div id="toolbar">
+        <button data-max="100" data-min="0">查看全部</button>
+        <button data-max="100" data-min="90">100~90</button>
+        <button data-max="89" data-min="80">89~80</button>
+        <button data-max="79" data-min="70">79~70</button>
+        <button data-max="69" data-min="60">69~60</button>
+        <button data-max="59" data-min="50">59~50</button>
+        <button data-max="49" data-min="40">49~40</button>
+        <button data-max="39" data-min="0"><40</button> 
+        <button class="add">添加</button>
+    </div> 
+
+        <table>
+                <thead>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>分数</th>
+                    <th>操作</th>
+                </thead>
+                <tbody id="tbody">
+                    <!-- <tr>
+                <td>王花花</td>
+                <td>18</td>
+                <td>女</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>李栓蛋</td>
+                <td>19</td>
+                <td>男</td>
+                <td>85</td>
+            </tr> -->
+                </tbody>
+                </table>
+
+</body>
+
+</html>
+
+<script>
+    const tbody = document.getElementById('tbody');
+    const toolBar = document.getElementById('toolbar');
+    let users = [
+        {
+            name: '王花花',
+            age: '18',
+            gender: '女',
+            score: 61,
+        },
+        {
+            name: '李栓蛋',
+            age: '19',
+            gender: '男',
+            score: 86,
+        },
+        {
+            name: '赵可爽',
+            age: '16',
+            gender: '女',
+            score: 40,
+        },
+    ]
+
+    boot();
+
+    function boot() {
+        render();
+        bindEvents();
+    }
+
+    function render(boundary) {
+        tbody.innerHTML='';
+        users.forEach((el, index) => {
+            // console.log( '1');
+            if (boundary) {
+                let valid = el.score <= +boundary.max && el.score >= +boundary.min;
+                if (!valid) 
+                    return;
+            }
+
+            // console.log( '2');
+            let tr = document.createElement('tr');
+            tr.innerHTML = `
+        <td>${el.name}</td>
+        <td>${el.age}</td>
+        <td>${el.gender}</td>
+        <td>${el.score}</td>
+        <td><button class="del">删除</button></td>
+        `
+            tbody.appendChild(tr);
+            // console.log( '3');
+            let del = tr.querySelector('.del');
+            del.addEventListener('click', () => {
+                users.splice(index, 1);//将users里的数据删除  
+                tr.remove();//将本行删除,如果没有上一行代码,users里数据不会删除。只是视觉上删除了一行。
+            });
+        });
+    }
+
+
+    function bindEvents() {
+        toolBar.addEventListener('click', e => {
+            let target = e.target;
+            // console.dir( target);
+            let range = target.dataset;
+            // console.log(range);
+            // if(target.id!='toolbar')
+            if(target.tagName==="BUTTON")//还可用nodeName(最灵活)等等判断。具体属性可以用上方的dir查看
+            render(range);
+        })
+    }
+
+</script>

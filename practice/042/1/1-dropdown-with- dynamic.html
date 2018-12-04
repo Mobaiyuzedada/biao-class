@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动态内容的dropdown</title>
+    <link rel="stylesheet" href="C:\Users\28933\Desktop\biao-class\practice\css\btn.css">
+    <style>
+        .dropdown {
+            display: inline-block;
+            border: 1px solid;
+            min-width: 5em;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 5px;
+            target: _blank;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dropdown" class="dropdown">
+        <a href="#">Ya</a>
+        <a href="#">Yb</a>
+        <a href="#">Yc</a>
+        <a href="#">Yd</a>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    // let list=['a','b','c','d'];
+    const content=document.querySelector('.dropdown').innerHTML;//如果不加innerHTML则内容会变。我理解为内存地址不变，内容变了但是内存地址还是原来的。
+    // const content=document.querySelector('.dropdown');
+    // let a=0;
+
+    let list = [
+        { text: 'biaoyansu', href: 'http://biaoyansu.com' },
+        { text: 'baidu', href: 'http://baidu.com' },
+        { text: 'taobao', href: 'http://taobao.com' },
+        { text: 'dry', href: 'http://xzdry.com' },];
+
+    boot();
+
+    function boot(){
+        render();
+        setInterval(() => {
+            push({text:'bilibili',
+            href:'https://bilibili.com'})
+        }, 1000);
+    }
+
+    //添加并渲染新元素
+    function push(el){
+        list.push(el);
+        render();
+    }
+
+    function render() {    
+        dropdown.innerHTML=content;
+
+        
+        list.forEach(it => {
+            let a = document.createElement('a');
+            a.href = it.href;
+            a.innerHTML = it.text;
+            dropdown.appendChild(a);
+        })
+    }
+
+</script>
