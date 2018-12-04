@@ -182,11 +182,12 @@
         cancel.addEventListener('click', () => {
             clear();
         })
-
+        let a={};
         submit.addEventListener('click', () => {
             // let newElem=getValue();
-            let a=getValue();
-            _push(a);
+            let b={};
+            b=getValue(a);
+            _push(b);
             clear();
         })
 
@@ -198,8 +199,8 @@
 
     }
 
-    function getValue() {
-        let newElem = {};
+    function getValue(newElem) {
+        // let newElem = {};
         name.forEach(el => {
             // console.dir(el);
             newElem[el.name] = el.value;
@@ -210,6 +211,7 @@
     //添加新元素
     function _push(newElem) {
         users.push(newElem);
+        console.log(users );
         render();
     }
 
