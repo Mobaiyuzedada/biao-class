@@ -28,6 +28,7 @@
             box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
             padding: 5px 6px 1px 7px;
             border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -66,6 +67,40 @@
         </tbody>
     </table>
 
+
+    <button id="add">添加</button>
 </body>
 
 </html>
+<script>
+    
+    // let list=[];
+    // let el={};
+    // let result={};
+    // let count=0;
+
+    // add.addEventListener('click',()=>{
+    //     c=get(el);
+    //     list.push(c);
+    // })
+
+    // // console.log(list );
+
+    // function get(newEl){
+    //     // newEl["a"]=current;
+    //     newEl={"a":current}
+    //     count++;
+    //     return newEl;
+    // }
+
+    let list=[];
+    let a={b:1};
+    list.push(a);
+    console.log(list);//list=[{b:1}]
+    // a["b"]=5;
+    // console.log(list);//list=[{b:5}]
+    list[0].b=3;
+    console.log(list);//list=[{b:1}]
+
+
+</script>

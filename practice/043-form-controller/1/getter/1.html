@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="C:\Users\28933\Desktop\biao-class\practice\css\btn.css">
+    <style>
+        :root {
+            font-family: sans-serif;
+        }
+
+        input[type=text],
+        input[type=number]{
+            width: 100%;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input name="name" type="text" placeholder="姓名">
+        <input name="age" type="text" placeholder="年龄">
+        <input name="gender" type="text" placeholder="性别">
+        <input name="height" type="text" placeholder="身高">
+        <button type="submit">提交</button>
+    </form>
+
+</body>
+
+</html>
+
+<script>
+    let data={};
+    data['name'] = document.querySelector('[name=name]').value;
+    data.age = document.querySelector('[name=age]').value;
+    data.gender = document.querySelector('[name=gender]').value;
+    data.height = document.querySelector('[name=height]').value;
+
+    data.name
+    data.gender
+    console.log(data );
+</script>

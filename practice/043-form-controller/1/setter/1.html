@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单插件动态存值(setter)功能</title>
+    <link rel="stylesheet" href="C:\Users\28933\Desktop\biao-class\practice\css\btn.css">
+    <style>
+        :root {
+            font-family: sans-serif;
+        }
+       input[type="text"],
+       input[type="number"]{
+           width: 100%;
+           margin-bottom: 4px;
+       }
+    </style>
+</head>
+
+<body>
+    <form actions='' onsubmit="return false;">
+        <input name="name" placeholder="年龄" type="text" value="王花花">
+        <input name="age" type="text" placeholder="年龄" value="14">
+        <input name="gender" type="text" placeholder="性别" value="女">
+        <input name="height" type="text" placeholder="身高" value="166">
+        <button id="submit">提交</button>
+    </form>
+
+</body>
+
+</html>
+
+<script>
+    let data = {
+        name: '李栓蛋',
+        age: 12,
+        gender: '男',
+        height: 175,
+    };
+    const form = document.querySelector('form');
+
+    submit.addEventListener('click', () => {
+        for (let key in data) {
+            let input = form.querySelector(`[name=${key}]`);
+            input.value = data[key];
+        }
+    })
+</script>

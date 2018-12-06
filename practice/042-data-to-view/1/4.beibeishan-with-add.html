@@ -182,11 +182,13 @@
         cancel.addEventListener('click', () => {
             clear();
         })
-        let a={};
+
         submit.addEventListener('click', () => {
             // let newElem=getValue();
-            let b={};
-            b=getValue(a);
+            let a = {};
+            let b = {};
+
+            b = getValue(a);
             _push(b);
             clear();
         })
@@ -210,9 +212,10 @@
 
     //添加新元素
     function _push(newElem) {
+        console.log("users:", users);
         users.push(newElem);
-        console.log(users );
-        render();
+        // console.log(users );
+        // render();
     }
 
 

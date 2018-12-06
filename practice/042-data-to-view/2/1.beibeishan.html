@@ -78,6 +78,7 @@
 
 
     function render() {
+        tbody.innerHTML='';
         users.forEach((el,index) => {
             let tr = document.createElement('tr');
             tr.innerHTML = `
@@ -91,8 +92,9 @@
             tbody.appendChild(tr);
             let del=tr.querySelector('.del');
             del.addEventListener('click',()=>{
-                tr.remove();
                 users.splice(index,1);
+                tr.remove();
+                render();
             });
 
         });
