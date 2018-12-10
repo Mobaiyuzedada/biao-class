@@ -1,0 +1,26 @@
+.my-dropdown {
+    color: #444;
+    background: #fff;
+    padding: 8px;
+    /* position: absolute; */
+    display: inline-block;
+    border:1px solid rgb(197, 196, 197);
+    box-shadow: 2px 3px 8px rgba(198, 197, 198,.1);
+    border-radius: 3px;
+}
+
+.my-dropdown a {
+    display: block;
+    padding: 10px 0px 10px 20px;
+    text-decoration: none;
+    color: inherit;
+    min-width: 80px;
+}
+
+.my-dropdown a:hover {
+    background: rgba(167, 165, 167, 0.1);;
+}
+
+[hidden] {
+    display: none !important;
+}

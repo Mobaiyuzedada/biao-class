@@ -1,4 +1,4 @@
-button{
+.my-btn{
     background: #fff;
     border:1px solid rgb(197, 196, 197);
     border-radius: 3px;
@@ -7,11 +7,11 @@ button{
     outline: none;
     cursor: pointer;
 }
-button:hover{
+.my-btn:hover{
     outline:none;
     border:1px solid #999;
 }
-button:active{
+.my-btn:active{
     outline:none;
     border:1px solid #999;
     cursor: default;
