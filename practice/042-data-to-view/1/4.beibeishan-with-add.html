@@ -136,6 +136,7 @@
     function boot() {
         render();
         bindEvents();
+        // changeBtn();
     }
 
     function render(boundary) {
@@ -151,20 +152,25 @@
             // console.log( '2');
             let tr = document.createElement('tr');
             tr.innerHTML = `
-        <td>${el.name}</td>
-        <td>${el.age}</td>
-        <td>${el.gender}</td>
-        <td>${el.score}</td>
-        <td><button class="del">删除</button></td>
-        `
+                <td>${el.name}</td>
+                <td>${el.age}</td>
+                <td>${el.gender}</td>
+                <td>${el.score}</td>
+                <td><button class="del">删除</button></td>
+                `
+            /*changeBtn(tbody);不能放在这里的原因是：
+                这一次按钮并未添加到页面上，所以要到下一次循环才能取到这一次的值
+                可以写到下面但会有额外消耗*/
             tbody.appendChild(tr);
-            // console.log( '3');
+            // changeBtn(tbody);
             let del = tr.querySelector('.del');
             del.addEventListener('click', () => {
                 users.splice(index, 1);//将users里的数据删除  
                 tr.remove();//将本行删除,如果没有上一行代码,users里数据不会删除。只是视觉上删除了一行。
+                render();
             });
         });
+        changeBtn();
     }
 
 
@@ -192,7 +198,7 @@
             _push(b);
             clear();
         })
-
+        console.log(name );
         name.forEach(el => {
             el.addEventListener('change', () => {
                 console.log(el.value);
@@ -226,4 +232,12 @@
         })
     }
 
+
+    function changeBtn(selec=document) {
+        let btn = selec.querySelectorAll('button');
+        // console.log(btn);
+        btn.forEach(it => {
+            it.classList.add('my-btn');
+        });
+    }
 </script>

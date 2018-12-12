@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>a</button>
+</body>
+</html>
+<script src="js/myBtn.js">
+    
+</script>
+<script>
+    myBtn.boot();
+    var head=document.getElementsByTagName('head')[0];
+    let link=document.createElement('link');
+
+    link.type='text/css';
+    link.rel='stylesheet';
+    link.href="C:/Users/28933/Desktop/biao-class/project/0002-myBtn/css/btn.css";
+    console.log(head );
+    console.log( link);
+    head.appendChild(link);
+</script>

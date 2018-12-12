@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>biao table</title>
+    <link rel="stylesheet" href="../css/biaoTable1.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <table id="b-table">
+
+    </table>
+    <table id="order-table"></table>
+
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\project\0002-myBtn\js\myBtn.js"></script>
+<script src="../js/biaoTable2.0.js"></script>
+<script>
+
+    let orderStruct = {
+        oid: '订单号',
+        product: '产品',
+        totalCost: '总费用',
+    };
+
+    let orders = [
+        {
+            oid: '001',
+            product: '拖鞋',
+            totalCost: 70,
+        },
+        {
+            oid: '002',
+            product: '毛裤',
+            totalCost: 80,
+        },
+        {
+            oid: '003',
+            product: '枸杞',
+            totalCost: 90,
+        },
+    ];
+    // let table=document.getElementById('b-table');
+    // biaoTable.boot('#b-table', struct, users);
+    biaoTable.boot('#order-table', orderStruct, orders,
+        {
+            Delete: {
+                name: '删除',
+                action: function (tr,index) {
+                    orders[index]=null;
+                    tr.remove();
+                    console.log(orders);
+                },
+                event: 'click',
+            },
+            A: {
+                name:'A',
+                action: function () {
+                    console.log('2');
+                },
+                event:'click',
+            }
+
+        })
+    myBtn.boot();
+</script>

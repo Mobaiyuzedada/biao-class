@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>biao table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
+    <link rel="stylesheet" href="./css/biaoTable1.css">
+    <!-- <link rel="stylesheet" href="../005-plugin-biaoTable/css/btn.css"> -->
+    <style>
+        .active {
+            background-color: lawngreen;
+        }
+
+        #order-table {
+            width: 60%;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="b-table">
+        <tr>
+        </tr>
+
+    </table>
+
+    <table id="order-table"></table>
+    <button id="refresh">刷新</button>
+
+</body>
+
+</html>
+<!-- <script src="./js/myBtn.js"></script> -->
+<script src="C:\Users\28933\Desktop\biao-class\project\0002-myBtn\js\myBtn.js"></script>
+<script src="./js/biaoTable3.0.js"></script>
+<script>
+    let flagD = true;//控制折扣
+    let flagC = true;//控制更改
+    //有delete highlight dicounted up down多个按钮
+    let orderStruct = {
+        oid: '订单号',
+        product: '产品',
+        totalCost: '总费用',
+    };
+
+    let orders = [
+        {
+            oid: '001',
+            product: '拖鞋',
+            totalCost: 70,
+        },
+        {
+            oid: '002',
+            product: '毛裤',
+            totalCost: 80,
+        },
+        {
+            oid: '003',
+            product: '枸杞',
+            totalCost: 90,
+        },
+    ];
+
+    let obj = {
+        Delete: {
+            name: '删除',
+            action: del,
+            // function (tr, index) {
+            //     // orders[index] = null;
+            //     // tr.remove();
+            // },
+            event: 'click',
+        },
+        Highlight: {
+            name: '高亮',
+            action: highlight,
+            event: 'click',
+        },
+        Discounted: {
+            name: '折扣',
+            action: discount,
+            event: ['click', "dblclick"],
+        },
+        Up: {
+            name: '上移',
+            action: up,
+            event: 'click',
+        },
+        Down: {
+            name: '下移',
+            action: down, highlight,
+            event: 'click',
+        },
+
+        // back: {
+        //     name: '上一步',
+        //     action: function () { },
+        //     event: 'click',
+        // }
+    }
+
+    let obj1 = {
+        Change: {
+            name: '更改',
+            action: change,
+            event: 'click',
+        }
+    }
+    let obj2 = Object.assign({}, obj, obj1);
+    console.log(obj2);
+
+    //更改
+    function change(tr, index) {
+        console.log(flagC === true);
+        if (flagC === true) {
+            let i = 0;
+            for (key in orders[index]) {
+                tr.cells[i].innerHTML = `
+            <input type="text" name="${key}" value="${orders[index][key]}">
+            `;
+                tr.cells[i].addEventListener('change', () => { });
+                i++;
+            }
+            flagC = false;
+        } else {
+            let i = 0;
+            let newInput = getInput(tr);
+            for (let key in newInput) {
+                tr.cells[i].innerHTML = `
+                <td>${newInput[key]}</td>
+                `
+                i++;
+            }
+            flagC = true;
+            orders[index] = newInput;
+        }
+
+        // for(let i=0;i<tr.cells.length-1;i++){
+        //     tr.cells[i].innerHTML=`
+        //     <input type="text" value="${tr.cells[i].innerText}">
+        //     `;
+        //     console.log(tr.cells[i].innerHTML);
+        //     // if()
+        // }
+
+    }
+
+
+    // let table=document.getElementById('b-table');
+    // biaoTable.boot('#b-table', struct, users);
+    biaoTable.boot('#order-table', orderStruct, orders, obj)
+    myBtn.boot();
+
+
+    //删除
+    function del(tr, index) {
+        orders[index] = null;
+        tr.remove();
+    }
+
+
+
+    //高亮
+    // function highlight(tr) {
+    //     console.log(tr);
+    //     let style = getComputedStyle(tr);
+    //     console.log(style.backgroundColor);
+    //     console.log(style.backgroundColor === "rgba(0, 0, 0, 0)");
+    //     style.backgroundColor === "rgba(0, 0, 0, 0)" ? tr.style.backgroundColor = "rgba(39, 228, 71, 1)" : tr.style.backgroundColor = "rgba(0, 0, 0, 0)";
+    // }
+    function highlight(tr) {
+        if (tr.classList.contains('active'))
+            tr.classList.remove('active');
+        else
+            tr.classList.add('active');
+    }
+
+    //上移
+    function up(tr, index) {
+        let t;
+        if (index) {
+            t = orders[index];
+            orders[index] = orders[index - 1];
+            orders[index - 1] = t;
+        }
+        let prev = tr.previousElementSibling;
+        prev && prev.insertAdjacentElement('beforebegin', tr);
+
+        // biaoTable.boot('#order-table', orderStruct, orders, obj);
+        myBtn.boot();
+    }
+
+    //下移
+    function down(tr, index) {
+        let t;
+        if (index < orders.length - 1) {
+            t = orders[index];
+            orders[index] = orders[index + 1];
+            orders[index + 1] = t;
+        }
+        let next = tr.nextElementSibling;
+        next && next.insertAdjacentElement('afterend', tr)
+        myBtn.boot();
+    }
+
+    //打折
+    function discount(tr, index) {
+        console.log("done" );
+        if (event.type === "dblclick") {//双击打折
+            alert("行⑧，你厉害，给你折扣");
+            let oldPrice = orders[index].totalCost
+            let newPrice = oldPrice * .5;
+            // tr.cells[2].style.color="red";
+            // tr.cells[2].innerText=newPrice;
+            tr.cells[2].innerHTML = `
+                    <s>${oldPrice}</s>
+                    <span style="color:red">${newPrice}</span>
+                    `;
+            flagD = -1;
+            console.log(flagD);
+        }
+        else {
+            console.log(flagD);
+            if (flagD === true) {
+                alert("想打折？手给你打折");
+                flagD = false;
+            } else if (flagD === -1) {
+                alert("已经打折了还点个鸡⑧")
+            }
+        }
+    }//想让一定时间内只执行一次，还需要后续完善
+
+    refresh.addEventListener('click', () => {
+        window.location.reload();
+    })
+
+
+
+
+
+
+
+
+    //获取输入框内的数据
+    function getInput(tr) {
+        let inputs = tr.querySelectorAll('input');
+        let newElem = {};
+        console.log(inputs);
+        inputs.forEach(el => {
+            newElem[el.name] = el.value;
+        })
+        console.log(newElem);
+        return newElem;
+
+    }
+</script>
