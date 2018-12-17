@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Request</title>
+</head>
+
+<body>
+    <h1>Yo</h1>
+</body>
+
+</html>
+<script src="https://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
+<script>
+    let url='https://api.github.com/search/users?q=yo';
+
+    /*
+    |-------------------------------------------------------
+    | 第一遍
+    |-------------------------------------------------------
+    */
+    // let http = new XMLHttpRequest();
+    // http.open('get', url);
+    // http.send();
+
+    // http.addEventListener('load', () => {
+    //     let data = JSON.parse(http.responseText);
+    //     console.log(data);
+    // })
+    /*
+    |-------------------------------------------------------
+    | 第二遍
+    |-------------------------------------------------------
+    */
+    // let http=new XMLHttpRequest();
+    // http.open('get',url);
+    // http.send();
+
+    // http.addEventListener('load',()=>{
+    //     let data=JSON.parse(http.responseText);
+    //     console.log(data );
+    // })
+
+   /*
+    |-------------------------------------------------------
+    | 第三遍
+    |-------------------------------------------------------
+    */
+    // let http=new XMLHttpRequest();
+    // http.open('get',url);
+    // http.send();
+
+    // http.addEventListener('load',()=>{
+    //     let data=JSON.parse(http.responseText);
+    //     console.log(data );
+    // })
+
+   /*
+    |-------------------------------------------------------
+    | 第四遍
+    |-------------------------------------------------------
+    */
+
+    // let http=new XMLHttpRequest();
+    // http.open('get',url);
+    // http.send();
+
+    // http.addEventListener('load',()=>{
+    //     let data=JSON.parse(http.responseText);
+    //     console.log(data );
+    // })
+   /*
+    |-------------------------------------------------------
+    | 第五遍
+    |-------------------------------------------------------
+    */
+//    let http=new XMLHttpRequest();
+//    http.open('get',url);
+//    http.send();
+
+//    http.addEventListener('load',$=>{
+//        let data=JSON.parse(http.responseText);
+//        console.log(data );
+//    })
+   /*
+    |-------------------------------------------------------
+    | 第六遍
+    |-------------------------------------------------------
+    */
+//    let http=new XMLHttpRequest();
+//    http.open('get',url);
+//    http.send();
+
+//    http.addEventListener('click',$=>{
+//        let data=JSON.parse(http.responseText);
+//        console.log( data);
+//    })
+   /*
+    |-------------------------------------------------------
+    | 第七遍
+    |-------------------------------------------------------
+    */
+   let http=new XMLHttpRequest();
+   http.open('get',url);
+   http.send();
+
+   http.addEventListener('load',()=>{
+       let data=JSON.parse(http.responseText);
+       console.log(data );
+   })
+   
+
+</script>
