@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Github搜索</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        :root{
+            font-family: sans-serif;
+            font-size: 14px;
+            color:#444;
+            background: #eee;
+        }
+        h1{
+            text-align: center;
+        }
+        img{
+            width: 100%;
+            display: block;
+        }
+        input,button{
+            border:1px solid rgba(0,0,0,0.4);
+            padding:.5em;
+            font-size: inherit;
+            margin-bottom: .5em;
+            outline: 0;
+        }
+        input:focus,
+        button:focus{
+            border-color: transparent;
+            outline:  2px solid rgba(80, 242, 190, 0.2);
+        }
+        form input,
+        form button{
+            width: 100%;
+        }
+        button{
+            background: #fff;
+            color:#000;
+            cursor: pointer;
+        }
+        .clicked{
+            background: #000;
+            color:#fff;
+        }
+        .item{
+            font-size: 0;
+            border:1px solid rgba(0,0,0,0.2);
+            box-shadow: -1px -1px 3px rgba(0,0,0,0.2);
+            margin-bottom: .4rem;/*fz为0不能用em*/
+            background:#fff;
+        }
+        .item > *{
+            display: inline-block;
+            font-size: 1rem;
+            vertical-align: top;
+        }
+
+        .item .avatar{
+            width:12%;
+            padding:0.1px;
+        }
+        .item .detail{
+            width: 86%;
+            padding: .8em 0em 0em 1em;
+            color:#aaa;
+        }
+        .item .detail strong{
+            color:#444;
+        }
+        .item .detail > *{
+            margin:.5em 0;
+        }
+        .item a{
+            color:inherit;
+        }
+        main{
+            padding:.5em;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 40em;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <main>
+        <h1>Github用户搜索</h1>
+        <form id="search-form">
+            <input type="search" name="keyword" autofocus>
+            <!-- <button type="submit" hidden></button> -->
+        </form>
+
+        <div id="user-list">
+
+        </div>
+        <div class="footer"></div>
+    </main>
+</body>
+
+</html>
+<script src="./js/rq.js"></script>
+<script src="../pagination/biaoPage.js"></script>
+<script>
+    ; (function () {
+        'use strict'
+
+        let form = document.getElementById('search-form');
+        // console.log(form );
+        let input = form.querySelector('[name=keyword]');
+        let userList = document.querySelector('#user-list');
+
+        boot();
+
+        function boot() {
+            bindEvents();
+        }
+
+        function bindEvents() {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                let keyword = input.value;
+                console.log(keyword);
+                search(keyword);
+                //    console.log(  search(keyword));
+                // console.log( data);
+                // render(data);
+
+            });
+        }
+
+        function search(keyword) {
+            let http = new XMLHttpRequest();
+            http.open('get', `https://api.github.com/search/users?q=${keyword}`);
+            http.send();
+
+            http.addEventListener('load', () => {
+                let res = http.responseText;
+                let data = JSON.parse(res);
+                // console.log(data.total_count,data.items.length );
+                biaoPage.boot({
+                    currentPage: 1,
+                    selector: '.footer',
+                    amount: data.total_count,
+                    limit: data.items.length,
+                });
+                let btns = document.querySelectorAll('.biao-page-item');
+                btns.forEach(btn => {
+                    btn.addEventListener('click', e => {
+                        let http = new XMLHttpRequest();
+                        http.open('get', `https://api.github.com/search/users?q=${keyword}&page=${btn.$page}`);
+                        http.send();
+
+                        http.addEventListener('load', () => {
+                            let res = http.responseText;
+                            let data = JSON.parse(res);
+                            render(data);
+                        })
+                    })
+                })
+                console.log(btns);
+                render(data);
+            });
+        }
+
+        function render(data) {
+            userList.innerHTML = '';
+            data.items.forEach(it => {
+                let item = document.createElement('div');
+                item.classList.add('item');
+                item.innerHTML = `
+                    <div class="avatar">
+                        <img src="${it.avatar_url}">
+                    </div>
+                    <div class="detail">
+                        <strong>${it.login}</strong>
+                        <div><a target="_blank" href="${it.html_url}">${it.html_url}</a></div>
+                    </div>
+                `
+                userList.appendChild(item);
+            })
+        }
+    })();
+</script>

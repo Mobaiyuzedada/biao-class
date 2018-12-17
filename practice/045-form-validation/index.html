@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>.55 表单验证</title>
+    <style>
+        :root{
+            font-size: 15px;
+            font-family: sans-serif;
+        }
+
+        input,button{
+            border:1px solid;
+            width: 100%;
+            padding:.5em;
+            font-size: inherit;
+            margin-bottom: .5em;
+        }
+
+        main{
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 30em;
+            padding: .5em;
+            margin-top: 5em;
+        }
+        
+        button{
+            background:#000;
+            color:#fff;
+            width:104%
+        }
+        .error-container{
+            font-size: 90%;
+            padding:.3em;
+            background: pink;
+            color:#c10;
+            margin-bottom:.5em;
+        }
+        input.error{
+            border:1px solid #a10;
+            outline: 2px solid #a10;
+        }
+        [hidden]{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <h1>注册</h1>
+        <form novalidate>
+            <input type="text" name="username" placeholder="username" value="whhhhh">
+            <input type="email" name="email" placeholder="email" value="whh@gmail.com">
+            <input type="text" name="phone" placeholder="phone" value="11111111111">
+            <input type="password" name="pwd" placeholder="password" value="940808">
+            <div class="error-container" hidden></div>
+            <button>提交</button>
+        </form>
+    </main>
+</body>
+
+</html>
+<script src="./js/validateUtil.js"></script>
+<script>
+    let form = document.querySelector('form');
+    let err = form.querySelector('.error-container');
+
+    let data = {};
+    let error;
+    let user = {
+        name: 'whhhhhdddddddddddddddddddh',
+        mail: "whhq.com",
+        phone: '8611111111111',
+        pwd: '94087',
+    }
+    // console.log(vali.isUsername(user.name));
+    // console.log(vali.isEmail(user.mail));
+    // console.log(vali.isPhone(user.phone));
+    // console.log(vali.isPassword(user.pwd));
+    boot();
+
+    function boot() {
+        bindEvents();
+    }
+
+
+    function bindEvents() {
+        bindSubmit();
+        bindKeyup();
+    }
+
+    function bindSubmit() {
+        form.addEventListener('submit', e => {
+            e.preventDefault();//禁止默认事件
+
+            data.username = form.querySelector('[name=username]').value;
+            data.email = form.querySelector('[name=email]').value;
+            data.phone = form.querySelector('[name=phone]').value;
+            data.pwd = form.querySelector('[name=pwd]').value;
+            validate(data) ? showError() : hideError();
+        });
+    }
+
+    function bindKeyup() {
+        // form.addEventListener('click',e=>{
+        //     console.log(e.target.name );
+        // });
+        form.addEventListener('keyup', e => {
+            if (e.key != 'Enter')
+                resetErrorInput(e.target.name);
+        })
+    }
+    /**
+     * 清除错误功能
+     */
+    function hideError() {
+        err.hidden = true;
+        // resetAllErrorInput();
+    }
+
+    function resetAllErrorInput() {
+        form.querySelectorAll('.error').forEach(it => {
+            it.classList.remove('error');
+        });
+    }
+    function resetErrorInput(target){
+        form.querySelector(`[name=${target}]`).classList.remove('error');
+    }
+
+    function showError() {
+        err.hidden = false;
+        err.innerHTML = '';
+        for (let key in error) {
+            let arr = error[key];
+
+            let klass = form.querySelector(`[name=${key}]`).classList
+            arr.length && klass.add('error');
+            arr.forEach(errMess => {
+                let errItem = document.createElement('div');
+                errItem.innerText = errMess;
+                err.appendChild(errItem);
+            })
+        }
+    }
+
+    function validate(data) {
+        //username
+        let valid = false;//没有错误
+        error = {
+            username: [],
+            email: [],
+            phone: [],
+            pwd: [],
+        }
+
+
+        if (!vali.isUsername(data.username)) {
+            valid = true;
+            error.username.push('用户名有误,用户名长度应在4-25位间');
+        }
+        if (!vali.isEmail(data.email)) {
+            valid = true;
+            error.email.push('邮箱必须包含@');
+        }
+        if (!vali.isPhone(data.phone)) {
+            valid = true;
+            error.phone.push('电话格式有误');
+        }
+        if (!vali.isPassword(data.pwd)) {
+            valid = true;
+            error.pwd.push('密码长度应在6-24位之间');
+        }
+        return valid;
+    }
+
+
+
+
+</script>

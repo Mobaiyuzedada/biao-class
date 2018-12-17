@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Github搜索</title>
+    <style>
+        .clicked{
+            background: #000;
+            color:#fff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="footer" class="">
+        
+    </div>
+
+</body>
+
+</html>
+<!-- <script src="./js/rq.js"></script> -->
+<script src="./main.js"></script>
+<script src="./biaoPage.js"></script>
+<script>
+
+    let b={
+        selector:'.footer',
+        amount:501,
+        limit:10,
+        pageLim:10,
+        currentPage:1,
+        onChange(a){
+            return a;
+        }
+    };
+    biaoPage.boot(b)
+
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Request</title>
+</head>
+
+<body>
+    <h1>Yo</h1>
+</body>
+
+</html>
+<script src="https://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
+<script>
+    /*
+    |-------------------------------------------------------
+    | 使用XMLHttpRequest
+    |-------------------------------------------------------
+    */
+    // let http = new XMLHttpRequest();
+    // http.open('get', 'https://api.github.com/search/users?q=mobaiyuzedada');
+    // http.send();
+
+    // http.addEventListener('load',()=>{
+    //     let data=JSON.parse(http.responseText);
+    //     console.log(data );
+    // })
+
+
+    /*
+    |-------------------------------------------------------
+    | 使用ES6 fetch
+    |-------------------------------------------------------
+    */
+    // fetch("http://api.bilibili.com/x/v2/reply?type=1&oid=38026503")
+    // fetch("https://api.bilibili.com/x/web-interface/archive/stat?aid=38026503")
+    // fetch('https://api.github.com/search/users?q=mobaiyuzedada')
+    // .then((response)=>{
+    //    return response.json();
+    // }).then(data=>{
+    //     console.log(data );
+    // })
+
+    /*
+    |-------------------------------------------------------
+    | jQuery get
+    |-------------------------------------------------------
+    */
+//    console.log($ );
+//    $.get('https://api.github.com/search/users?q=mobaiyuzedada')
+//    .then(data=>{
+//        console.log(data );
+//    })
+
+   /*
+    |-------------------------------------------------------
+    | jQuery ajax
+    |-------------------------------------------------------
+    */
+    // $.ajax({
+    //     method:'get',
+    //     url:'https://api.github.com/search/users?q=mobaiyuzedada',
+    // }).then(data=>{
+    //     console.log(data );
+    // })
+
+    // $('html').css("background","red");
+
+    /*
+    |-------------------------------------------------------
+    | Axios
+    |-------------------------------------------------------
+    | description
+    */
+   let ax=axios;
+   ax.get('https://api.github.com/search/users?q=mobaiyuzedada')
+    .then(data=>{
+        console.log(data );
+    })
+</script>

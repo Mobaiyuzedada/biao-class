@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表严肃 Demo</title>
+    <style>
+        :root {
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+input, button {
+  border: 1px solid;
+  width: 100%;
+  padding: .5em;
+  font-size: inherit;
+  margin-bottom: .5em;
+}
+
+button {
+  background: #000;
+  color: #fff;
+}
+
+main {
+  padding: .5em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40em;
+}
+
+.error-container {
+  font-size: 90%;
+  padding: .5em;
+  background: pink;
+  color: #c10;
+  margin-bottom: .5em;
+}
+
+input.error {
+  border: 2px solid #c10;
+  outline: 0;
+}
+
+[hidden] {
+  display: none;
+}
+    </style>
+</head>
+
+<body>
+    <main>
+        <form novalidate>
+            <h1>注册</h1>
+            <input type="text" name="username" placeholder="username" >
+            <input type="email" name="email" placeholder="email" >
+            <input type="text" name="phone" placeholder="phone" >
+            <input type="password" name="password" placeholder="password" >
+            <button>提交</button>
+        </form>
+    </main>
+    <script src="./validateUtil.js"></script>
+    <script>
+        // 公用元素
+        let form = document.querySelector('form');
+
+        // 公用数据
+        let data = {};
+
+        boot();
+
+        function boot() {
+            bindEvents();
+        }
+        function bindEvents() {
+            bindSubmit();
+        }
+        /**
+         * 绑定表单提交事件
+         */
+        function bindSubmit() {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                // 取到每一项input的值
+                data.username = form.querySelector('[name=username]').value;
+                data.email = form.querySelector('[name=email]').value;
+                data.phone = form.querySelector('[name=phone]').value;
+                data.password = form.querySelector('[name=password]').value;
+                console.log(data);
+            });
+        }
+
+    </script>
+</body>
+
+</html>
