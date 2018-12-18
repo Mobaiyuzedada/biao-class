@@ -104,14 +104,77 @@
     | 第七遍
     |-------------------------------------------------------
     */
-   let http=new XMLHttpRequest();
-   http.open('get',url);
-   http.send();
+//    let http=new XMLHttpRequest();
+//    http.open('get',url);
+//    http.send();
 
-   http.addEventListener('load',()=>{
-       let data=JSON.parse(http.responseText);
+//    http.addEventListener('load',()=>{
+//        let data=JSON.parse(http.responseText);
+//        console.log(data );
+//    })
+   
+
+   /*
+   |-------------------------------------------------------
+   | ES6 fetch
+   |-------------------------------------------------------
+   | description
+   */
+    // fetch(url).then(res=>{
+    //     return res.json();
+    // }).then(data=>{
+    //     console.log(data);
+    // })
+    /*
+   |-------------------------------------------------------
+   | ES6 fetch 第二遍
+   |-------------------------------------------------------
+   */
+//   let a,b;
+//     let http=new XMLHttpRequest();
+//     http.open('get',url);
+//     http.send();
+
+//     http.addEventListener('load',()=>{
+//         // console.log(http.responseText.toJSON());
+//         a=http.responseText;
+//         console.log(a );
+//     })
+//    fetch(url).then(res=>{
+//     //    b=res.json();
+//        console.log(res.json());
+//     //    return res.json();
+//    }).then(data=>{
+//        a=data;
+//    })
+    /*
+   |-------------------------------------------------------
+   | ES6 fetch 第三遍
+   |-------------------------------------------------------
+   */
+//    let http=new XMLHttpRequest();
+//    http.open('get',url);
+//    http.send();
+
+//    http.addEventListener('load',()=>{
+//        let data=JSON.parse(http.responseText);
+//        console.log(data );
+//    })
+
+//    fetch(url).then(res=>{
+//        return res.json();
+//    }).then(data=>{
+//        console.log(data );
+//    })
+  /*
+   |-------------------------------------------------------
+   | ES6 fetch 第四遍
+   |-------------------------------------------------------
+   */
+   fetch(url).then(res=>{
+       return res.json();
+   }).then(data=>{
        console.log(data );
    })
-   
 
 </script>
