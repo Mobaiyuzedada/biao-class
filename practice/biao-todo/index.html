@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>biao-todo</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        :root{
+            font-size: 14px;
+            font-family: sans-serif;
+        }
+        main{
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        body{
+            background: #eee;
+        }
+        form input{
+            width: 100%;
+            padding:.5em;
+        }
+        #todo-list .todo-item{
+            background: #fff;
+            padding:.5rem;
+            margin-bottom: 1rem;
+            margin-top: .5rem;
+            font-size: 0;
+            box-shadow: 0 0 2px rgba(0,0,0,.2);
+        }
+
+        .todo-item >.checkbox{
+            width:10%;
+        }
+        .todo-item >.title{
+            width: 60%;
+        }
+        .todo-item > .oprea{
+            width: 30%;
+        }
+        .todo-item >*{
+            font-size: 1rem;
+            display: inline-block;
+            vertical-align: middle;
+            padding:.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>表清单</h1>
+        <form id="todo-form">
+            <input type="search" name=title autofocus placeholder="如不可用请将appKey替换为自己的创建的appKey">
+            <button type="submit" hidden></button>
+        </form>
+        <div id="todo-list">
+
+        </div>
+    </main>
+</body>
+
+</html>
+<script src="./js/MockAPI.js"></script>
+<script src="./js/main.js"></script>
