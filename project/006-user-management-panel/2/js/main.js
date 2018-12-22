@@ -8,7 +8,7 @@
     let tbody = elTable.querySelector('tbody');
     let $list;
     let currentId;
-    let inputs = elForm.querySelectorAll('input');
+    let inputs=elForm.querySelectorAll('input');
 
 
     boot();
@@ -38,10 +38,8 @@
             data.email = elForm.querySelector('[name=email').value;
             data.phone = elForm.querySelector('[name=phone]').value;
             data.balance = elForm.querySelector('[name=balance]').value;
-            if (currentId) {
+            if (currentId)
                 update(currentId, data);
-                currentId = null;
-            }
             else
                 create(data);
 
@@ -63,8 +61,8 @@
 
 
 
-    function update(id, row) {
-        api('user/update', { id, ...row }, res => {
+    function update(id,row) {
+        api('user/update',{id,...row},res=>{
             read();
             elForm.reset();
         })
@@ -80,7 +78,7 @@
     function read() {
         api('user/read', null, res => {
             $list = res.data;
-            console.log($list);
+            console.log($list );
             render($list);
             // console.log($list);
         });
@@ -92,8 +90,8 @@
             tr.innerHTML = `
             <td>${it.username}</td>
             <td>${it.email}</td>
-            <td>${it.phone||'无'}</td>
-            <td>${it.balance||'无'}</td>
+            <td>${it.phone}</td>
+            <td>${it.balance}</td>
             <td class="opera"><button class="my-btn update">更新</button><button class="my-btn del">删除</button></td>
             `
             tbody.appendChild(tr);
@@ -103,12 +101,14 @@
                 let et = e.target;
                 if (et.classList.contains('del'))
                     del(it.id);
-                if (et.classList.contains('update')) {
-                    currentId = it.id;
-                    inputs.forEach(input => {
-                        input.value = it[input.name];
+                if (et.classList.contains('update')){
+                    currentId=it.id;
+                    inputs.forEach(item=>{
+                        item.value=it[item.name];
                     })
                 }
+                    
+
             })
             // let delBtn = tr.querySelector('.del');
             // console.log(delBtn);

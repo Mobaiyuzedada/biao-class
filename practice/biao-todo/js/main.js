@@ -127,6 +127,7 @@
 
             if (currentId) {
                 update(currentId, {title:val});
+                currentId=null;
                 console.log( currentId);
             }
             else
