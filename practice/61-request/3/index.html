@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Request</title>
+</head>
+
+<body>
+    <h1>Yo</h1>
+</body>
+
+</html>
+<script src="https://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
+<script>
+    let url = 'https://api.github.com/search/users?q=yo';
+    // let http = new XMLHttpRequest();
+
+
+    // $('html').on('click', $ => {
+    //     http.open('get', url);
+    //     http.send();
+
+    //     http.addEventListener('load', () => {
+    //         let data = JSON.parse(http.responseText);
+    //         console.log(data);
+    //     })
+
+    // })
+
+
+    // http.addEventListener('load',r=>{
+    //     let data=JSON.parse(http.responseText);
+    //     console.log(data );
+    // })
+
+    // $('h1').on('click', () => {
+    //     fetch(url).then(r => {
+    //         return r.json();
+    //     }).then(data => {
+    //         console.log(data);
+    //     })
+    // })
+    // let http=new XMLHttpRequest();
+    // http.open('get',url);
+    // http.send();
+
+    // http.addEventListener('load',$=>{
+    //     console.log( JSON.parse(http.responseText));
+    // });
+
+    // fetch(url).then(r=>{
+    //     return r.json();
+    // }).then(data=>{
+    //     return data
+    // }).then(b=>{
+    //     console.log(b);
+    // })
+
+    // $.ajax({
+    //     method:'get',
+    //     url:url,
+    // }).then(data=>{
+    //     console.log( data);
+    //     return data;
+        
+    // }).done(r=>{
+    //     console.log( r);
+    // })
+
+    // $.get(url).then(data=>{console.log( data);})
+
+
+    $.noConflict();
+    $=axios;
+    $.get(url).then(r=>{
+        console.log( r);
+        return r;
+    })
+</script>
