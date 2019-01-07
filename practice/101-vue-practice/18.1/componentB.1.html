@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .liked {
+            background: deeppink;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <like></like>
+    </div>
+    <template id="like-component-tpl">
+        <button :class={liked:isLiked} @click="toggle()">赞{{like_count}}</button>
+    </template>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    var like = {
+        template: '#like-component-tpl',
+        data: function () {
+            return {
+                like_count: 10,
+                isLiked: false,
+            }
+        },
+        methods: {
+            toggle: function () {
+                if (!this.isLiked)
+                    this.like_count++;
+                else
+                    this.like_count--;
+                this.isLiked = !this.isLiked;
+            }
+        },
+    }
+    var app = new Vue({
+        el: '#app',
+        components: {
+            'like': like,
+        }
+    })
+</script>

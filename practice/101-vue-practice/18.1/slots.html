@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slots(插槽)</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .card {
+            margin: 10px;
+            background: #eee;
+            padding: 10px;
+            color: #000;
+        }
+
+        .panel {
+            max-width: 300px;
+            border: 1px solid #999;
+            margin-bottom: 20px;
+        }
+
+        .panel>* {
+            padding: 15px;
+        }
+
+        .panel .title {
+            border-bottom: 1px solid #999;
+        }
+
+        .panel .footer {
+            border-top: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <panel>
+            <div slot="title">yo.</div>
+            <div slot="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio, recusandae ducimus
+                fugiat sapiente explicabo veniam fugit accusamus sunt debitis quo animi iusto voluptate exercitationem
+                mollitia. Praesentium ratione quidem fugit exercitationem?</div>
+        </panel>
+        <panel>
+            <div slot="title">hei hei</div>
+            <div slot="content">嘿嘿嘿~</div>
+            <div slot="footer">想看我下面吗</div>
+        </panel>
+    </div>
+    <template id="panel-tpl">
+        <div class="panel">
+            <div class="title">
+                <slot name="title"></slot>
+            </div>
+            <div class="content">
+                <slot name="content"></slot>
+            </div>
+            <div class="footer">
+                <slot name="footer">更多信息</slot>
+            </div>
+        </div>
+    </template>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    var panel = {
+        template: `#panel-tpl`,
+
+    }
+    new Vue({
+        el: '#app',
+        components: {
+            'panel': panel,
+        }
+    })
+</script>

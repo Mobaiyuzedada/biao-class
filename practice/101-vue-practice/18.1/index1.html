@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div>
+            <input type="text" v-model="name">
+            <span>你的名字是{{name}}</span>
+        </div>
+        <div>
+            <input type="text" v-model="age">
+            <span>你的年龄是{{age}}</span>
+        </div>
+        <div>
+            <input type="text" v-model="gender">
+            <span v-show="gender">你的性别是{{gender}}</span>
+        </div>
+        <div>
+            <input type="text" v-model="gender">
+            <span v-if="gender">你的性别是{{gender}}</span>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    let data = {
+        name: 'A',
+        age: 18,
+        gender: null,
+    }
+    
+    var app = new Vue({
+        el: '#app',
+        data: data,
+    })
+</script>

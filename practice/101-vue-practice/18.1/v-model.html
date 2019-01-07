@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <!-- <label>
+            男
+            <input v-model="gender" value="male" type="checkbox">
+        </label>
+        <label>
+            女
+            <input v-model="gender" value="female" type="checkbox">
+        </label> -->
+        <!-- <textarea v-model=article></textarea>
+        {{article}} -->
+        <div>你来自哪里</div>
+        <select v-model=from>
+            <option  value="1">a</option>
+            <option  value="2">b</option>
+        </select>
+        {{from}}
+        <div>你要去哪里</div>
+        <select v-model=go multiple>
+            <option value="1">a</option>
+            <option value="2">b</option>
+            <option value="1">c</option>
+            <option value="4">d</option>
+            <option value="5">e</option>
+            <option value="6">f</option>
+            <option value="7">g</option>
+            <option value="8">h</option>
+            <option value="9">i</option>
+        </select>
+        {{go}}
+    </div>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    let data = {
+
+    }
+
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            gender:['male'],
+            article:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam nisi corrupti et voluptas nulla repellat est dolor, ullam itaque doloremque ipsam laborum architecto temporibus fugiat deserunt veniam minima voluptatum corporis.",
+            from:null,
+            go:[],
+        },
+    })
+</script>

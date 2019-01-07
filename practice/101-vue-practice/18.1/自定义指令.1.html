@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .card {
+            margin: 10px;
+            background: #eee;
+            padding: 10px;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <tip></tip>
+        <tip></tip>
+
+    </div>
+
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    Vue.directive('pin', function (el, binding) {
+        var pinned = binding.value;
+        var $el = el;
+        if (pinned) {
+            el.style.position = 'fixed';
+            el.style.top = '100px';
+            el.style.left = '10px';
+            el.style.background = "pink";
+            el.style.color = "#fff";
+            el.style.maxWith = "300px";
+        } else {
+            el.style = $el.style;
+        }
+    })
+    Vue.component('tip', {
+        template: `
+        <div>
+            <textarea cols="20" rows="0" v-model="text"></textarea>
+            <div class="card" v-pin="pinned">
+                <button @click="pinned=!pinned">订住/取消</button><br>
+                {{text}}
+            </div>
+        </div>
+        `,
+        data: function () {
+            return {
+
+                pinned: false,
+                text: '',
+            };
+        },
+    })
+    new Vue({
+        el: '#app',
+
+    })
+</script>

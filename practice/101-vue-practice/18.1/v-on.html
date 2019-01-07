@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+        .active:hover{
+
+            text-decoration:underline #c10;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+      <button v-on='{mouseenter:onEnter,mouseleave:onLeave}' @click="onClick">点我</button>
+      <form @keyup.enter=onEnter @submit.prevent="onSubmit">
+            <input type="text">
+            <button type="submit">提交</button>
+      </form>
+    </div>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    let data = {
+        url:'https://baidu.com',
+        img:'https://www.dummyimage.com/200x200',
+        klass:'clickme',
+        isActive:true,
+    }
+    let methods= {
+        onClick:_alert,
+        onEnter:enter,
+        onLeave(){
+            alert('leave');
+        },
+        onSubmit(){
+            console.log('submited' );
+        },
+        keyup(){
+            console.log(e.target );
+        }
+    }
+    function enter(){
+        alert('entered');
+    }
+    function _alert(){
+        alert('点击了');
+    }
+    var app = new Vue({
+        el: '#app',
+        data: data,
+        methods,
+    })
+</script>

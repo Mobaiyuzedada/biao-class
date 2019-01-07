@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任意-平行组件通信</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <a1></a1>
+        <a2></a2>
+
+    </div>
+    <template id="a1-tpl">
+        <div>
+            我说<input type="text" @keyup="on_change" v-model="i_said">{{i_said}}
+        </div>
+    </template>
+    <template id="a2-tpl">
+        <div>
+            a1说{{a1_said}}
+        </div>
+    </template>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    var Event = new Vue();
+    Vue.component('a1', {
+        template: "#a1-tpl",
+        data: function () {
+            return {
+                i_said: '',
+            }
+        },
+        methods: {
+            on_change: function () {
+                Event.$emit('a1-said-sth', this.i_said);
+            }
+        }
+    })
+    Vue.component('a2', {
+        template: '#a2-tpl',
+        data: function () {
+            return {
+                a1_said: '',
+            };
+        },
+        mounted: function () {
+            var $this = this;
+            Event.$on('a1-said-sth', function (data) {
+                console.log( data);
+                console.log(Event===$this);
+                $this.a1_said = data;
+            })
+        }
+    })
+    new Vue({
+        el: '#app',
+    })
+
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父子通信</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+
+        <myAlert msg='yooo'></myAlert>
+    </div>
+    <template id="alert-tpl">
+        <div>
+            修改弹出框内容<input type="text" v-model.lazy="msg">
+            <button @click='myAlert()'>点我</button>
+        </div>
+    </template>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    var myalert = {
+        template: '#alert-tpl',
+        data: function () {
+            return {
+                msg:this.msg,
+            }
+        },
+        // props: ['msg'],
+        methods: {
+            myAlert: function () {
+                alert(this.msg);
+            }
+        },
+    }
+
+    var app = new Vue({
+        el: '#app',
+        components: {
+            'myalert': myalert,
+        }
+    })
+</script>

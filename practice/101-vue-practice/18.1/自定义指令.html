@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+        .card{
+            margin:10px;
+            background:#eee;
+            padding:10px;
+            color:#000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <!-- <div class="card1" v-pin="card1.pinned">
+            <button @click="card1.pinned=!card1.pinned">钉住/取消</button>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita doloremque
+            voluptate optio, repellat incidunt ipsum exercitationem tempore recusandae culpa officia aperiam hic? Id
+            dignissimos quia non quibusdam cumque nulla expedita.</div>
+        <div class="card2" v-pin="card2.pinned">
+            <button @click="card2.pinned=!card2.pinned">钉住/取消</button>Lorem ipsum dolor sit amet, consectetur
+            adipisicing elit. Expedita doloremque
+            voluptate optio, repellat incidunt ipsum exercitationem tempore recusandae culpa officia aperiam hic? Id
+            dignissimos quia non quibusdam cumque nulla expedita.</div> -->
+        <div class="card" v-pin="pinned">
+            <button @click="pinned=!pinned">钉住/取消</button>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita doloremque
+            voluptate optio, repellat incidunt ipsum exercitationem tempore recusandae culpa officia aperiam hic? Id
+            dignissimos quia non quibusdam cumque nulla expedita.</div>
+        <div class="card" v-pin="pinned">
+            <button @click="pinned=!pinned">钉住/取消</button>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita doloremque
+            voluptate optio, repellat incidunt ipsum exercitationem tempore recusandae culpa officia aperiam hic? Id
+            dignissimos quia non quibusdam cumque nulla expedita.</div>
+        <div class="card" v-pin="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita doloremque
+            voluptate optio, repellat incidunt ipsum exercitationem tempore recusandae culpa officia aperiam hic? Id
+            dignissimos quia non quibusdam cumque nulla expedita.</div>
+        <div class="card" v-pin="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita doloremque
+            voluptate optio, repellat incidunt ipsum exercitationem tempore recusandae culpa officia aperiam hic? Id
+            dignissimos quia non quibusdam cumque nulla expedita.</div>
+        <div class="card" v-pin="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita doloremque
+            voluptate optio, repellat incidunt ipsum exercitationem tempore recusandae culpa officia aperiam hic? Id
+            dignissimos quia non quibusdam cumque nulla expedita.</div>
+        <div class="card" v-pin="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita doloremque
+            voluptate optio, repellat incidunt ipsum exercitationem tempore recusandae culpa officia aperiam hic? Id
+            dignissimos quia non quibusdam cumque nulla expedita.</div>
+        <div class="card" v-pin="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita doloremque
+            voluptate optio, repellat incidunt ipsum exercitationem tempore recusandae culpa officia aperiam hic? Id
+            dignissimos quia non quibusdam cumque nulla expedita.</div>
+        <div class="card" v-pin="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita doloremque
+            voluptate optio, repellat incidunt ipsum exercitationem tempore recusandae culpa officia aperiam hic? Id
+            dignissimos quia non quibusdam cumque nulla expedita.</div>
+
+    </div>
+    <template id="a1-tpl">
+        <div>
+            我说<input type="text" @keyup="on_change" v-model="i_said">{{i_said}}
+        </div>
+    </template>
+    <template id="a2-tpl">
+        <div>
+
+        </div>
+    </template>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    Vue.directive('pin', function (el, binding) {
+        console.log(el.style);
+        let $el = el;
+        pinned = binding.value;
+        if (pinned) {
+            el.style.position = 'fixed';
+            el.style.top = '100px';
+            el.style.left = '10px';
+            el.style.background = "#444";
+            el.style.color = "red";
+            el.style.maxWidth = "300px";
+        } else {
+            el.style = $el.style;
+        }
+
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            // card1: {
+            //     pinned: false,
+            // },
+            // card2: {
+            //     pinned: false,
+            // }
+            pinned: false,
+        }
+    })
+</script>

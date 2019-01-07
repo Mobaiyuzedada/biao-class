@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mixin(混合)</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .card {
+            margin: 10px;
+            background: #eee;
+            padding: 10px;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <popup></popup>
+        <tooltip></tooltip>
+    </div>
+    <template id="tpl">
+        <div>
+            <button @click="toggle">Popup</button>
+            <div v-if="visible">
+                <span @click="hide">X</span>
+                <h4>title</h4>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error ipsa nemo quo, minus modi sit dolorem
+                reprehenderit ut, veniam itaque quam perferendis nobis sapiente aperiam natus distinctio maxime
+                exercitationem aliquid.
+            </div>
+        </div>
+    </template>
+    <template id="tpl2">
+        <div>
+            <span @mouseenter="show" @mouseleave="hide">x</span>
+            <div v-if="visible">xxx</div>
+        </div>
+    </template>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    var base_show = {
+        methods: {
+            hide() {
+                this.visible = false;
+            },
+            toggle() {
+                this.visible = !this.visible;
+            },
+            show() {
+                this.visible = true;
+            }
+        },
+        data: function () {
+            return {
+                visible: false,
+            };
+        },
+    }
+    Vue.component('popup', {
+        template: '#tpl',
+        mixins: [base_show],
+    })
+    Vue.component('tooltip', {
+        template: '#tpl2',
+        mixins: [base_show],
+        data: function () {
+            return {
+                visible: true,
+            }
+        }
+
+    })
+    new Vue({
+        el: '#app',
+        mixins: [base_show],
+    })
+</script>

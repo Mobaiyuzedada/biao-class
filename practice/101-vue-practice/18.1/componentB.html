@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <my-btn></my-btn>
+        <my-btn1></my-btn1>
+    </div>
+    <div id="app1" v-cloak>
+        <my-btn></my-btn>
+        <!-- <my-btn1></my-btn1> -->
+    </div>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    //定义到全局
+    Vue.component('my-btn', {
+        template: '<button @click="on_click">弹弹弹</button>',
+        methods: {
+            on_click: function () {
+                alert('yo');
+            },
+        }
+    })
+    var my_btn1 = {
+
+        template: '<button @click="on_click1">qqq</button>',
+        methods: {
+            on_click1: function () {
+                alert('yo1');
+            }
+        },
+    }
+    new Vue({//定义到局部的写法
+        el: '#app',
+        components: {
+            'my-btn1': my_btn1,
+        }
+    })
+
+    new Vue({
+        el: '#app1',
+    })
+</script>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>comnputed</title>
+    <style>
+        :root{
+            font-size: 14px;
+            font-family: sans-serif;
+            line-height: 1.2;
+        }
+        [v-cloak] {
+            display: none;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        th{
+            border-bottom: 2px solid #000;
+        }
+        td{
+            border-bottom: 1px solid rgba(0,0,0,.4);
+        }
+        input{
+            border:none;
+            text-align: center;
+        }
+        input:focus{
+            border:none;
+            outline: 0;
+        }
+        td:nth-child(even){
+            padding:0px 0px 0px 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <table>
+            <thead>
+                <th>学科</th>
+                <th>分数</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>语文</td>
+                    <td><input type="text" v-model="yuwen"></td>
+                </tr>
+                <tr>
+                    <td>数学</td>
+                    <td><input type="text" v-model="math"></td>
+                </tr>
+                <tr>
+                    <td>英语</td>
+                    <td><input type="text" v-model="english"></td>
+                </tr>
+                <tr>
+                    <td>总分</td>
+                    <td>{{sum}}</td>
+                </tr>
+                <tr>
+                    <td>平均分</td>
+                    <td>{{aver}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            yuwen: 80,
+            math: 90,
+            english: 100,
+        },
+        computed: {
+            sum: function () {
+                let sum = parseFloat(this.math) + parseFloat(this.yuwen) + parseFloat(this.english);
+                if (!sum && sum !== 0)
+                    sum = null;
+
+                return sum;
+            },
+            aver: function () {
+                return Math.round(this.sum / 3);
+            }
+        }
+    })
+
+
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if v-else</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div v-if="role==='admin'||role==='super_admin'">管理员你好</div>
+        <div v-else-if="role==='hr'">待查看简历<br>...</div>
+        <div v-else>这里什么都没有</div>
+    </div>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            role:'super_admin'
+        }
+    })
+
+
+    
+    
+</script>

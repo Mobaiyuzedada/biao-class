@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子父通信</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <show-balance></show-balance>
+    </div>
+    <template id="show-btn-tpl">
+        <button @click="show_balance()">显示余额</button>
+    </template>
+    <template id="show-balance-tpl">
+        <div>
+            <show-btn @show-balance="isShow">显示余额</show-btn>
+            <div v-if="show">余额为¥98</div>
+        </div>
+    </template>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<!-- 都定义为全局组件 -->
+<!-- <script>
+
+    //父组件
+    Vue.component('show-balance', {
+        template: `
+        <div>
+            <show-btn @show-balance="isShow"></show-btn>
+            <div v-if="show">余额为¥98</div>
+        </div>
+        `,
+        data: function () {
+            return {
+                show: false,
+            }
+        },
+        methods: {
+            isShow(data) {
+                this.show = !this.show;
+                console.log(data);
+            },
+        },
+    })
+
+    //子组件
+    Vue.component('show-btn', {
+        template: '#show-btn-tpl',
+        methods: {
+            show_balance: function () {
+                this.$emit('show-balance', { a: 1, b: 2 })
+            }
+        },
+    })
+    new Vue({
+        el: '#app',
+    })
+</script> -->
+<!-- 都定义为局部组件 -->
+<script>
+    var son = {
+        template: '#show-btn-tpl',
+        methods: {
+            show_balance() {
+                this.$emit('show-balance', { a: 1, b: 2 });
+            }
+        }
+
+    }
+    var father = {
+        template: '#show-balance-tpl',
+        methods: {
+            isShow(data) {
+                this.show = !this.show;
+                console.log(data );
+            }
+        },
+        data: function () {
+            return {
+                show: false,
+            }
+        },
+        components: {
+            'show-btn': son,
+        }
+    }
+    new Vue({
+        el: '#app',
+        components: {
+            'show-balance': father,
+        }
+    })
+
+</script>

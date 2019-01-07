@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任意-平行组件通信</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <a1></a1>
+        <a2></a2>
+
+    </div>
+
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+
+    var Event = new Vue();
+
+    Vue.component('a1', {
+        template: `<div>我说:<input @keyup="on_change" type="text" v-model.lazy="i_said"></div> `,
+        data: function () {
+            return {
+                i_said: '',
+            }
+        },
+        methods: {
+            on_change: function () {
+                Event.$emit('a1-said-something', this.i_said)
+            }
+        },
+    });
+    Vue.component('a2', {
+        template: `
+            <div>
+               a1说: {{a1_said}}
+            </div>
+        `,
+        data: function () {
+            return {
+                a1_said: '',
+            };
+        },
+        mounted: function () {
+            var $this=this;
+            Event.$on('a1-said-something', function (data) {
+                console.log($this );
+                console.log(this );
+                $this.a1_said = data;
+
+            })
+        }
+    });
+
+    new Vue({
+        el: '#app',
+
+    })
+</script>

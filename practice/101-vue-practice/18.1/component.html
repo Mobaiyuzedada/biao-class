@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <!-- <ol>
+            <todo-item
+            v-for="item in List"
+            v-bind:todo='item'
+            v-bind:key='item.id'>
+
+            </todo-item>
+        </ol> -->
+        <p>{{foo}}</p>
+        <button @click="foo='baz'">Change it</button>
+    </div>
+</body>
+
+</html>
+<script src="C:\Users\28933\Desktop\biao-class\practice\public_js\vue\vue.js"></script>
+<script>
+    // Vue.component('todo-item', {
+    //     props: ['todo'],
+    //     template: '<li>{{todo.text}}</li>'
+    // })
+
+    // var app = new Vue({
+    //     el: '#app',
+    //     data: {
+    //         List: [
+    //             { id: 0, text: '蔬菜' },
+    //             { id: 1, text: '奶酪' },
+    //             { id: 2, text: '随便其它什么' }
+    //         ]
+    //     }
+    // })
+    var obj = {
+        foo: 'bar'
+    }
+    // Object.freeze(obj);
+    var vm = new Vue({
+        el: '#app',
+        data: obj,
+        created: function () {
+            // `this` 指向 vm 实例
+            console.log('a is: ' + this.foo)
+        }
+    })
+</script>
