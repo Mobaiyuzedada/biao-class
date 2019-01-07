@@ -1,0 +1,16 @@
+   <div class="main container">
+    <form action @submit.prevent="onSubmit">
+      <h2>添加/更新文章</h2>
+      <div class="input-control">
+        <label>标题</label>
+        <input type="text" v-model="current.title">
+      </div>
+      <div class="input-control">
+        <label>内容</label>
+        <textarea v-model="current.content" cols="30" rows="10"></textarea>
+      </div>
+      <div class="input-control">
+        <button type="submit">提交</button>
+      </div>
+    </form>
+  </div>

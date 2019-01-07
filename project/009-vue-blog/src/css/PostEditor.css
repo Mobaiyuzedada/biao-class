@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+button {
+    background: #fff;
+    border: 1px solid gray;
+    cursor: pointer;
+    padding: 6px 0px 5px 0px;
+}
+
+button:focus {
+    border: 1px solid gray;
+    outline: none;
+    cursor: default;
+}
+
+body {
+    background: #eee;
+}
+
+/* 
+.container {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.main form>* {
+    margin: 10px 0;
+}
+
+form input,
+form button[type=submit],
+form textarea {
+    width: 100%;
+} */
+
+.post-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+}
+
+div.post-editor .title {
+    font-size: 20px;
+    margin: 0;
+    padding: 4px 4px 4px 10px;
+    color: #fff;
+    font-weight: 400;
+    background-color: #036;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+
+.card {
+    background-color: #fff;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(20px);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 0px;
+    padding-bottom: 1px;
+}
+
+div.post-editor .container {
+    padding: 1em;
+}
+
+div.post-editor input.short {
+    width: 2.5em;
+}
+
+div.post-editor button.tag {
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+div.post-editor button {
+    font-size: 12px;
+    margin-right: 2px;
+}
+
+table.form-table {
+    width: 100%;
+    border-spacing: 10px;
+}
+
+table.form-table td.label {
+    width: 90px;
+    text-align: right;
+    vertical-align: top;
+}
+
+table.form-table input.full {
+    width: 100%;
+}
+
+table.form-table input:focus,
+textarea:focus {
+    outline: none;
+}
+
+table.form-table input {
+    padding: 2px;
+}
+
+table.form-table input,
+textarea {
+    border: none;
+    border-radius: 0;
+    border: 1px solid #888888;
+    background: rgba(0, 0, 0, 0);
+}
+
+table.form-table textarea.content {
+    width: 100%;
+    height: 50vh;
+    line-height: 1rem;
+    font-size: 1rem;
+    resize: vertical;
+}
