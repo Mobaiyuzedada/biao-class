@@ -3,9 +3,9 @@
     <h1>近期文章</h1>
     <div class="post-list">
       <div class="post" v-for="post in PostList">
-        <a href="#">
+        <router-link :to="'/post/'+post.id">
           <h3>{{post.title}}</h3>
-        </a>
+        </router-link>
         <div class="preview">{{post.content}}</div>
       </div>
     </div>
@@ -32,3 +32,7 @@ export default {
   }
 };
 </script>
+
+<style>
+  
+</style>

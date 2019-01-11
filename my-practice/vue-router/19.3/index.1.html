@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/">首页</router-link>
+        <router-link to="/admin">管理页</router-link>
+        <router-view></router-view>
+
+    </div>
+</body>
+<template id='home'>
+    <div>
+        <h1>首页</h1>
+    </div>
+</template>
+<template id='admin'>
+    <div>
+        <router-link to="/admin/about">about</router-link>
+        <router-view></router-view>
+    </div>
+</template>
+<template id='about'>
+    <div>
+        <h1>This is about page</h1>
+        <router-view></router-view>
+    </div>
+</template>
+<template id='user'>
+    <div>
+        <h1>This is {{$route.params.name}} page</h1>
+        <h3>And this page is blog to {{$route.query}}</h3>
+    </div>
+</template>
+
+</html>
+
+<script src="../lib/vue.js"></script>
+<script src="../lib/vue-router.js"></script>
+<script>
+    var routes = [
+        {
+            path: '/',
+            component: {
+                template: '#home'
+            }
+        }, {
+            path: '/admin',
+            component: {
+                template: '#admin'
+            },
+            children: [
+                {
+                    path: 'about',
+                    component: {
+                        template: '#about'
+                    },
+                    children: [
+                        {
+                            path: ':name',
+                            component: {
+                                template: '#user'
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+
+    var router = new VueRouter({
+        routes
+    })
+
+    new Vue({
+        el: '#app',
+        router,
+        data: {
+            username: 'whh'
+        }
+    })
+</script>

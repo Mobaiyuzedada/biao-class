@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MockAPI 测试</title>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
 <script src="./MockAPI.js"></script>
+<script>
+    var d = [];
+    // test();
+    // function test() {
+    //     for (let i = 1; i < 100; i++) {
+    //         api('test/create', { test: i })
+    //     }
+    // }
+    api('test/read?limit=50', null, r => {
+        r.data.forEach(item => {
+            d.push(item);
+        })
+    })
+    api('test/read?limit=50&page=2', null, r => {
+        r.data.forEach(item => {
+            d.push(item);
+        })
+        console.log( d);
+    });
+
+</script>

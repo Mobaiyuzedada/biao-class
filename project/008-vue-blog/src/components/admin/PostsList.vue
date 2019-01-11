@@ -9,18 +9,15 @@
               <th>标题</th>
               <th>预览</th>
               <th>id</th>
-              <th>操作</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="it in list">
-              <td>{{it.title}}</td>
-              <td>{{it.content}}</td>
-              <td>{{it.id}}</td>
-              <td class="operation">
-                <button>删除</button>
-                <button>更新</button>
+              <td>
+                <router-link @click="update(it)" :to="'/admin/post/edit/'+it.id">{{it.title}}</router-link>
               </td>
+              <td :title='it.content'>{{it.content|cut}}</td>
+              <td>{{it.id}}</td>
             </tr>
           </tbody>
         </table>
@@ -41,9 +38,14 @@ export default {
   mounted() {
     this.read();
   },
+  filters: {
+    cut(value) {
+      return value.length < 12 ? value : value.substring(0, 12) + "...";
+    }
+  },
   methods: {
     read() {
-      api("post/read").then(r => {
+      api("post/read?limit=50").then(r => {
         this.list = r.data;
       });
     }

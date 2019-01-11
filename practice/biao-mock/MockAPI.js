@@ -11,10 +11,10 @@
 
     //可以使用api.get(...)来调用get方法
     api.get = get;//这里有一个很神奇的事情。就是不论什么等于get,开发者工具里都不会显示f get(),而是直接f
-    console.log(window.api);
+    // console.log(window.api);
 
     //在http://mock.biaoyansu.com/app/new创建的appKey[应用名]
-    let appKey = 'b3517564c86dc9b0c12528833a4ce1a708faeb2b4fa6700c93df3657cafa05d8';
+    let appKey = '7e6bea229695a1fa61255e8dd12a6ac7132d6f5d64ed4f00ae4b9956b9dc0148';
 
     /**
      * 
@@ -24,7 +24,7 @@
      * @param  onError   失败后的回调
      */
     function post(action, data, onSuccess, onError) {
-        console.log('运行了post' );
+        console.log('运行了post');
         send('post', action, data, onSuccess, onError);
     }
     /**
@@ -34,19 +34,20 @@
      * @param  onError 同上
      */
     function get(action, onSuccess, onError) {
-        console.log('运行了get' );
+        console.log('运行了get');
         send('get', action, data, onSuccess, onError);
     }
 
     function send(method, action, data, onSuccess, onError) {
         let http = new XMLHttpRequest();
-        let baseUrl = 'http://mock.biaoyansu.com/api/1/';
+        let baseUrl = 'https://mock.biaoyansu.com/api/1/';
         let timestamp = (new Date).getTime();
-        console.log('timestamp:', timestamp);
-        console.log('baseUrl+action:', baseUrl + action);
+        // console.log('timestamp:', timestamp);
+        // console.log('baseUrl+action:', baseUrl + action);
 
 
-
+        console.log(baseUrl + action);
+        // action += '?limit=50'
         http.open(method, baseUrl + action);
 
         http.setRequestHeader('BIAO-MOCK-APP-KEY', appKey);
@@ -55,8 +56,8 @@
         http.setRequestHeader('Content-Type', "application/json");
 
         let json = JSON.stringify(data);
-        console.log('http:', http.responseText);
-        console.log('json', json);
+        // console.log('http:', http.responseText);
+        // console.log('json', json);
 
         http.send(json);
 
@@ -75,8 +76,12 @@
      * @param  timestamp 
      */
     function sign(appKey, timestamp) {
-        console.log('btoa(appKey+timestamp):', btoa(appKey + timestamp));
+        // console.log('btoa(appKey+timestamp):', btoa(appKey + timestamp));
         return btoa(appKey + timestamp);
     }
 
 })();
+
+
+
+

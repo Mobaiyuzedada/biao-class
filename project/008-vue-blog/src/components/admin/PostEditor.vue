@@ -20,9 +20,13 @@
             <tr>
               <td></td>
               <td>
-                <button>更新文章</button>
-                <button @click="create">发布文章</button>
-                <button>删除文章</button>
+                <button v-if="id" @click="updatePost">更新文章</button>
+                <button v-else @click="createPost">发布文章</button>
+                <button
+                  v-if="id!==''"
+                  style="float: right; margin-right: 28px;background:#c10;color:#fff;"
+                  @click="deletePost"
+                >删除文章</button>
               </td>
             </tr>
           </tbody>
@@ -39,32 +43,50 @@ export default {
   data() {
     return {
       current: {},
+      id: this.$route.params.id
     };
   },
   mounted() {
-    this.read();
+    if (this.id) {
+      this.read(this.id);
+    }
   },
   methods: {
     onSubmit() {},
-    create() {
+    createPost() {
       api("post/create", this.current).then(r => {
-        console.log(r); //api中return的Promise
+        // console.log(r); //api中return的Promise
         if (r.success) {
-          this.read();
+          // this.read();
           this.resetCurrent();
+          alert("创建成功！");
         }
       });
     },
-    update() {
-      api("post/update", this.current).then(r => {
-        console.log(r); //api中return的Promise
-        if (r.sucess) this.read();
+    updatePost() {
+      console.log(this.current);
+      api("post/update", { id: this.id, ...this.current }).then(r => {
+        // console.log(r);
+        if (r.success) {
+          this.resetCurrent();
+          alert("更新成功！");
+        }
       });
     },
-    remove() {},
-    read() {
-      api("post/read").then(r => {
-        this.list = r.data;
+    deletePost() {
+      if (!confirm("确定要删除文章？此操作不可撤销。")) {
+        return;
+      }
+      api("post/delete", { id: this.id }).then(r => {
+        if (r.success) {
+          window.history.go(-1);
+          alert("删除成功！");
+        }
+      });
+    },
+    read(id) {
+      api("post/find", { id }).then(r => {
+        this.current = r.data;
       });
     },
     resetCurrent() {
