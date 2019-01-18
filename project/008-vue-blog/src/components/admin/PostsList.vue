@@ -14,9 +14,9 @@
           <tbody>
             <tr v-for="it in list">
               <td>
-                <router-link @click="update(it)" :to="'/admin/post/edit/'+it.id">{{it.title}}</router-link>
+                <router-link :to="'/admin/post/edit/'+it._id">{{it.title}}</router-link>
               </td>
-              <td :title='it.content'>{{it.content|cut}}</td>
+              <td :title="it.content">{{it.content|cut}}</td>
               <td>{{it.id}}</td>
             </tr>
           </tbody>
@@ -27,6 +27,7 @@
 </template>
 <script>
 import api from "../../api/mock.js";
+import $ from "axios";
 
 export default {
   data() {
@@ -45,8 +46,20 @@ export default {
   },
   methods: {
     read() {
-      api("post/read?limit=50").then(r => {
+      //mock接口
+      // api("post/read?limit=50").then(r => {
+      //   this.list = r.data;
+      //   console.log( this.list);
+      // });
+      //mongodb接口
+      
+      $({
+        url: "/api/api/read",
+        method: "get"
+      }).then(r => {
+        console.log(r.data);
         this.list = r.data;
+        console.log( this.list);
       });
     }
   }

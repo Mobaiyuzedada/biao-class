@@ -1,0 +1,15 @@
+    div.post-list.card
+        h3.title 文章列表
+        div.container: table
+            thead: tr
+                th 标题
+                th 预览
+                th id
+            tbody: tr(v-for="post in posts")
+                td.title: span: router-link(:to="'/admin/post/edit'+post._id") {{post.title}}
+                td(:title="post.content") {{post.content|cut}}
+                td.id {{post._id}}
+
+
+
+<p>                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eum cupiditate perspiciatis ducimus voluptatem, officiis nam rem, asperiores dolorum, deserunt provident inventore alias. Corrupti, porro. Autem possimus tempora laudantium praesentium.</p>

@@ -1,0 +1,63 @@
+@import './color.scss';
+
+body{
+    font-family:"Noto Sans CJK", "Noto Sans CJK SC", "Source Han Sans", "Source Han Sans CN", "思源黑体", "思源黑体 CN", "WenQuanYi Micro Hei", "Microsoft Yahei UI", "Microsoft Yahei", "微软雅黑", "SimHei", sans-serif;
+}
+h1,h2,h3,h4,h5{
+    font-weight: 500;
+}
+
+h1{font-size: 26px;}
+h2{font-size: 24px;}
+h3{font-size: 20px;}
+h4{font-size: 18px;}
+h5{font-size: 16px;}
+
+button,.button{
+    text-align: center;
+    padding:.4em 1.4em .4em 1.4em;
+    background:$button_bgcolor;
+    border:none;
+    color:$button_txcolor;
+    border-radius:2px;
+    box-shadow:0 0 4px rgba(white,.5);
+    font-size: 14px;
+    transition: all ease .2s;//ease将transition的四个过渡属性合并到一个属性，过渡为.2s这里主要是阴影过渡
+    cursor: pointer;
+}
+button:hover,.button:hover{
+    background:mix($button_bgcolor,$mix_color,80%);
+}
+button:focus,.button:focus{
+    outline: none;
+}
+article img{}
+
+a,a:link,a:visited,a:active,a:hover{//link为未被选择过得链接样式
+    color:$link_color;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    word-break: break-all;//恰当字点处换行
+}
+a.button{}//更多按钮。暂时用不到
+a:not(.button):hover{
+    border-bottom: 1px solid black;
+}
+
+.card{
+    background-color: $card_bg_color;
+    box-shadow: 1px 1px 3px $card_bg_color;
+    margin-top:15px;
+    margin-bottom: 15px;
+    padding-top: 0px;
+    padding-bottom: 1px;
+
+    .title{
+        margin:0;
+        padding:4px 4px 4px 10px;
+        color:$card_title_font_color;
+        background-color: $card_title_bg_color;
+        font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+    }
+}

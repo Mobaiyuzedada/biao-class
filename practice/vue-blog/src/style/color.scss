@@ -1,0 +1,17 @@
+//按钮的背景、字体颜色
+$button_bgcolor:#444;
+$button_txcolor:rgb(248, 245, 245);
+//用于混合的颜色
+$mix_color:#000;
+//链接颜色
+$link_color:#0366d6;
+//背景色
+$background_color:#eee;
+//卡片背景色
+$card_bg_color:rgba(199,237,204,.9);
+//卡片标题字体颜色
+$card_title_font_color:mix($card_bg_color,#333,60%);
+//卡片标题背景颜色
+$card_title_bg_color:mix($card_bg_color,lightgreen,30%);
+//主页字体颜色
+$font_color:#000;

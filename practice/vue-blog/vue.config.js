@@ -1,0 +1,36 @@
+module.exports={
+    //跨域配置
+    devServer:{
+        //port:xxxx//vue的启动端口
+        proxy:{
+            /**
+              此处的/api可以理解为代替下方的target,即原本发送的请求为target/xxx变为
+                /api/xxx,这里的xxx就是在express中定义的路由
+            */
+            '/api':{
+                target:'http://localhost:3000',
+                changeOrigin:true,//是否跨域
+                ws:true,
+                //官方文档没写，但不写会跨域失败
+                pathRewrite:{
+                    /*
+                      这里的api简单理解为改写上方'/api'名称，比如改为/user
+                      即原本发送到/api/xxx变为/user/xxx
+                      后面中的内容网上说是新的名称，但实测无效，只要改写前面^后的即可
+                      当然还有另外的一种方法，见下面注释
+                    */    
+                    '^/api':''
+                }
+                /* 和上面效果相同的写法
+                    '/api/*':{
+                        target:'http://localhost:3000',
+                        changeOrigin:true,
+                        ws:true,
+                        pathRewrite:{
+                            '^/api':'/user'
+                        }
+                */
+            }
+        }
+    }
+}

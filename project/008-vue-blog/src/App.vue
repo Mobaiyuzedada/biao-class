@@ -6,14 +6,13 @@
       <router-link to="/">首页</router-link>
       <router-link to="/admin">管理页</router-link>
       <!-- <router-link to="/admin/post/new">创建文章</router-link>
-      <router-link to="/admin/post">管理文章</router-link> -->
+      <router-link to="/admin/post">管理文章</router-link>-->
     </nav>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-
 </script>
 
 <style>

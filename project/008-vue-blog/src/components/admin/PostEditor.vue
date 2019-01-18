@@ -37,8 +37,10 @@
 </template>
 
 <script>
-import "../../css/PostEditor.css";
 import api from "../../api/mock";
+// import mon from "../../api/post.js";
+import $ from "axios";
+
 export default {
   data() {
     return {
@@ -48,28 +50,56 @@ export default {
   },
   mounted() {
     if (this.id) {
+      console.log(this.id);
       this.read(this.id);
     }
   },
   methods: {
     onSubmit() {},
     createPost() {
-      api("post/create", this.current).then(r => {
-        // console.log(r); //api中return的Promise
-        if (r.success) {
-          // this.read();
-          this.resetCurrent();
-          alert("创建成功！");
+      $({
+        // url: "http://localhost:3000/api/post",
+        url: "/api/post",
+        method: "post",
+        data: {
+          title: this.current.title,
+          content: this.current.content
         }
+      }).then(r => {
+        console.log(r.data);
       });
+
+      console.log(this.current);
+      // api("post/create", this.current).then(r => {
+      //   // console.log(r); //api中return的Promise
+      //   if (r.success) {
+      //     // this.read();
+      //     this.resetCurrent();
+      //     alert("创建成功！");
+      //   }
+      // });
     },
     updatePost() {
       console.log(this.current);
-      api("post/update", { id: this.id, ...this.current }).then(r => {
-        // console.log(r);
-        if (r.success) {
-          this.resetCurrent();
-          alert("更新成功！");
+      //mock接口
+      // api("post/update", { id: this.id, ...this.current }).then(r => {
+      //   // console.log(r);
+      //   if (r.success) {
+      //     this.resetCurrent();
+      //     alert("更新成功！");
+      //   }
+      // });
+      //mongodb接口
+      $({
+        method: "post",
+        url: `/api/api/update/${this.id}`,
+        data: {
+          title: this.current.title,
+          content: this.current.content
+        }
+      }).then(r => {
+        if (r.status === 200) {
+          alert("更新成功");
         }
       });
     },
@@ -77,15 +107,34 @@ export default {
       if (!confirm("确定要删除文章？此操作不可撤销。")) {
         return;
       }
-      api("post/delete", { id: this.id }).then(r => {
-        if (r.success) {
+      //mock接口
+      // api("post/delete", { id: this.id }).then(r => {
+      //   if (r.success) {
+      //     window.history.go(-1);
+      //     alert("删除成功！");
+      //   }
+      // });
+      //mongodb接口
+      $({
+        method: "post",
+        url: `/api/api/delete/${this.id}`
+      }).then(r => {
+        if (r.status === 200) {
           window.history.go(-1);
-          alert("删除成功！");
+          alert("删除成功");
         }
       });
     },
     read(id) {
-      api("post/find", { id }).then(r => {
+      //mock接口
+      // api("post/find", { id }).then(r => {
+      //   this.current = r.data;
+      // });
+      //mongodb接口
+      $({
+        method: "get",
+        url: `/api/api/read/${id}`
+      }).then(r => {
         this.current = r.data;
       });
     },
