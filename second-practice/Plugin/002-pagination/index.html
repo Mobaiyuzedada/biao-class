@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pagination test</title>
+    <style>
+        .pagination {
+            position: relative;
+            margin: 0;
+            padding: 20px;
+            height: 28px;
+        }
+
+        .pagination div {
+            display: inline-block;
+            padding: 0;
+            margin-left: 85px;
+            position: absolute;
+            right: 10px;
+            margin: 0;
+        }
+
+        .pagination a {
+            min-width: 15px;
+            min-height: 18px;
+            display: inline-block;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 0.1em 0.2em 0 0.2em;
+        }
+
+        .pagination .active {
+            background: #000;
+            color: #fff;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="a"></div>
+    <div id="b"></div>
+    <div class="footer">
+
+    </div>
+</body>
+
+</html>
+<script src="./lib/pagination.js"></script>
+<script src="./js/main.js"></script>
