@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>待办事项清单</title>
+    <link rel="stylesheet" href="./style/main.css">
+</head>
+
+<body>
+    <div class="todoList">
+        <div class="container">
+            <div class="createTodo">
+                <h2 class="title">代办清单</h2>
+                <form>
+                    <input type="text" class="todo-content" value="">
+                    <button class="submit">+</button>
+                </form>
+            </div>
+            <div class="showTodo">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
+<script src="./js/api.js"></script>
+<script>
+    let btn = document.querySelector('.submit');
+    let val;
+    let input = document.querySelector('.todo-content');
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+
+        val = document.querySelector('.todo-content').value;
+        if (!val) {
+            alert('必须要有内容');
+            return;
+        }
+        console.log(val);
+        console.log(btn.$id);
+
+        if (!btn.$id) {
+            createTodo({ content: val }).then(res => {
+                if (res.status === 'ok') {
+                    alert('创建成功');
+                    location.reload();
+                }
+            }).catch(e => {
+                console.log(e);
+            })
+        } else {
+            updateTodo({ id: btn.$id, content: { content: val } })
+                .then(res => {
+                    if (res.status === 'ok') {
+                        alert('更新成功');
+                        window.location.reload();
+                    }
+                }).catch(e => {
+                    console.log(e);
+                })
+        }
+    })
+
+
+
+
+    let show = document.querySelector('.showTodo');
+    fetchAllTodo().then(todos => {
+        todos.forEach(todo => {
+            let item = document.createElement('p');
+            item.classList.add('todo-item');
+            item.innerHTML = `
+                <span class="content">${todo.content}</span><span class="operation"><button class="update">更新</button><button class="delete">删除</button></span>
+            `;
+            show.appendChild(item);
+            item.addEventListener('click', e => {
+                let btnVal = e.target.classList.value;
+                if (btnVal === "delete") {
+                    if (!confirm('确定要删除吗？此操作不可撤销'))
+                        return;
+                    deleteTodo(todo._id).then(r => {
+                        if (r.status === 'ok') {
+                            alert('删除成功');
+                            window.location.reload();
+                        }
+                    })
+                } else if (btnVal === 'update') {
+                    fetchTodo(todo._id).then(res => {
+                        if (res.status === 'ok') {
+                            val = res.todo.content;
+                            input.value = val;
+                            btn.$id = todo._id;
+                        }
+                    });
+                }
+            });
+        })
+    })
+
+</script>

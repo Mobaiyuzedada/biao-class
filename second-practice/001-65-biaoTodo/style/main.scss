@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.todoList {
+    $max_width: 500px;
+    $todo_width: $max_width*(6/10);
+    $center: $max_width/2 - $todo_width/2;
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: $max_width;
+    }
+    .createTodo {
+        .title {
+            text-align: center;
+        }
+        button {
+            padding: 4px 0px 2px 0;
+        }
+        form {
+            position: relative;
+        }
+        input.todo-content {
+            width: 60%;
+            margin-left: $center;
+            padding: .5em;
+            outline: none;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+        button.submit {
+            font-size: 18px;
+            position: absolute;
+            right: 110px;
+            top: 4px;
+            background: #fff;
+            border: none;
+            outline: none;
+            color: #000;
+            cursor: pointer;
+        }
+        button:hover,
+        input:hover {
+            outline: none;
+        }
+    }
+    .showTodo {
+        p {
+            text-align: left;
+            padding-left: $center;
+            span.content {
+                text-align: left;
+            }
+            span.operation {
+                float: right;
+                margin-right: $center; // button.update {
+                //     margin-right: 5px;
+                // }
+            }
+            span.operation>* {
+                background: #fff;
+                border: none;
+                outline: none;
+                color: #ccc;
+            }
+            span.operation>*:hover {
+                color: #555;
+            }
+        }
+    }
+}

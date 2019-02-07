@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XMLHttpRequest演示</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" placeholder="随便填点什么">
+        <button id='get'>get</button>
+        <button id='post'>post</button>
+    </form>
+</body>
+
+</html>
+<script src="./造个请求库/rq.js"></script>
+<script>
+    // let http = new XMLHttpRequest();
+    // http.open('get','https://api.github.com/search/users?q=mobaiyuzedada');
+    // http.send();
+
+    //ES6发送请求
+    // fetch('http://localhost:12345/api/post')
+    //     .then(res => {
+    //         return res.json();
+    //     }).then(data => {
+    //         console.log(data);
+    //     })
+
+    let $ = rq;
+    console.log($);
+
+    let form = document.querySelector('form');
+    form.addEventListener('click', e => {
+        let val = document.querySelector('input').value;
+
+        e.preventDefault();
+        let et = e.target;
+        if (et.innerText == 'get') {
+            $.get(`https://api.github.com/search/users?q=${val}`).then(data => {
+                console.log(data);
+            })
+            // let url = `http://localhost:3000/api/find/by-string/${val}`;
+            // console.log(url);
+            // $.get(url).then(data => {
+            //     console.log(data);
+            // })
+        } else if (et.innerText == 'post') {
+            let url = 'http://localhost:3000/api/post';
+            if (!val) {
+                alert('内容不能为空');
+                return;
+            }
+            send(url, '请输入数据需要提交到的网址', val);
+        }
+    })
+    function send(url, text, val) {
+        url = window.prompt(text, url);
+        if (url) {
+            if (!confirm(`确认提交数据到${url}吗?`)) {
+                send(url, '请输入正确的网址');
+                return
+            }
+            $.post(`${url}`, { any: val }).then(res => {
+                console.log(res);
+                if (res.status == 'ok') {
+                    alert('创建成功');
+                    window.open('http://localhost:3000/api/findAll')
+                }
+            });
+        }
+    }
+    let getBtn = document.querySelector('.get');
+
+
+</script>
