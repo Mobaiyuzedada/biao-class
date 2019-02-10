@@ -6,6 +6,7 @@
     let userList = document.querySelector('.user-list');
     let $ = rq;
     let pageLimit = 7;//每页显示的用户数
+    let load;
 
     start();
 
@@ -20,20 +21,23 @@
             let keyWord = input.value;
             search(keyWord);
         })
-
         function search(keyWord, current = 1) {
-            userList.innerHTML = '';
             if (!keyWord) {
                 alert('请输入搜索内容');
                 return;
             }
+            userList.innerHTML = '';
+            renderLoad();
             let url = `https://api.github.com/search/users?q=${keyWord}&page=${current}&per_page=${pageLimit}`;
+            // let pagina = document.getElementById('pagination');
+            // pagina.innerHTML = '';
             $.get(url).then(data => {
+
                 //创建翻页组件
                 pagination.start({
                     limit: pageLimit,
                     amount: data.total_count > 1000 ? 1000 : data.total_count,
-                    el: '#pagination',
+                    el: '.footer',
                     current,
                     onChange(page) {
                         console.log(page);
@@ -42,11 +46,40 @@
                         current = page;
                         search(keyWord, current);
                     }
+                }).then(state => {
+                    console.log(state);
+                    renderPageTip(state);
                 })
+                load.hidden = true;
                 render(data);
             });
         }
+        function renderLoad() {
+            load = document.createElement('div');
+            load.innerHTML = '';
+            load.classList.add('loading');
+            load.innerHTML = `
+                <i class="fa fa-spinner fa-spin"></i>数据加载中
+            `
+            userList.prepend(load);
+        }
         function render(data) {
+            renderResultTip(data);
+            renderUsers(data);
+        }
+
+        function renderResultTip(data) {
+            let result = document.createElement('div');
+            let total = data.total_count;
+            result.classList.add('result-count');
+            result.innerHTML = `
+                <p>
+                    共<strong>${total}</strong>条搜索结果，可显示<strong>${total > 1000 ? 1000 : total}</strong>条搜索结果
+                </p>
+            `
+            userList.appendChild(result);
+        }
+        function renderUsers(data) {
             let users = data.items;
             users && users.forEach(user => {
                 let item = document.createElement('div');
@@ -62,6 +95,15 @@
                 `
                 userList.appendChild(item);
             })
+        }
+        function renderPageTip(state) {
+            let insert = state.el;
+            let tip = document.createElement('div');
+            tip.classList.add('page-tip');
+            tip.innerHTML = `
+            <span>共<strong>${state.page.Max}</strong>页 &nbsp &nbsp &nbsp当前在第<strong>${state.page.current}</strong>页</span>
+            `
+            insert.prepend(tip);
         }
     }
 })();

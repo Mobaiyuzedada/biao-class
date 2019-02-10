@@ -5,7 +5,7 @@
     height: 28px;
 }
 
-.pagination div {
+.pagination .pageList {
     display: inline-block;
     padding: 0;
     margin-left: 85px;

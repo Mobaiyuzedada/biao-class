@@ -1,6 +1,6 @@
 /*
 |-------------------------------------------------------
-| 翻页插件
+| 另一种翻页插件
 |-------------------------------------------------------
 */
 
@@ -46,7 +46,7 @@
         //当前页
         state.page.current = parseInt(state.config.current);
         el.classList.add('pagination');
-        el.innerHTML = `<div class="pageList">
+        el.innerHTML = `<div>
             <span class='shortcuts'><a href="#">&laquo</a></span>
             <span class="primary-buttons">
             </span>
@@ -64,10 +64,11 @@
     function init(state) {
         let max = state.page.Max;//总页数
         let current = state.page.current = state.config.current;//当前页
+        let insert = state.page.insert;//插入位置
         let length = state.page.length//显示的按钮个数
         let left = Math.max(1, current - Math.floor(Number(length) / 2));//启始页
 
-
+        insert.innerHTML = '';
         //根据left生成length个按钮，范围是[left,left+length]
         let pages = new Array(length)
             .fill(0)
@@ -98,16 +99,6 @@
             pages.push(null);
             pages.push(Number(max));
         }
-        state.page.pages = pages;//记录到state.page
-        render(state);
-    }
-    //渲染到html
-    function render(state) {
-        let pages = state.page.pages;
-        let current = state.page.current;
-        let insert = state.page.insert;//插入位置
-
-        insert.innerHTML = '';
         pages.forEach(page => {
             if (!page) {
                 let span = document.createElement('span');
@@ -157,5 +148,3 @@
         onChange && onChange(state.page.current, state);
     }
 })();
-
-
