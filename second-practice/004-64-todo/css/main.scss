@@ -2,6 +2,10 @@
     background: #eee;
 }
 
+h1 {
+    text-align: center;
+}
+
 form {
     margin: 0;
     position: relative;
@@ -46,7 +50,7 @@ form input {
         .checkbox {
             width: 10%;
         }
-        .title {
+        .content {
             width: 30%;
             input {
                 width: 100%;
@@ -63,6 +67,19 @@ form input {
         .operations {
             width: 30%;
             text-align: right;
+            button {
+                background: transparent;
+                border: none;
+                outline: none;
+                color: #aaa;
+                transition: all .2s;
+            }
+            button:hover {
+                border: none;
+                outline: none;
+                color: #c10;
+                font-weight: bold;
+            }
         }
     }
 }

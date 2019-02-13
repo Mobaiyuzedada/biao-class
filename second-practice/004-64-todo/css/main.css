@@ -2,6 +2,10 @@
   background: #eee;
 }
 
+h1 {
+  text-align: center;
+}
+
 form {
   margin: 0;
   position: relative;
@@ -54,19 +58,19 @@ form input {
   width: 10%;
 }
 
-.todo-list .identification .title,
-.todo-list .todo-item .title {
+.todo-list .identification .content,
+.todo-list .todo-item .content {
   width: 30%;
 }
 
-.todo-list .identification .title input,
-.todo-list .todo-item .title input {
+.todo-list .identification .content input,
+.todo-list .todo-item .content input {
   width: 100%;
   border: 1px solid #aaa;
 }
 
-.todo-list .identification .title input:focus,
-.todo-list .todo-item .title input:focus {
+.todo-list .identification .content input:focus,
+.todo-list .todo-item .content input:focus {
   outline: none;
   box-shadow: 0 0 0 1px #eee;
 }
@@ -80,4 +84,21 @@ form input {
 .todo-list .todo-item .operations {
   width: 30%;
   text-align: right;
+}
+
+.todo-list .identification .operations button,
+.todo-list .todo-item .operations button {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #aaa;
+  transition: all .2s;
+}
+
+.todo-list .identification .operations button:hover,
+.todo-list .todo-item .operations button:hover {
+  border: none;
+  outline: none;
+  color: #c10;
+  font-weight: bold;
 }

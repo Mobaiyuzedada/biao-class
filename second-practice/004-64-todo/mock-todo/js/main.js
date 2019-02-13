@@ -81,7 +81,7 @@
             <div class="checkbox">
                 <input type="checkbox" ${todo.completed ? 'checked' : ''} disabled=true>
             </div>
-            <div class="title">
+            <div class="content">
                 <span>${todo.content}</span>
             </div>
             <div class="create-time">
