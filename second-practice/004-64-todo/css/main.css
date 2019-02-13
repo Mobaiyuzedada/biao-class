@@ -59,6 +59,18 @@ form input {
   width: 30%;
 }
 
+.todo-list .identification .title input,
+.todo-list .todo-item .title input {
+  width: 100%;
+  border: 1px solid #aaa;
+}
+
+.todo-list .identification .title input:focus,
+.todo-list .todo-item .title input:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #eee;
+}
+
 .todo-list .identification .create-time,
 .todo-list .todo-item .create-time {
   width: 30%;

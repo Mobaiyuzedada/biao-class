@@ -6,6 +6,7 @@
     let todoList = document.querySelector('.todo-list');
     let currentId;
     let str = todoList.innerHTML;
+    let has = true;
 
     start();
 
@@ -46,7 +47,7 @@
             if (res.success == true) {
                 alert('更新待办事项成功');
                 readTodoList();
-                form.reset();
+                has = true;
             }
         })
     }
@@ -60,15 +61,14 @@
                 alert('输入不能为空');
                 return;
             }
-            let completed = false;
+            let completed = true;
             let createDate = getDate();
             let todoData = { content, completed, dateTime: createDate };
-            if (currentId) {
-                updateTodo(currentId, todoData);//这里的时间是最新时间
-                currentId = null;
-            } else {
-                create(todoData);
-            }
+            // if (currentId) {
+            //     updateTodo(currentId, todoData);//这里的时间是最新时间
+            //     currentId = null;
+            // } else {
+            create(todoData);
         })
     }
 
@@ -79,7 +79,7 @@
             todoItem.classList.add('todo-item');
             todoItem.innerHTML = `
             <div class="checkbox">
-                <input type="checkbox" ${todo.completed ? 'checked' : ''}>
+                <input type="checkbox" ${todo.completed ? 'checked' : ''} disabled=true>
             </div>
             <div class="title">
                 <span>${todo.content}</span>
@@ -96,8 +96,22 @@
             operations.addEventListener('click', e => {
                 let et = e.target;
                 if (et.innerHTML === '更新') {
-                    currentId = todo.id;
-                    input.value = todo.content;
+                    if (!has) {//防止多次点击更新提交
+                        console.log('done');
+                        return;
+                    }
+                    has = false;
+                    todoItem.querySelector('.checkbox').querySelector('input').disabled = false;
+                    let content = todoItem.querySelector('.title');
+                    content.innerHTML = `<input type=text value=${todo.content}>`;
+                    todoItem.addEventListener('keyup', $e => {
+                        if ($e.key == "Enter") {
+                            let completed_val = todoItem.querySelector('.checkbox').querySelector('input[type=checkbox]').checked;
+                            let newVal = content.querySelector('input').value;
+                            let updateData = { completed: completed_val, content: newVal, dataTime: todo.dateTime };
+                            updateTodo(todo.id, updateData);
+                        };
+                    })
                 }
                 if (et.innerHTML === '删除') {
                     console.log(todo);

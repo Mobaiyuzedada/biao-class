@@ -48,6 +48,14 @@ form input {
         }
         .title {
             width: 30%;
+            input {
+                width: 100%;
+                border: 1px solid #aaa;
+            }
+            input:focus {
+                outline: none;
+                box-shadow: 0 0 0 1px #eee;
+            }
         }
         .create-time {
             width: 30%;
