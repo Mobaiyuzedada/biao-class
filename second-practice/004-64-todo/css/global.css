@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: .5em;
+  padding-right: .5em;
+}
+
+form input {
+  width: 100%;
+  padding: .5em;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+form input:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #ccc;
+}
