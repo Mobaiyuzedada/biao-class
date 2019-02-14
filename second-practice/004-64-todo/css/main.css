@@ -93,6 +93,7 @@ form input {
   outline: none;
   color: #aaa;
   transition: all .2s;
+  padding-right: 0;
 }
 
 .todo-list .identification .operations button:hover,
