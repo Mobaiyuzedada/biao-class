@@ -10,6 +10,12 @@
         timeout: 3000,
         alert_container: '.alert-container',
     }
+    function Alert(title, config) {
+        config = { ...Default_config, ...config, title };
+        config.el = document.querySelector(`${config.el}`);
+        prepareEnv(config);
+        render(config);
+    }
     function prepareEnv(config) {
         container = document.querySelector(config.alert_container);
         if (container)
@@ -19,13 +25,7 @@
         container.classList.add('alert-container');
         config.el.appendChild(container);
     }
-    function Alert(title, config) {
-        config = { ...Default_config, ...config, title };
-        config.el = document.querySelector(`${config.el}`);
-        prepareEnv(config);
-        console.log(config);
-        render(config);
-    }
+
     function render(config) {
         let item = document.createElement('div');
         // config.el.hidden = true;
