@@ -1,0 +1,82 @@
+.alert-container {
+  font-family: sans-serif;
+  position: fixed;
+  right: 1em;
+  top: 1em;
+}
+
+.alert-item {
+  position: relative;
+  color: #fff;
+  background: #444;
+}
+
+.alert-item .inner {
+  border-radius: .2em;
+  cursor: pointer;
+  width: 250px;
+  margin-bottom: .4em;
+}
+
+.alert-item .inner > * {
+  padding: .3em .5em;
+}
+
+.alert-item .inner:active {
+  cursor: default;
+}
+
+.alert-item .inner .title {
+  font-weight: bold;
+}
+
+.alert-item .inner .content {
+  font-weight: lighter;
+}
+
+.alert-item .close-alert {
+  position: absolute;
+  padding: 7px;
+  width: 0px;
+  height: 15px;
+  top: -1px;
+  right: 7px;
+}
+
+.alert-item .close-alert span {
+  width: 0.1em;
+  height: 1em;
+  background: #fff;
+  transform: rotate(45deg);
+  display: inline-block;
+}
+
+.alert-item .close-alert span:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.1em;
+  height: 1em;
+  background: #fff;
+  transform: rotate(270deg);
+}
+
+.alert-item.info {
+  background: royalblue;
+  color: #fff;
+}
+
+.alert-item.success {
+  background: lightgreen;
+}
+
+.alert-item.warn {
+  background: tomato;
+  color: #fff;
+}
+
+.alert-item.danger {
+  background: #c10;
+  color: #fff;
+}

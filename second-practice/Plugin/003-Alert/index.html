@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>alert test</title>
+    <link rel="stylesheet" href="./alert.css">
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="./alert.js"></script>
+<script>
+    Alert('Yo', {
+        content: 'xxxx',
+        type: 'info',
+        timeout: false
+    })
+    setTimeout($ => {
+        Alert('余额不足', {
+            content: '请前往我的余额进行充值',
+            type: 'warn',
+        })
+    }, 1000);
+    setTimeout($ => {
+        Alert('余额不足', {
+            content: '请前往我的余额进行充值',
+            type: 'danger',
+        })
+    }, 2000);
+    setTimeout($ => {
+        Alert('充值成功', {
+            type: 'success',
+        })
+    }, 3000);
+
+</script>
