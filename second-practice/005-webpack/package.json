@@ -1,0 +1,21 @@
+{
+  "name": "005-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx webpack -w",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "node_modules/.bin/webpack",
+    "dev": "npx webpack -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^2.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {}
+}
