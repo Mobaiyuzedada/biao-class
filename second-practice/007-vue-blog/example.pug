@@ -1,0 +1,29 @@
+
+    h3.title 创建/更新文章
+    div.container: table.form-table: tbody
+      tr
+        td.label 标题:
+        td: input.full()
+      tr
+        td.label 日期:
+        td
+          input.year
+          | 年
+          input.short
+          | 月
+          input.short
+          | 日
+          input.short
+          | 时
+          input.short
+          | 秒
+          input.short
+          | 分
+        tr
+          td.label 文章内容：
+          td: textarea.content
+        tr
+          td
+          td
+            button 更新文章
+            button 发布文章

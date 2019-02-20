@@ -1,2 +1,15 @@
 wpack-p-template
 webpack-practice
+node_modules/
+.vscode
+database.sql
+config.js
+config.json
+/uploads
+/static
+/dist
+package-lock.json
+/coverage
+.nyc_output
+.coveralls.yml
+lib

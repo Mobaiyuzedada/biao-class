@@ -1,0 +1,97 @@
+@import './color.scss';
+body {
+    font-family: "Noto Sans CJK", "Noto Sans CJK SC", "Source Han Sans", "Source Han Sans CN", "思源黑体", "思源黑体 CN", "WenQuanYi Micro Hei", "Microsoft Yahei UI", "Microsoft Yahei", "微软雅黑", "SimHei", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 26px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+button,
+.button {
+    text-align: center;
+    padding: .4em 1.5em .4em 1.5em;
+    background: $button_bgcolor;
+    border: none;
+    color: $button_txcolor;
+    font-size: 14px;
+    border-radius: 3px;
+    box-shadow: 0 0 4px rbga(white, 0.5);
+    transition: all ease 0.2s;
+    cursor: pointer;
+}
+
+button:focus,
+.button:focus {
+    outline: none;
+}
+
+.button:hover,
+button:hover {
+    background: mix($button_bgcolor, #ccc, 80%);
+    box-shadow: 0 0 4px grey;
+}
+
+button.delete {
+    background: $im_color;
+    color: #fff;
+}
+
+button.delete:hover {
+    background: mix($im_color, #444, 70%);
+    box-shadow: 0 0 4px darkred;
+}
+
+.card {
+    background: $card_bg_color;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 0px;
+    padding-bottom: 1px;
+}
+
+.card>.title {
+    margin: 0;
+    padding: 4px 4px 4px 10px;
+    color: $card_title_f_color;
+    font-weight: 400;
+    background: $card_title_bg_color;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+}
+
+a,
+a:link,
+a:visited,
+a:active,
+a:hover {
+    color: $link_color;
+    text-decoration: none;
+    outline: none;
+    word-break: break-all;
+    cursor: pointer;
+}
