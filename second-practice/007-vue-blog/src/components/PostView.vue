@@ -6,6 +6,7 @@
                     h2.post-title {{post.title}}
                     div.post-meta: span {{timeToString(post.date)}}
                 article.post-content(v-html="post.content")
+        router-view
 </template>
 <script>
 import api from "../api/post.api";
@@ -36,6 +37,7 @@ div.post-view {
     padding: 0;
     .content {
       padding: 20px;
+      white-space: pre-wrap;
     }
     h2.post-title {
       font-size: 1.25em;
@@ -69,7 +71,7 @@ div.post-view {
       margin-bottom: 0;
     }
     p.indent {
-      text-indent: 2em;//p段落缩进
+      text-indent: 2em; //p段落缩进
     }
   }
 }

@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const router = require('./server/router.post');
+const router_post = require('./server/router.post');
+const router_reply = require('./server/router.reply');
 const body_parser = require('body-parser');
 
 // app.all('*', function (req, res, next) {
@@ -20,7 +21,8 @@ db.once('error', () => console.log('mongodb opened failed'));
 
 app.use(body_parser.urlencoded({ extended: true }));
 app.use(body_parser.json());
-app.use(router);
+app.use(router_post);
+app.use(router_reply);
 
 
 

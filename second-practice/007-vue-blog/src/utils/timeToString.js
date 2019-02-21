@@ -1,8 +1,9 @@
-export default function timetoString(timeStamp) {
+export default function timetoString(timeStamp, completed) {
     let date = new Date(timeStamp);
-    return `${date.getFullYear()}年${date.getMonth() +
-        1}月${date.getDate()}日`;
-    //   else{
-    //       return `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日${date.getHours()}`
-    //   }
+    if (completed) {
+        return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日${date.getHours()}:${date.getMinutes()}`
+    }
+    else {
+        return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+    }
 }

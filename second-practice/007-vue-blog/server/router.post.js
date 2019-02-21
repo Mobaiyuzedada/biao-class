@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const post = require('../models/post.schema');
-const db = require('../mongo/db');
 // const { objectID } = require('mongodb');
 
 router.put('/createPost', (req, res) => {
@@ -43,11 +42,11 @@ router.get('/fetchPost/by-id/:id', (req, res) => {
 })
 router.get('/fetchAll', (req, res) => {
     post.find({}).sort({ 'date': 'desc' })
-    .then(posts => {
-        res.send({ status: 'ok', posts });
-    }).catch(err => {
-        res.json(err);
-    })
+        .then(posts => {
+            res.send({ status: 'ok', posts });
+        }).catch(err => {
+            res.json(err);
+        })
 })
 
 module.exports = router;

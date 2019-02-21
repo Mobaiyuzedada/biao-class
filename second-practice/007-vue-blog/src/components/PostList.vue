@@ -39,6 +39,7 @@ div.posts-list {
     padding: 0;
     .content {
       padding: 20px;
+      white-space: pre-wrap;
     }
   }
   h2.post-title {
@@ -61,6 +62,7 @@ div.posts-list {
     margin-bottom: 0;
   }
   article.post-preview {
+    padding: 0 1em;
     line-height: 1.5em;
     margin-bottom: 1em;
   }

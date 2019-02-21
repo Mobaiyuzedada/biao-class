@@ -9,7 +9,7 @@
             tbody: tr(v-for="post in posts")
                 td.center.title: span: router-link(:to="'/admin/post/edit/'+post._id") {{post.title}}
                 td.center.date: span {{timeToString(post.date)}}
-                td.prev-content: span {{post.content}}
+                td(:title="post.content").prev-content: span {{post.content}}
 </template>
 <script>
 import api from "../../api/post.api";
@@ -23,6 +23,11 @@ export default {
   },
   mounted() {
     this.getPostList();
+  },
+  filters: {
+    cut(value) {
+      return value.length < 12 ? value : value.substring(0, 4) + "...";
+    }
   },
   methods: {
     timeToString,

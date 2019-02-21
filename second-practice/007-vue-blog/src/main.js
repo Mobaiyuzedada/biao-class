@@ -8,6 +8,7 @@ import PostList from './components/PostList.vue'
 import AdminPostEditor from './components/admin/PostEditor.vue'
 import AdminPostList from './components/admin/PostList.vue'
 import PostView from './components/PostView.vue'
+import Reply from './components/Reply.vue'
 Vue.use(VueRouter);
 const router = new VueRouter({
   mode: 'history',//可以把url里的#(默认的hash模式)去掉，但需要对应后端的支持
@@ -17,7 +18,13 @@ const router = new VueRouter({
       component: PostList
     }, {
       path: '/post/:id',
-      component: PostView
+      component: PostView,
+      children: [
+        {
+          path: 'reply',
+          component: Reply
+        }
+      ]
     }, {
       path: '/admin/post/new',
       component: AdminPostEditor

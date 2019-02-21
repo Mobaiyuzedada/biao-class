@@ -66,6 +66,10 @@ button.delete:hover {
     box-shadow: 0 0 4px darkred;
 }
 
+a:not(.button):hover {
+    border-bottom: 1px solid #000;
+}
+
 .card {
     background: $card_bg_color;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
