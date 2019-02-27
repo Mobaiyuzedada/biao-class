@@ -1,0 +1,35 @@
+@import './color.scss';
+input.full {
+    width: 100%;
+}
+
+input,
+textarea {
+    border: none;
+    border-radius: 0;
+    border: 1px solid #ccc;
+    background: rgba(0, 0, 0, 0);
+    caret-color: grey;//input光标颜色
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+.form-table {
+    width: 100%;
+    border-spacing: 10px;
+    td.label {
+        width: 90px;
+        text-align: right;
+        vertical-align: top;
+    }
+    input {
+        width: 80%;
+        padding: 2px;
+    }
+    th {
+        text-align: right;
+    }
+}

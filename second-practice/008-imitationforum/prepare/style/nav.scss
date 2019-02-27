@@ -1,0 +1,20 @@
+@import './color.scss';
+nav .logo {
+    width: 100%;
+}
+
+nav {
+    font-size: 15px;
+    background: $nav_bg_color;
+    border-bottom: 1px solid rgba(0, 0, 0, .22);
+    input {
+        border-radius: 3px;
+        padding: .3em .6em;
+        border: none;
+        border: 1px solid #ccc;
+    }
+    .left>*,
+    .right>* {
+        display: inline-block;
+    }
+}

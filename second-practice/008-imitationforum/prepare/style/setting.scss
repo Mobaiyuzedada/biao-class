@@ -1,0 +1,23 @@
+#right {
+    a {
+        border-bottom: 1px solid;
+    }
+    .form-table {
+        tr {
+            a.modify {
+                transition: all ease .3s;
+                color: rgba(236, 55, 55, 0.959);
+                &:not(:hover) {
+                    border-bottom: 1px solid transparent;
+                }
+                opacity: 0;
+            }
+        }
+        tr:hover {
+            a.modify {
+                opacity: 1;
+                transition: none;
+            }
+        }
+    }
+}
