@@ -29,7 +29,26 @@ router.post('/getUser/by-id/:id', (req, res) => {
     user.findById({ _id: req.params.id })
         .then(user => {
             console.log(user);
-            res.send({ status: 'ok', user: { username: user.user_name, id: user._id } })
+            res.send({
+                status: 'ok', user: {
+                    username: user.user_name,
+                    id: user._id,
+                    name: user.name ? user.name : null,
+                    info: user.info ? user.info : null,
+                    gender:user.gender?user.gender:null,
+                }
+            })
         }).catch(e => res.send(e))
+})
+router.post('/updateUser/by-id/:id', (req, res) => {
+    user.findOneAndUpdate(
+        { _id: req.params.id },
+        { $set: req.body },
+        { new: true }
+    ).then(newUser => {
+        res.send({ status: 'ok' })
+    }).catch(err => {
+        res.send(err);
+    })
 })
 module.exports = router;

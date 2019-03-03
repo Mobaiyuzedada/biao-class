@@ -1,0 +1,41 @@
+@import './color.scss';
+nav .logo {
+    width: 100%;
+}
+
+nav {
+    font-size: 15px;
+    background: $nav_bg_color;
+    border-bottom: 1px solid rgba(0, 0, 0, .22);
+    font-weight: 500;
+    margin-bottom: 1.5em;
+    font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB","Microsoft Yahei",sans-serif;
+    height: 44px;
+    input {
+        border-radius: 3px;
+        padding: .3em .6em;
+        border: none;
+        border: 1px solid #ccc;
+    }
+    .left>*,
+    .right>* {
+        display: inline-block;
+    }
+    .container {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        .search {
+            padding-top: 5px;
+            input {
+                width: 70%;
+                margin-left: 13px;
+            }
+        }
+        .auth {
+            padding-top: 6px;
+            a {
+                padding-left: 5px;
+            }
+        }
+    }
+}

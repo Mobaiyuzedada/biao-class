@@ -1,0 +1,66 @@
+@import './color.scss';
+nav {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 1.5em;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    height: 44px;
+    .container {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        .search {
+            padding-top: 5px;
+            input {
+                width: 90%;
+                margin-left: 13px;
+            }
+        }
+        .auth {
+            padding-top: 6px;
+            a {
+                padding-left: 5px;
+            }
+        }
+    }
+}
+
+main {
+    .card {
+        background: $card_bg_color;
+        margin-right: 5px;
+        .title {
+            background: $card_title_bg_color;
+            color: $card_title_font_color;
+        }
+        .cat-list {
+            font-size: 1em;
+            .cat-item {
+                padding: 6px 4px 5px 10px;
+                display: block;
+                border-bottom: 1px solid #ccc;
+                &:last-child {
+                    border-bottom: none;
+                }
+                a {
+                    color: #778087;
+                    &:hover {
+                        border-bottom: 1px solid #778087
+                    }
+                }
+            }
+        }
+    }
+    .time-line-wrap {
+        .timeline {
+            font-size: 14px;
+            font-weight: 400;
+            .timeline-item {
+                border-bottom: 1px solid #ccc;
+                padding: .8em .7em .5em .5em;
+            }
+            .timeline-item:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
