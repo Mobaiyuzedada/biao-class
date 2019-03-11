@@ -4,6 +4,7 @@ const bodyparser = require('body-parser');
 const urlencoded = bodyparser.urlencoded({ extended: true });
 const json = bodyparser.json();
 const router = require('./server/user');
+const postRouter = require('./server/post.router');
 
 app.all('*', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -18,6 +19,7 @@ app.all('*', function (req, res, next) {
 app.use(json);
 app.use(urlencoded);
 app.use(router);
+app.use(postRouter);
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/008_imitation_forum');

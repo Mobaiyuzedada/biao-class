@@ -38,7 +38,7 @@ var params = {
 // }).catch(err => {
 //     console.error(err);
 // })
-
+//查询所有
 
 // $({
 //     method: 'post',

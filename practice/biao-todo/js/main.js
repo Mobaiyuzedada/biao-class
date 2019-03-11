@@ -28,7 +28,6 @@
     function read() {
         api('todo/read', null, res => {
             $list = res.data;
-            console.log($list);
             render();
         });
     }
@@ -86,6 +85,7 @@
      * @Object row:要创建的数据
      */
     function create(row) {
+        console.log(row);
         api('todo/create', row, res => {
             if (res.success) {
                 read();
@@ -104,7 +104,7 @@
     //     api('todo/find')
     // }
     function update(id, row) {
-        api('todo/update', { id,...row }, res => {
+        api('todo/update', { id, ...row }, res => {
             if (res.success) {
                 read();
                 form.reset();
@@ -126,12 +126,12 @@
             let val = input.value;
 
             if (currentId) {
-                update(currentId, {title:val});
-                currentId=null;
-                console.log( currentId);
+                update(currentId, { title: val });
+                currentId = null;
+                console.log(currentId);
             }
             else
-                create();
+                create({ title: val, completed: false });
         })
     }
 

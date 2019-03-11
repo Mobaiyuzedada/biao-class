@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function sy1() {
+        return new Promise((resolve, reject) => {
+            resolve('我是异步函数1');
+        })
+    }
+    function sy2() {
+        return new Promise((resolve, reject) => {
+            resolve('我是异步函数2');
+        })
+    }
+    function block() {
+        setTimeout(() => {
+            console.log(1);
+        }, 2000);
+    }
+    function test() {
+        let str1, str2;
+        sy1().then(r => {
+            str1 = r;
+            console.log("sy1内部的str1:" + str1);
+            sy2().then(r => {
+                str2 = r;
+                console.log("sy2内部的str2:" + str2);
+            })
+            console.log("sy1内部的str2:" + str2);
+            console.log('%c2s后', 'color:#c10;font-weight:bold;');
+            block();
+        })
+        console.log(str1);
+        console.log(str2);
+        console.log('%c2s后', 'color:#c10;font-weight:bold;');
+        block();
+    }
+
+    // function test() {
+    //     [1, 2, 3].forEach(it => {
+    //         console.log(it);
+    //     })
+    //     console.log('正常的forEach是同步的，所以我应该后执行');
+    // }
+
+    // function test() {
+    //     console.log('执行forEach前1');
+    //     console.log('执行forEach前2');
+    //     [1, 2, 3].forEach(async it => {
+    //         console.log(it);
+    //         let a = await sy();
+    //         console.log(a);
+    //     })
+    //     console.log('我包含了异步函数，所以我应该先执行');
+    // }
+
+
+    // function test() {
+    //     console.log('执行forEach前1');
+    //     console.log('执行forEach前2');
+    //     for (let it of [1, 2, 3]) {
+    //         console.log(it);
+    //         sy().then(r => {
+    //             console.log(r);
+    //         })
+    //     }
+    //     console.log('我包含了异步函数，所以我应该先执行');
+    // }
+
+
+    test();
+</script>

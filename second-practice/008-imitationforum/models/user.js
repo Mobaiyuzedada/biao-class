@@ -5,7 +5,7 @@ let userSchema = mongoose.Schema({
     user_name: {    //用户名
         type: String,
         required: true,
-        unique: true
+        unique: true    //是否唯一
     },
     password: {     //密码
         type: String,
@@ -13,6 +13,7 @@ let userSchema = mongoose.Schema({
     },
     gender: String,
     info: String,
+    github_id: String,
 }, {
         timestamps: {
             createdAt: 'createTime'

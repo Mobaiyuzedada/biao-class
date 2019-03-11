@@ -158,3 +158,26 @@ span.errmsg {
     color: #c10;
     padding-top: 0;
   }
+
+//滚动条样式
+::-webkit-scrollbar{
+    width:7px;
+    height: 7px;
+}
+::-webkit-scrollbar-button{
+    width:0;
+    height: 0;
+}
+::-webkit-scrollbar-thumb{
+    background: #ccc;
+    border:0px none #fff;
+    transition: all ease .1s;
+    cursor: pointer;
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #aaa;
+}
+::-webkit-scrollbar-thumb:active{
+    background:gray;
+}

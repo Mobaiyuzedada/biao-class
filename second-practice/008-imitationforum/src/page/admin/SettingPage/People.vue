@@ -6,6 +6,9 @@
                 th 用户名
                 td: input.edit(@keyup.enter="update" v-model="people.username" :readonly="!(editMode.editUsername||editMode.editAll)")
                 td.modify(v-if="!(editMode.editAll||editMode.editUsername)"): a(@click="editMode.editUsername=true") 修改
+            tr(v-if="errmsg" style="color:#c10")
+                th 错误
+                td {{errmsg}}
             tr
                 th 姓名
                 td: input.edit(@keyup.enter="update" v-model="people.name" :readonly="!(editMode.editAll||editMode.editName)")
@@ -19,12 +22,19 @@
             //-     td 138xxxx999@qq.com
             //-     td: a.modify(v-if="!editMode.editAll||editMode.edit") 修改
             tr
+                th.label GitHubID
+                td(v-if="!(editMode.editAll||editMode.editGit)") 
+                  p(v-if="people.github_id" v-html=" people.github_id")
+                  span.gitId(v-else) 填写发帖时显示对应头像
+                td(v-else): input.edit(v-model="people.github_id")
+                td(v-if="!(editMode.editAll||editMode.editGit)").modify: a(@click="editMode.editGit=true") 修改            
+            tr
                 th.label 自我介绍
                 td(v-if="!(editMode.editAll||editMode.editIntro)") 
                   p(v-if="people.info" v-html=" people.info")
                   span(v-else) -
                 td(v-else): textarea.edit(v-model="people.info")
-                td(v-if="!(editMode.editAll||editMode.editIntro)").modify: a(@click="editMode.editIntro=true") 修改            
+                td(v-if="!(editMode.editAll||editMode.editIntro)").modify: a(@click="editMode.editIntro=true") 修改
             tr
                 td
                 td
@@ -44,8 +54,10 @@ export default {
         editAll: false,
         editUsername: false,
         editName: false,
-        editIntro: false
-      }
+        editIntro: false,
+        editGit: false
+      },
+      errmsg: ""
     };
   },
   mounted() {
@@ -59,8 +71,14 @@ export default {
   },
   methods: {
     update() {
-      let edited=this.editMode.editAll||this.editMode.editUsername||this.editMode.editName||this.editMode.editIntro;
-      if(!edited)return;
+      this.errmsg = "";
+      let edited =
+        this.editMode.editAll ||
+        this.editMode.editUsername ||
+        this.editMode.editName ||
+        this.editMode.editIntro ||
+        this.editMode.editGit;
+      if (!edited) return;
       if (!confirm("确定修改设置？")) return;
       api
         .updateUserById({
@@ -68,7 +86,8 @@ export default {
           user: {
             name: this.people.name,
             user_name: this.people.username,
-            info: this.people.info
+            info: this.people.info,
+            github_id: this.people.github_id
           }
         })
         .then(r => {
@@ -77,6 +96,9 @@ export default {
               this.editMode[key] = false;
             }
           }
+        })
+        .catch(e => {
+          this.errmsg = "用户名已存在";
         });
     }
   }
@@ -106,7 +128,9 @@ p {
   word-break: break-all;
   white-space: pre-wrap;
 }
-
+span.gitId{
+  color:#aaa;
+}
 // textarea[readonly] {
 //   resize: none;
 //   min-height: 10vh;

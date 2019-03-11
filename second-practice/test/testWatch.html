@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试Vue异步数据变化</title>
+</head>
+
+<body>
+    <div id="app">
+        title:<span>{{a.title}}</span><br>
+        content: <span>{{a.content}}</span><br>
+        repeatcontent: <span>{{a.repeatcontent}}</span>
+    </div>
+</body>
+
+</html>
+<script src="../lib/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                a: {
+                    title: 'first',
+                    content: 1,
+                    repeatcontent: ''
+                }
+            }
+        },
+        mounted() {
+            // this.test();
+            this.test1()
+        },
+        // watch: {
+        //     a: async function change() {
+        //         console.log(1);
+        //         this.a.content = 'ss';
+        //         // this.a.repeatcontent = "sss"
+        //         let r;
+        //         this.a.repeatcontent = r.content;
+        //         r = await this.sy2("second");
+        //         console.log(r);
+
+        //     }
+        // },
+        methods: {
+            sy1() {
+                return new Promise((resolve, reject) => {
+                    resolve({ title: 'second', content: 2 });
+                })
+            },
+            sy2(str) {
+                return new Promise((resolve, reject) => {
+                    if (str == 'second') resolve({ title: 'third', content: 3 });
+                })
+            },
+            test() {
+                this.sy1().then(r => {
+                    this.a = r;
+                    this.sy2(r.title).then(r => {
+                        this.a.repeatcontent = r.content;
+                    })
+                    console.log(this.a);
+                })
+            },
+            async test1() {
+                let r = await this.sy1();
+                let content;
+                r = await this.sy2(r.title);
+                content = r.content;
+                console.log(content);
+                r.repeatcontent = content;
+                this.a = r;
+                // this.a = {
+                //     title: r.title,
+                //     content: r.content,
+                //     repeatcontent: content,
+                // }
+            }
+        }
+    })
+</script>

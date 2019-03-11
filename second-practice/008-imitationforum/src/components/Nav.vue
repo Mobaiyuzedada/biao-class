@@ -1,7 +1,8 @@
 <template lang="pug">
 nav: div.container
       div.col-3.left
-        div.logo: img(src="https://www.v2ex.com/static/img/v2ex@2x.png")
+        div.logo: router-link(to="/")
+         img(src="https://www.v2ex.com/static/img/v2ex@2x.png")
       div.col-10
         div.search: input(align="right")
       div.col-11.right.auth(align="right")
@@ -18,8 +19,7 @@ export default {
   name: "Nav",
   data() {
     return {
-      session,
-      username: session.getUser().username
+      session
     };
   }
 };

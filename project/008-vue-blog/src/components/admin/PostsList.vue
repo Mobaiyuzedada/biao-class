@@ -12,7 +12,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="it in list">
+            <tr v-for="(it,index) in list" :key="index">
               <td>
                 <router-link :to="'/admin/post/edit/'+it._id">{{it.title}}</router-link>
               </td>
@@ -52,14 +52,14 @@ export default {
       //   console.log( this.list);
       // });
       //mongodb接口
-      
+
       $({
         url: "/api/api/read",
         method: "get"
       }).then(r => {
         console.log(r.data);
         this.list = r.data;
-        console.log( this.list);
+        console.log(this.list);
       });
     }
   }

@@ -6,7 +6,7 @@
      router-link(to="/signup" style="margin-right:20px") signup
      router-link(to="/login" style="margin-right:20px") login
      router-link(to="/settings") Settings
-    router-view(aaa="bbb")
+    router-view
 </template>
 
 <script>

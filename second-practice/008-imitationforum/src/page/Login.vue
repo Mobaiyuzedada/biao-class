@@ -31,7 +31,7 @@
 import api from "../api/user.api";
 import session from "../../utils/session";
 export default {
-  name: "Signup",
+  name: "Login",
   data() {
     return {
       user: {},
@@ -51,17 +51,14 @@ export default {
           password: this.user.password
         })
         .then(res => {
-          console.log(res);
           if (res.status == "ok") {
             alert("登陆成功");
             session.login(res.user);
             this.$router.push("/");
-          } else if (res.status == "error") {
-            this.errmsg.login = "用户名或密码错误";
           }
         })
         .catch(e => {
-          console.log(e);
+          this.errmsg.login = "用户名或密码错误";
         });
     },
     validateUser() {
