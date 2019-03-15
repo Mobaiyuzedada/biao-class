@@ -8,8 +8,6 @@ export default function timeToString(timestamps, completed) {
     let date = new Date(timestamps);
     let today = new Date();
     if (completed) {
-        console.log(today.getDate());
-        console.log(date.getDate());
         return `
                 ${today.getDate() == date.getDate() ? '今天' :
                `${date.getFullYear()}年

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import vueRouter from 'vue-router';
+import $ from 'jquery';
+
 
 
 //引入组件
@@ -11,6 +13,7 @@ import Login from './page/Login.vue';
 import Setting from './page/admin/Setting.vue';
 import SettingPeople from './page/admin/SettingPage/People.vue';
 import SettingPassword from './page/admin/SettingPage/Password.vue';
+
 
 
 Vue.config.productionTip = false

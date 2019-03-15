@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
@@ -33,5 +34,19 @@ module.exports = {
                 }
             },
         ]
+    },
+    plugins: [
+        // new webpack.optimize.CommonsChunkPlugin('common'),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            Popper:['popper.js','default'],
+        })
+    ],
+    alias: {
+        'vue$': 'vue/dist/vue.esm.js',
+        '@': resolve('src'),
+        'assets': path.resolve(__dirname, '../scr/assets'),
+        'jquery':'jquery/src/jquery'
     }
 }

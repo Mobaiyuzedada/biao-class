@@ -11,11 +11,13 @@
 
 <script>
 import Nav from "./components/Nav.vue";
+
 export default {
   name: "app",
   components: {
     Nav: Nav
   },
+
 };
 </script>
 <style lang="scss">

@@ -51,9 +51,10 @@ nav {
     padding-bottom: 5px;
     .logo {
       width: 100%;
+      padding-top: 3px;
     }
     .search {
-      padding-top: 5px;
+      padding-top: 3px;
       input {
         width: 70%;
         margin-left: 13px;

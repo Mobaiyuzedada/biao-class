@@ -14,7 +14,29 @@ function fetchAll() {
         }).catch(e => reject(e));
     })
 }
+function updatePostById(post) {
+    return new Promise((resolve, reject) => {
+        $.post(`/api/post/update/by-id/${post.id}`, post.newPost)
+            .then(r => {
+                resolve(r.data);
+            }).catch(e => {
+                reject(e);
+            })
+    })
+}
+function deletePostById(id) {
+    return new Promise((resolve, reject) => {
+        $.delete(`/api/post/delete/by-id/${id}`)
+            .then(r => {
+                resolve(r.data);
+            }).catch(e => {
+                reject(e);
+            })
+    })
+}
 export default {
     createPost,
-    fetchAll
+    fetchAll,
+    deletePostById,
+    updatePostById
 }
