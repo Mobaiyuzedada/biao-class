@@ -9,7 +9,7 @@ function boot(triggerSelector = '#trigger',dropdownSelector = '.dropdown') {
     dd.classList.add('my-dropdown');
     trigger.classList.add('my-btn');
 
-    document.body.addEventListener('click', (e) => {
+    document.body.addEventListener('click', (e) => { 
         // if (e.target.id === trigger.id) {
         //     dd.hidden = !dd.hidden;
         //     return;
@@ -22,6 +22,5 @@ function boot(triggerSelector = '#trigger',dropdownSelector = '.dropdown') {
         } else if (!e.target.closest(dropdownSelector)) {
             dd.hidden = true;
         }
-
     })
 };
