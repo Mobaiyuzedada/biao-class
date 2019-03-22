@@ -125,6 +125,7 @@ export default {
       console.log(this.post);
       this.createState = "更新";
     },
+    // showDropDown
     updatePostById() {
       api
         .updatePostById({
