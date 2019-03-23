@@ -13,6 +13,7 @@ import Login from './page/Login.vue';
 import Setting from './page/admin/Setting.vue';
 import SettingPeople from './page/admin/SettingPage/People.vue';
 import SettingPassword from './page/admin/SettingPage/Password.vue';
+import PostView from './page/PostView.vue'
 
 
 
@@ -24,6 +25,9 @@ let router = new vueRouter({
     {
       path: '/',
       component: Home,
+    }, {
+      path: '/post/:id',
+      component: PostView
     }, {
       path: '/about',
       component: About

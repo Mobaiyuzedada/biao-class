@@ -25,11 +25,15 @@
                           div {{post.username.substr(0,1).toUpperCase()}}
                       div.detail.col-20
                         div.header 
-                          h3: a.post-title {{post.title}}
+                          h3: router-link(:to="'/post/'+post._id") {{post.title}}
                           DropDown(:pud="post.userId" :userId="userId" :islogin="post.userId==userId" :post="post" @editPost="editPost" @deletePost="deletePost")
                         div.meta.
                           #[span From #[a.user(href="#") #[strong(style="color:#444;font-size:14px") {{post.username}}]]  {{timeToString(post.dateTime,true)}}]
                         div.text {{post.content}}
+                    div.footer-bar.
+                      #[span 收藏] #[span 回复] #[span 转发] #[span 喜欢]
+                          
+
 
 </template>
 <script>
@@ -39,11 +43,13 @@ import timeToString from "../utils/timeToString";
 import session from "../../utils/session";
 import { Promise } from "q";
 import DropDown from "../components/Dropdown.vue";
+import mixin from "../mixin/post_verifi";
 export default {
   name: "Home",
   components: {
     DropDown: DropDown
   },
+  mixins: [mixin],
   data() {
     return {
       post: {},
@@ -59,7 +65,8 @@ export default {
     //方案1
     async fetchAll() {
       try {
-        let res = await api.fetchAll();
+        let res = await api.fetchHome();
+        console.log(res);
         let posts, user;
         if (res.status == "ok") posts = res.posts;
         for (let post of posts) {
@@ -69,6 +76,7 @@ export default {
           post.username = user.username;
         }
         this.posts = posts;
+        console.log(this.posts);
       } catch (e) {
         console.log(e);
       }
@@ -94,30 +102,6 @@ export default {
           this.post = {};
           this.fetchAll();
         });
-    },
-    post_verifi() {
-      if (!this.postTitle().value) {
-        let t1 = setInterval(() => {
-          this.postTitle().placeholder = "主题不能为空";
-          this.postTitle().classList.add("invalid");
-          if (!this.postTitle().style.backgroundColor) {
-            this.postTitle().style.backgroundColor = "rgba(255,187,187)";
-          } else {
-            this.postTitle().style.backgroundColor = "";
-          }
-        }, 400);
-        setTimeout(() => {
-          clearInterval(t1);
-          this.postTitle().placeholder = "主题";
-          this.postTitle().classList.remove("invalid");
-        }, 1600);
-        return false;
-      }
-      return true;
-    },
-    postTitle() {
-      //获取标题元素
-      return document.querySelector(".post-title");
     },
     timeToString,
     editPost(post) {
@@ -153,44 +137,7 @@ export default {
     }
   }
 };
-
-/** 方案2(失败)
-    async fetchAll() {
-      let r = await api.fetchAll();
-      let posts;
-      posts = r.posts;
-      for (let post of posts) {
-        userApi.getUserById(post.userId).then(r => {
-          let user = r.user;
-          post.github_id = user.github_id;
-          post.username = user.username;
-        });
-      }
-      console.log(posts);
-      this.posts = posts;
-      console.log(this.posts);
-    },
-
-    方案3(失败)
-    fetchAll() {
-      api.fetchAll().then(r => {
-        for (let post of r.posts) {
-          userApi.getUserById(post.userId).then(r => {
-            let user = r.user;
-            post.github_id = user.github_id;
-            post.username = user.username;
-          });
-        }
-        this.newposts = r.posts;
-        console.log(this.newposts);
-      });
-    },}*/
 </script>
-
-
-
-
-
 <style lang="scss">
 @import "../style/color.scss";
 
@@ -225,7 +172,7 @@ export default {
       }
       textarea {
         resize: none;
-        min-height: 30vh;
+        min-height: 50vh;
         border-radius: 0;
         background: rgba(0, 0, 0, 0);
         background-color: rgb(255, 255, 255);
@@ -335,6 +282,21 @@ export default {
               text-decoration: underline;
               color: #333;
             }
+          }
+        }
+        .footer-bar {
+          color: #808080;
+          font-style: 16px;
+          display: flex;
+          border-top: 1px solid #ccc;
+          padding: 0.5em 0;
+          span {
+            flex-grow: 1;
+            text-align: center;
+          }
+          span:hover {
+            cursor: pointer;
+            color: mix(#808080, cyan, 60%);
           }
         }
       }

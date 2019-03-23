@@ -7,6 +7,27 @@ function createPost(post) {
         }).catch(err => reject(err))
     })
 }
+function fetchPostById(id) {
+    return new Promise((resolve, reject) => {
+        $.get(`/api/post/fetchPost/by-id/${id}`).then(r => {
+            resolve(r.data);
+        }).catch(e => reject(e))
+    })
+}
+function findPostByBelongTo(id) {
+    return new Promise((resolve, reject) => {
+        $.get(`/api/post/findPost?belongTo=${id}`).then(r => {
+            resolve(r.data);
+        }).catch(e => reject(e))
+    })
+}
+function fetchHome() {
+    return new Promise((resolve, reject) => {
+        $.get('/api/post/fetchHomePost').then(r => {
+            resolve(r.data);
+        }).catch(e => reject(e));
+    })
+}
 function fetchAll() {
     return new Promise((resolve, reject) => {
         $.get('/api/post/fetchAll').then(r => {
@@ -38,5 +59,8 @@ export default {
     createPost,
     fetchAll,
     deletePostById,
-    updatePostById
+    updatePostById,
+    fetchPostById,
+    findPostByBelongTo,
+    fetchHome
 }

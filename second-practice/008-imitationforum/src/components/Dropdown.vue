@@ -33,7 +33,6 @@ export default {
       this.$emit("deletePost", this.post._id);
     },
     default(triggerSelector = ".dropdown-toggle") {
-      console.log(1);
       document.body.addEventListener("click", e => {
         if (!e.target.closest(triggerSelector)||!this.$el.contains(e.target)) {
           //判断点击其它任何地方或这个下拉菜单以外的下拉菜单都隐藏此下拉菜单
