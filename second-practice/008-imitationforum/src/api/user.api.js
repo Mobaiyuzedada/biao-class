@@ -25,6 +25,16 @@ function getUser(user) {
             })
     })
 }
+function getAllUser(user) {
+    return new Promise((resolve, reject) => {
+        $.post('/api/fetchAllUser', user)
+            .then(res => {
+                resolve(res.data);
+            }).catch(err => {
+                reject(err)
+            })
+    })
+}
 function getUserById(id) {
     return new Promise((resolve, reject) => {
         $.post(`/api/getUser/by-id/${id}`)
@@ -45,9 +55,18 @@ function updateUserById(newUser) {
             })
     })
 }
+function deleteUserById(id) {
+    return new Promise((resolve, reject) => {
+        $.delete(`/api/deleteUser/by-id/${id}`).then(r => {
+            resolve(r.data);
+        }).catch(e => reject(e))
+    })
+}
 export default {
     createUser,
     getUser,
     getUserById,
-    updateUserById
+    updateUserById,
+    getAllUser,
+    deleteUserById
 }

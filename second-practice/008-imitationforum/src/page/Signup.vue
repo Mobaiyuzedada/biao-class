@@ -47,7 +47,6 @@ export default {
   methods: {
     signup() {
       if (!this.validateUser()) return;
-      console.log(1);
       api
         .createUser({
           user_name: this.user.username,

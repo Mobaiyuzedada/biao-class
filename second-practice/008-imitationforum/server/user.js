@@ -18,7 +18,6 @@ router.put('/createUser', (req, res) => {
         })
 })
 router.post('/findUser', (req, res) => {
-    console.log(req.body);
     user.findOne(req.body).then(user => {
         if (user)
             res.send({
@@ -28,6 +27,7 @@ router.post('/findUser', (req, res) => {
                     name: user.name ? user.name : null,
                     info: user.info ? user.info : null,
                     gender: user.gender ? user.gender : null,
+                    admin: user.admin ? user.admin : false,
                 }
             })
         else
@@ -84,5 +84,19 @@ router.post('/updateUser/by-id/:id', (req, res) => {
             })
         }
     })
+})
+router.delete('/deleteUser/by-id/:id', (req, res) => {
+    user.findOneAndRemove({ _id: req.params.id })
+        .then(post => {
+            res.send({ status: 'ok', delete_post: post })
+        }).catch(err => res.send(err))
+})
+
+router.post('/fetchAllUser', (req, res) => {
+    user.find(req.body).sort({ "createTime": 'desc' })
+        .then(users => {
+            users.forEach(el => el.password = null);
+            res.send({ status: 'ok', users })
+        }).catch(err => res.send(err))
 })
 module.exports = router;

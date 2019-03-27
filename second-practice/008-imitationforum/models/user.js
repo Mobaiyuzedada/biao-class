@@ -14,6 +14,10 @@ let userSchema = mongoose.Schema({
     gender: String,
     info: String,
     github_id: String,
+    admin: {
+        type: Boolean,
+        default: false
+    }
 }, {
         timestamps: {
             createdAt: 'createTime'

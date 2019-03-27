@@ -14,17 +14,23 @@ import Setting from './page/admin/Setting.vue';
 import SettingPeople from './page/admin/SettingPage/People.vue';
 import SettingPassword from './page/admin/SettingPage/Password.vue';
 import PostView from './page/PostView.vue'
+import AdminBase from './Admin/AdminBase.vue'
+import AdminUser from './Admin/AdminUser.vue'
+import AdminPost from './Admin/AdminPost.vue'
 
+//引入其他
+import session from '../utils/session';
 
 
 Vue.config.productionTip = false
 Vue.use(vueRouter);
-let router = new vueRouter({
+const router = new vueRouter({
   mode: 'history',
   routes: [
     {
       path: '/',
       component: Home,
+      meta: { keepAlive: true }
     }, {
       path: '/post/:id',
       component: PostView
@@ -47,10 +53,32 @@ let router = new vueRouter({
         }, {
           path: 'password',
           component: SettingPassword
+        },]
+    },
+    //管理路由
+    {
+      path: '/admin',
+      component: AdminBase,
+      children: [
+        {
+          path: 'user',
+          component: AdminUser
+        }, {
+          path: 'post',
+          component: AdminPost
         }
       ]
     }
   ]
+})
+router.beforeEach((to, from, next) => {
+  let toAdmin = to.matched[0].path == '/admin';
+  let isAdmin = session.getUser() ? session.getUser().admin : false;
+  if (toAdmin) {
+    isAdmin ? next() : next(false);
+  } else {
+    next()
+  }
 })
 new Vue({
   router,

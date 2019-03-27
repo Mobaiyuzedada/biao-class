@@ -12,7 +12,7 @@
                 td: span.errmsg {{errmsg.username}} 
             tr
                 th 密码
-                td: input(name="password" type="password" v-model="user.password")
+                td(@keyup.enter="login"): input(name="password" type="password" v-model="user.password")
             tr
                 td
                 td: span.errmsg {{errmsg.password}} 
@@ -42,7 +42,18 @@ export default {
       }
     };
   },
+  mounted() {
+    this.islogin();
+  },
   methods: {
+    islogin() {
+      session.getUser() && (session.getUser().admin
+        ? this.logged("/admin")
+        : this.logged("/"));
+    },
+    logged(next) {
+      this.$router.push(next);
+    },
     login() {
       if (!this.validateUser()) return;
       api
@@ -54,7 +65,7 @@ export default {
           if (res.status == "ok") {
             alert("登陆成功");
             session.login(res.user);
-            this.$router.push("/");
+            this.islogin();
           }
         })
         .catch(e => {

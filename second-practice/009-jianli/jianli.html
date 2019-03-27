@@ -1,27 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./jianli.css">
     <title>Document</title>
 </head>
+
 <body>
-    <header>
-        <div class="title">简历</div>
-        <div class="personal-info">
-            <span><strong> 手机</strong>:17312637092</span>
-            <span><strong>Email</strong>:289331962@qq.com</span>
-        </div>
-    </header>
     <main>
-        <div class="personal-info-detail">
-            <ul>
-                <li>董若愚/1994.08.27/苏州</li>
-                <li>教育经历:三江学院/通讯工程/13.09-17.06</li>
-            </ul>
+        <div class="container">
+            <div class="personal-info">
+                <div class="name">董若愚</div>
+                <div class="detail">
+                    <div class="gender"><strong>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</strong>：男</div>
+                    <div class="age"><strong>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄</strong>：25</div>
+                    <div class="adress"><strong>通讯地址</strong>：苏州姑苏区</div>
+                    <span class="tel"><strong>联系电话</strong>：17312637092</span>
+                    <div class="Career-Objective"><strong>求职意向</strong>：前端开发</div>
+                    <span class="email"><strong>邮箱地址</strong>：289331962@qq.com</span>
+                </div>
+            </div>
+            <div class="projects">
+                <h2 class="title">项目经验</h2>
+                <hr>
+                <div class="vue-project">
+                    <h2 class="subtitle">Vue</h2>
+                    <div class="project">
+                        <div class="project-title">blog框架</div>
+                        <div class="prev">
+                            <div class="techStach">
+                                技术栈:基于Vue+Express+MongoDB的单页应用
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <div class="content">内容</div>
+                            <li>前端页面使用Vue-cli搭建。路由使用Vue Router。</li>
+                            <li>后端接口借助Express编写。前后端使用axios通讯。</li>
+                            <li>数据库使用mongodb。</li>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <div class="project-title">论坛</div>
+                        <div class="prev">
+                            <div class="techStack">
+                                技术栈:Vue+Express+MongoDB
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <div class="content">内容</div>
+                            <li>能够实现用户的注册、登陆/登出、发帖、删帖、评论等功能。</li>
+                            <li>主页显示所有有用户发表的帖子。用户自身的帖子仅在登陆状态可以管理</li>
+                        </div>
+                    </div>
+                </div>
+                <div class="jq-project">
+                    <h2 class="subtitle">jQuery</h2>
+                    <div class="project">
+                        <div class="project-title">在线考试系统</div>
+                        <div class="prev">
+                            <div class="techStach">
+                                技术栈:jQuery+c#+MySQL
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <div class="content">内容</div>
+                            <li>前端页面使用jQuery+bootstrap编写。后端使用c#连接操作数据库。数据通讯使用ajax动态交互。</li>
+                            <li>整个系统使用ajax通讯，基本可以实现不刷新网页的动态交互。用户体验较好。</li>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="js-project">
+                            <h2 class="subtitle">原生JS+纯Css</h2>
+                            <div class="project">
+                                <div class="project-title">仿链家静态网页</div>
+                                <div class="prev">
+                                    <div class="techStach">
+                                        <strong>技术栈:</strong>Html+Css
+                                    </div>
+                                </div>
+                                <div class="detail">
+                                    <a target="_blank" href="https://lianjia.xzdry.biaoyansu.com/#">链接</a>
+                                </div>
+                            </div>
+                        </div> -->
+            </div>
+            <div class="stacks">
+                <h2 class="title">技能清单</h2>
+                <hr>
+                <ol>
+                    <li>熟悉面向对象编程。熟悉Html,css ,Vue.js等基本前端技术</li>
+                    <li>熟练掌握JavaScript，基础扎实</li>
+                    <li>能熟练使用sass等基本前端工具。熟悉webpack等构建发布工具</li>
+                    <li>熟悉Node.js,了解c#,python等后端语言</li>
+                    <li>熟悉git版本管理工具</li>
+                    <li>熟悉MongoDB数据库，了解MySQL。了解Python,pandas。了解jQuery。懂得基础linux命令，有把项目部署到服务端的经验。能快速上手</li>
+                </ol>
+            </div>
+            <div class="personal-introduction">
+                <h2 class="title">自我简介</h2>
+                <hr>
+                <p>对编程有强烈兴趣，相比身边的人有更开阔的眼界，好奇心、学习能力较强，可以很快学习新技术，同时也对新技术保持持续关注。</p>
+                <p>有三年编程经验，一年项目经验。能够熟练运用JavaScript,Html,Css等基本前端技术构建页面。熟练掌握原生Js。熟悉Vue.js框架。了解Express,Node.js,MongoDB,jQuery能快速上手。熟练使用webpack,sass/scss,git等基本工具。
+                </p>
+            </div>
         </div>
     </main>
-    <footer></footer>
 </body>
+
 </html>
