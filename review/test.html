@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="a">
+</body>
+
+</html>
+<script>
+    let a = document.getElementById('a');
+    let time;
+    a.addEventListener("input", () => {
+        clearTimeout(time);
+        time = setTimeout(() => {
+            serach(a.value);
+        }, 1000)
+    })
+    function serach(val) {
+        console.log(val);
+    }
+</script>

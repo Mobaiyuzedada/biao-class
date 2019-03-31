@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础</title>
+</head>
+
+<body>
+    <div class="app">
+        <my-btn></my-btn>
+        <myy-btn></myy-btn>
+    </div>
+</body>
+
+</html>
+<script src="../../../practice/public_js/vue/vue.js"></script>
+<!-- <script>
+    var myMixin = {
+        created: function () {
+            console.log(1);
+        },
+        methods: {
+            hello: function () {
+                console.log('hello from mixin');
+            }
+        }
+    }
+    var Component = Vue.extend({
+        mixins: [myMixin]
+    })
+    var component = new Component();
+</script> -->
+<!-- <script>
+    var mixin = {
+        data: function () {
+            return {
+                message: 'hello',
+                foo: 'abc'
+            }
+        }
+    }
+    new Vue({
+        mixins: [mixin],
+        data: function () {
+            return {
+                message: 'dry',
+                bar: 'def'
+            }
+        },
+        created() {
+            console.log(this.$data);
+        }
+    })
+</script> -->
+<!-- 同名钩子函数将混合为一个数组，都将被调用。混入里的先调用 -->
+<!-- <script>
+    var mixin = {
+        created() {
+            console.log('created1');
+        },
+        mounted() {
+            console.log('mounted1');
+        },
+    }
+    new Vue({
+        el: '.app',
+        mixins: [mixin],
+        created() {
+            console.log('created2');
+        },
+        mounted() {
+            console.log('mounted2');
+        },
+    })
+</script> -->
+<!-- 对象如：methods,components,directives混入时，混合为同一个对象，冲突的以组件为准 -->
+<!-- <script>
+    var mixin = {
+        methods: {
+            foo() {
+                console.log('foo');
+            },
+            conflicting() {
+                console.log('conflict from mixin');
+            }
+        },
+        component: {
+            myBtn: Vue.component('myy-btn', {
+                template: `<button class="my-btn">mixin</button>`
+            })
+        }
+    }
+    var vm = new Vue({
+        el: '.app',
+        mixins: [mixin],
+        methods: {
+            bar() {
+                console.log('bar');
+            },
+            conflicting() {
+                console.log('conflict from self');
+            }
+        },
+        component: {
+            myBtn: Vue.component('my-btn', {
+                template: `<button class="myself-btn">self</button>`
+            })
+        }
+    })
+    vm.foo();
+    vm.conflicting();
+    vm.bar();
+</script> -->
+

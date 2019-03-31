@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            max-width: 400px;
+            max-height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>This is content,and data is: <span id="data"></span></div>
+    <button id="button">click me</button>
+</body>
+<script>
+    let index = 0;
+    function send() {
+        var data = document.getElementById('data');
+        data.innerText = '';
+        fetch('/data', {
+            headers: {
+                'X-Test-Cache': index++
+            }
+        }).then(res => {
+            return res.text()
+        }).then(text => {
+            data.innerText = text;
+        })
+    }
+    button.addEventListener('click', () => {
+        send();
+    })
+</script>
+
+</html>
